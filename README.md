@@ -1,4 +1,4 @@
-# <h1 align = "center">Interferometry Analysis - PIL </h1>
+# <h1 align = "center">Interferometry Analysis - LIP</h1>
 <p align="justify">
   The interferometric technique is an important tool for analysis and diagnosis in astronomy, spectroscopy, metrology, plasma physics, particle physics, and other areas. In Laser Wakefield Acceleration (LWFA) studies, knowing the density distribution of the gas target is crucial to understand the phenomena involved in the particle acceleration process.
   Interferometry Analysis - PIL(Plasma Induced Laser) is a Python algorithm developed to recover the accumulated phase across the plasma induced by focusing laser radiation as well as estimate its density distribution.
