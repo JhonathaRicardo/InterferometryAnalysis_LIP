@@ -1,11 +1,11 @@
 # <h1 align = "center">Interferometry Analysis - LIP</h1>
 <p align="justify">
   The interferometric technique is an important tool for analysis and diagnosis in astronomy, spectroscopy, metrology, plasma physics, particle physics, and other areas. In Laser Wakefield Acceleration (LWFA) studies, knowing the density distribution of the gas target is crucial to understand the phenomena involved in the particle acceleration process.
-  Interferometry Analysis - LIP (Laser-induced Plasma) is a Python algorithm developed to recover the accumulated phase across the plasma induced by focusing laser radiation as well as estimate its density distribution.
+  Interferometry Analysis - LIP (Laser-induced Plasma) is a Python algorithm developed to recover the accumulated phase across the plasma induced by focusing laser radiation as well as estimate its eletronic density distribution.
 </p>
 
 <p align="center">
-  <img src = '/Images/Intro_GasJet.jpg' width="80%" align="center">
+  <img src = '/Images/Intro_LIP.png' width="80%" align="center">
 </p>
 
 ![License](https://img.shields.io/badge/license-MIT-green)
@@ -19,8 +19,8 @@
   * [Main Screen](#main-screen)
   * [Interferogram Image](#interferogram-image)
   * [Options](#options)
-  * [Gas-Jet Profile](#gas-jet-profile)
-* [How it work](#how-it-work)
+  * [LIP Profile](#lip-profile)
+* [How it works](#how-it-works)
 * [Reference](#reference)
 * [Authors](#authors)
 * [Acknowledgment](#acknowledgment)
@@ -35,18 +35,18 @@ Many groups around the world have sought advances in the field of LWFA and other
 Currently, we are focusing efforts on several developments required for a LWFA installation, such as computational simulation support [[12–14]](#reference), a source of high-peak-power laser pulses [[15]](#reference), proper gaseous and plasma target creation [[16, 17]](#reference), and development and implementation of diagnostic tools to assist and monitor the experiments [[18, 19]](#reference). The development of diagnostic tools is very important for a better understanding of the laser-plasma interaction [[20]](#reference). Diagnostic efficiency is crucial, as instabilities in both targets and laser pulses can result in low reproducibility of LWFA processes and impair the quality of accelerated electron beams [[21]](#reference).
 Among the various non-perturbing optical methods that can be used to diagnose the gaseous target [[22-25]](#reference), interferometry is a very accurate technique capable of quantifying very small optical path differences and therefore suitable for measuring density variations in LWFA targets [[26, 27]](#reference). 
 
-The [Interferometry Analysis - Gas-Jet Profile] software and [Interferometry Analysis - LIP Profile] software were developed due to this need for a new diagnostic tool to aid in the characterization of the supersonic jet of gas, quickly and reliably. Both softwares were developed by our research group as part of the work to implementation of a laser-plasma accelerator at the Nuclear and Energy Research Institute (IPEN).
+The [Interferometry Analysis - LIP Profile] and [Interferometry Analysis - Gas-Jet Profile] were developed due to this need for a new diagnostic tool to aid in the characterization of the supersonic jet of gas, quickly and reliably. Both softwares were developed by our research group as part of the work to implementation of a laser-plasma accelerator at the Nuclear and Energy Research Institute (IPEN).
 
 ## Installation
-Interferometry Analysis - Gas-Jet software was developed in Python 3.11 and the use of this algorithm requires the installation of the following packages: [NumPy](https://numpy.org/) [[28]](#reference), [Scipy](https://scipy.org/) [[29]](#reference) and [PyAbel](https://pyabel.readthedocs.io/en/latest/index.html) [[30]](#reference) for data processing, [Pillow](https://pypi.org/project/Pillow/) [[31]](#reference) to manipulate interferogram images, [Matplotlib](https://matplotlib.org/stable/index.html) [[32]](#reference) to plot results, and
+Interferometry Analysis - PIL software was developed in Python 3.11 and the use of this algorithm requires the installation of the following packages: [NumPy](https://numpy.org/) [[28]](#reference), [Scipy](https://scipy.org/) [[29]](#reference) and [PyAbel](https://pyabel.readthedocs.io/en/latest/index.html) [[30]](#reference) for data processing, [Pillow](https://pypi.org/project/Pillow/) [[31]](#reference) to manipulate interferogram images, [Matplotlib](https://matplotlib.org/stable/index.html) [[32]](#reference) to plot results, and
 [PySimpleGui](https://www.pysimplegui.org/en/latest/) to create the users template.
 
 The second way to use this software is through the executable file. The users can create a single .exe file using the [pyinstaller](https://pyinstaller.org/en/stable/) package trought the follow terminal command:
 
-<code>   pyinstaller --onefile -w IntAnalysis_GasJetProfile.py                </code>
+<code>   pyinstaller --onefile -w IntAnalysis_LIPProfile.py                </code>
 
 ## How to use it
-Interferometry Analysis - The Gas-Jet software has a graphical interface developed with PysimpleGUI. This interface assists users and facilitates their applications.
+Interferometry Analysis - LIP software has a graphical interface developed with PysimpleGUI. This interface assists users and facilitates their applications.
 In this section, we provide users with a simple review of the software's functions and how to use them.
 ### Main Screen
 
@@ -55,17 +55,17 @@ In this section, we provide users with a simple review of the software's functio
 | *Fig.1 - Software Main Screen* |
 
 ### Interferogram Image
-- ***[Interferogram (Gas-Jet)]*** Scaled gas-jet interferogram image.
+- ***[Interferogram (LIP)]*** Scaled LIP interferogram image.
 
 - ***[Open File(s)]*** Open interferogram image(s) file(s) with the presence of gas jet. Image file extensions should preferably be .png or .snp. However, all image extensions (.gif, .jpg, .bmp, etc) could be used. The path to opened file is shown in text box above. If more than one file has been opened, each file will be analyzed individually and the average of all results will be presented to the user.
   > **Warning**   
-  >  Interferometry Analysis - Gas-Jet software only works with grayscale image files. 
+  >  Interferometry Analysis - LIP software only works with grayscale image files. 
 
 - ***[Interferogram (Ref.)]*** Scaled reference interferogram image.
 
 - ***[Open File]*** Open an undisturbed interferogram image file. Image file extensions should preferably be .png or .snp. However, all image extensions (.gif, .jpg, .bmp, etc) could be used. The path to opened file is shown in text box above. Unlike interferogram gas jet files, the algorithm allows the insertion of only one reference file.
   > **Warning**   
-  >  Interferometry Analysis - Gas-Jet software only works with grayscale image files. 
+  >  Interferometry Analysis - LIP software only works with grayscale image files. 
  
 - ***[Rotate]*** The image rotates in degrees. Positive degrees promote counterclockwise rotation.  
 
@@ -73,7 +73,7 @@ In this section, we provide users with a simple review of the software's functio
 
 - ***[Analyse Data]*** From this command button, the software will apply data processing to generate accumulated phase, inverse Abel transforms, and gas jet density profile.
 
-- ***[Exit]*** Close software.
+- ***[Clear]*** This button clears software input datas.
 
 ### Options
 - ***[Select Analysis Area]*** From the parameters in this form, the user can select the interferogram area to apply the algorithm to determine the gas-jet density profile. The selected area is defined by a rectangle with edges defined by X and Y coordinates (***[Y Coord]*** and ***[X Coord]***).
@@ -81,7 +81,6 @@ The user that intends to use the whole interferogram figure needs to uncheck the
 
 - ***[Experimental Parameteres]*** In this form, the user set the experimental parameters used to obtain the interferogram image. These parameters are:
   - ***[Laser Wavelength]*** and ***[Laser bandwidth FHWM]*** in nm;
-  - ***[Gas type]*** and ***[Polarizability]*** in angstrom³. This parameter usually refers to the tendency of matter to acquire an electric dipole moment when subjected to an electric field.
 
 - ***[Analysis Parameters]*** This form contains the parameters for analysis of the interferogram images:
   - ***[Scaling Factor]*** of an interferogram image in pixels/micrometers;
@@ -95,14 +94,14 @@ Both the above parameters are defined in pixels.
   - ***[Fringes Orientation]*** can be vertical or horizontal.
   - ***[Axisymmetric]*** An important parameter to apply the Inverse Abel Transform is the axis of symmetry (or axisymmetric). The axisymmetric can be horizontal or vertical.
 
-### Gas-Jet Profile
+### LIP Profile
 - ***[Stages]:*** The stages of the results obtained by the algorithm can be viewed by user.
   - ***[Fourier Transform]*** This image is built through the Fourier Transform of gas-jet interferogram image. From this frequency map (*Fig. 2.A*), the software selects automatically the frequency that generates a positive phase map. The pixel position (red line) of the selected frequency is the ***[Gaussian Filter position]***.  
   > **Note**   
   >  Case the ***[Gaussian Filter position]*** is zero, the software will set the valor automatically.  The user can change this ***[Gaussian Filter position]*** manually.
   - ***[Gaussian Filter]*** This image is the Gaussian filter map applied to generate the phase map using the selected frequency (*Fig. 2.B*).
 
-    |<img src = '/Images/Stages1and2.png' width="80%"> |
+    |<img src = '/Images/Stage1and2.png' width="40%"> |
     |:--:| 
     | *Fig. 2 -  Example of: (A) 2D freguency domain obtained from Fourier Transform with selected frequency; (B) Gaussian filter applied on selected frequency.* |
 
@@ -124,7 +123,7 @@ Both the above parameters are defined in pixels.
     
     | ![Gasjet_density](/Images/Stage5.png)|
     |:--:| 
-    | *Fig.5 - Example of: (A) 2D gas density map  and (B) 2D standard deviation map; (C) 1D gas density curves  and (D) standard deviation of one density curve. * |
+    | *Fig.5 - Example of: (A) 2D gas density map  and (B) 2D standard deviation map; (C) 1D gas density curves  and (D) standard deviation of one density curve.*|
 
 - ***[1D Profile]*** This button enable 1D form options (*Fig. 6*) where the user can visualize the curves of each select stage for different positions on the symmetrical axis.
 - ***[2D Profile]*** This button enable the visualization of each *Stage* in 2D images.
@@ -136,12 +135,12 @@ Both the above parameters are defined in pixels.
 - ***[Save Plot]*** with this button the user can save the visualized graph as an image file (*.png*, *.jpg*, *.bmp*, etc).
 - ***[Save Data]*** with this button the user can save the 2D array that generated the visualized graph as a *.dat* or *.txt* file.
 
-## How it work
+## How it works
 The interferogram analysis software algorithm works according to the flowchart below:
 
 |<img src = '/Images/Flowchart.png'>|
 |:--:| 
-| *Fig.  7 - Scheme for determining the gas density profile from interferograms.* |
+| *Fig.  7 - Scheme for determining the LIP density profile from interferograms.* |
 
 ### Accumulated Phase
 The Accumulated Phase map (or accumulated phase shift map) is obtained from the shifts of the speckle fields from two interferogram images. The first is the interferogram image with fringes disturbed due to the presence of gas and the second is a backgroung image (or reference) with undisturbed fringes. According to the flowchart, apply 2D Fourier transforms on both interferograms by transporting them in the frequency domain. Applying a Gaussian filter over the region containing the phase shift information [[33]](#reference) and inverting the Fourier transform over two frequency domain maps. Finally, we obtain the accumulated (or integrated) phase-shift map $\Delta\varphi_{z}$ [[33, 34]](#reference) along the beam propagation direction (z direction) by the following equation:
@@ -190,14 +189,16 @@ This way, the standard deviation map $\sigma_{Abel}$ is build from each $\left(\
 
 
 ### Density Profile
-The gas molecular density $\rho_{gas}$ is obtained through the simple expression of the Lorentz-Lorenz relation [[38, 39]](#reference):
+From the $\Delta\varphi_{r}$ map, the 2D refractive index map for the plasma can be obtained by:
 
-$$ \rho_{gas} = {3 \over 4\pi\alpha} {(n^2-1) \over (n^3+2)} \tag{4}$$
+$$ n = 1 + {\Delta\varphi_{r} \lambda \over 2\pi} \tag{5}$$
 
-where $\alpha$ is the molecular polarizability of gas and $n$ is the spatial refractive index distribution. This 2D refractive index map is determined from the phase-shift map $\Delta\varphi_{r}$:
+where $\lambda$ is the wavelength of the laser inspecting the plasma. symmetry. Moreover, the plasma electronic density, $N_{e}$, can be evaluated from the
+plasma refractive index ($5$) by [[38]](#reference):
 
-$$ n = 1 + {\Delta\varphi_{r} \lambda \over 2\pi} \tag{4}$$
+$$ N_{e} = {4 \pi^2 c^2 \epsilon_{0} m_{e} \over e^2 \lambda^2} \left(1 - n^2\right) \tag{6}$$
 
+where &c& is the speed of light in a vacuum, $m_{e}$ and $e$ are the electron mass and charge, and $\epsilon_{0}$ is the vacuum permittivity. This model assumes that there is no variation of $N_{e}$ across the plasma diameter due to differences in the local number of ionizations [[20]](#reference).
 
 #### Standard Deviation of Density
 The accuracy of the gas density measurement depends on the accuracies of the phase-shift measurement ($\sigma_{\Delta\varphi_{z}}$), and the numerical accuracy of the Abel inversion [[40]](#reference) ($\sigma_{Abel}$). This way, the standard deviation of phase-shift map $\sigma_{\Delta\varphi_{r}}$ can be write as ($5$):
@@ -261,8 +262,7 @@ DOI: 10.1109/MCSE.2007.55] (https://ieeexplore.ieee.org/document/4160265)
 - [35] Mathias Lehmann, "Decorrelation-induced phase errors in phase-shifting speckle interferometry," Appl. Opt. 36, 3657-3667 (1997). [DOI: 10.1364/AO.36.003657](https://doi.org/10.1364/AO.36.003657).
 - [36] Daniel D. Hickstein, Stephen T. Gibson, Roman Yurchak, Dhrubajyoti D. Das, Mikhail Ryazanov. A direct comparison of high-speed methods for the numerical Abel transform. Rev. Sci. Instrum., 90, 065115, 2019. [DOI: 10.1063/1.5092635](https://doi.org/10.1063/1.5092635).
 - [37] C. J. Dasch, “One-dimensional tomography: a comparison of Abel, onion-peeling, and filtered backprojection methods”, Appl. Opt. 31, 1146–1152 (1992). [DOI: 10.1364/AO.31.001146](https://doi.org/10.1364/AO.31.001146).
-- [38] H. A. Lorentz, "Über die Beziehungzwischen der Fortpflanzungsgeschwindigkeit des Lichtes derKörperdichte", Ann. Phys. 9, 41-665, (1880). [DOI: 10.1002/andp.18802450406]( https://doi.org/10.1002/andp.18802450406)
-- [39] L. Lorenz, "Über die Refractionsconstante", Ann. Phys. 11, 70-103  (1880). [DOI: 10.1002/andp.18802470905](https://doi.org/10.1002/andp.18802470905)
+- [38] J. T. Verdeyen and J. B. Gerardo, “Application of laser to plasma refractive index determination,” Ann. N.Y. Acad. Sci. 122, 676–684 (1965). [DOI: 10.1111/j.1749-6632.1965.tb20249.x](https://doi.org/10.1111/j.1749-6632.1965.tb20249.x)
 - [40] A. Saville, M. (2022). 2D Relative Phase Reconstruction in Plasma Diagnostics. Optical Interferometry - A Multidisciplinary Technique in Science and Engineering. [DOI: 10.5772/intechopen.104748](https://www.intechopen.com/chapters/81777).
 
 
@@ -274,12 +274,12 @@ Interferometry Analysis - Gas-Jet software was developed by researchs of the Hig
 * Nilson Dias Vieira Junior [![logo_ORCID](/Images/logo_ORCID.png)](https://orcid.org/0000-0003-0092-9357)
 
 ## Acknowledgment
-Interferogram Analysis - Gas-Jet software was developed to help with the analyze the density of supersonic gas-jet generated by micro-nozzles. This software is part of the work realized by the High Power Ultrashort Pulse Lasers Group of the CLA/IPEN in the [Extreme Light Laboratory](https://www.unl.edu/diocles/home) (ELL)  at the University of Nebraska - Lincoln (UNL). This partnership was able due to funding provided by the São Paulo Research Foundation (FAPESP) and by the US Department of Energy, through the [LaserNetUS](https://lasernetus.org/) program.
+Interferogram Analysis - LIP was developed to help with the analyze the plasma eletronic density generated by ultrashort laser pulses. This software is part of the work realized by the High Power Ultrashort Pulse Lasers Group of the CLA/IPEN in the [Extreme Light Laboratory](https://www.unl.edu/diocles/home) (ELL)  at the University of Nebraska - Lincoln (UNL). This partnership was able due to funding provided by the São Paulo Research Foundation (FAPESP) and by the US Department of Energy, through the [LaserNetUS](https://lasernetus.org/) program.
 
 The author Jhonatha Ricardo dos Santos also acknowledges the FAPESP for doctoral fellowship 2017/13737-8. 
 
 ## License
-Interferogram Analysis - Gas-Jet Profile is licensed under the [MIT license](/LICENSE).
+Interferogram Analysis - LIP is licensed under the [MIT license](/LICENSE).
 
 Copyright (c) 2023 Jhonatha Ricardo dos Santos
 
