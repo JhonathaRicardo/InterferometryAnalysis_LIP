@@ -135,12 +135,16 @@ Both the above parameters are defined in pixels.
 - ***[Save Plot]*** with this button the user can save the visualized graph as an image file (*.png*, *.jpg*, *.bmp*, etc).
 - ***[Save Data]*** with this button the user can save the 2D array that generated the visualized graph as a *.dat* or *.txt* file.
 
+|<img src = '/Images/Colormaps.png' width="60%"> |
+|:--:| 
+| *Fig. 7 - Examples with the colormaps distributions: (A) Linear distribution, (B) Quadratic distribution, (C) Cubic Distribution.* |
+
 ## How it works
 The interferogram analysis software algorithm works according to the flowchart below:
 
 |<img src = '/Images/Flowchart.png'>|
 |:--:| 
-| *Fig.  7 - Scheme for determining the LIP density profile from interferograms.* |
+| *Fig.  8 - Scheme for determining the LIP density profile from interferograms.* |
 
 ### Accumulated Phase
 The Accumulated Phase map (or accumulated phase shift map) is obtained from the shifts of the speckle fields from two interferogram images. The first is the interferogram image with fringes disturbed due to the presence of gas and the second is a backgroung image (or reference) with undisturbed fringes. According to the flowchart, apply 2D Fourier transforms on both interferograms by transporting them in the frequency domain. Applying a Gaussian filter over the region containing the phase shift information [[33]](#reference) and inverting the Fourier transform over two frequency domain maps. Finally, we obtain the accumulated (or integrated) phase-shift map $\Delta\varphi_{z}$ [[33, 34]](#reference) along the beam propagation direction (z direction) by the following equation:
@@ -167,6 +171,10 @@ $$
 
 where $I$ and $I_{0}$ are the intensity distribution of both speckle fields (with mean intensity $\overline{I}$ each), $&Delta;x$ is the displacement of the image in the direction perpendicular to the direction axis of the fringes, and $\beta$ is the speckle size. 
 
+|<img src = '/Images/Scheme_fringewidth_and_disp.png' width = '50%'>|
+|:--:| 
+| Fig.  9 - Scheme for determining the fringes widths (or speckles size) and images displacement   . 
+
 ### Inverse Abel Transform
 
 As mentioned above, $\Delta\phi_{z}$ the integrated phase map along the laser beam propagation direction (z direction).
@@ -187,6 +195,9 @@ $$ \left(\sigma_{Abel}\right)_{i} = \sqrt{\left(\left<\Delta\varphi_{r}\right>_{
 
 This way, the standard deviation map $\sigma_{Abel}$ is build from each $\left(\sigma_{Abel}\right)_{i}$ as show following scheme:
 
+|<img src = '/Images/Scheme_stdAbel.png' width = '50%'>|
+|:--:| 
+| *Fig.  10 - Scheme for determining the standard deviation of the phase map.* |
 
 ### Density Profile
 From the $\Delta\varphi_{r}$ map, the 2D refractive index map for the plasma can be obtained by:
