@@ -20,6 +20,7 @@
   * [Interferogram Image](#interferogram-image)
   * [Options](#options)
   * [LIP Profile](#lip-profile)
+  * [Example](#example)
 * [How it works](#how-it-works)
 * [Reference](#reference)
 * [Authors](#authors)
@@ -138,6 +139,9 @@ Both the above parameters are defined in pixels.
 |<img src = '/Images/Colormaps.png' width="60%"> |
 |:--:| 
 | *Fig. 7 - Examples with the colormaps distributions: (A) Linear distribution, (B) Quadratic distribution, (C) Cubic Distribution.* |
+
+### Example
+One use example can be found in the [Example](/Example/EXAMPLE.md) folder within this repository.
 
 ## How it works
 The interferogram analysis software algorithm works according to the flowchart below:
