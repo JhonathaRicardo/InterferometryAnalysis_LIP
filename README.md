@@ -77,27 +77,28 @@ In this section, we provide users with a simple review of the software's functio
 - ***[Clear]*** This button clears software input datas.
 
 ### Options
-- ***[Select Analysis Area]*** From the parameters in this form, the user can select the interferogram area to apply the algorithm to determine the gas-jet density profile. The selected area is defined by a rectangle with edges defined by X and Y coordinates (***[Y Coord]*** and ***[X Coord]***).
+- ***[Select Analysis Area]*** Form wtih parameters for the user to select the interferogram area to apply the algorithm. The selected area is defined by a rectangle with edges defined by X and Y coordinates (***[Coord X]*** and ***[Coord Y]***).
 The user that intends to use the whole interferogram figure needs to uncheck the checkbox ***[Use select area]***.
 
-- ***[Experimental Parameteres]*** In this form, the user set the experimental parameters used to obtain the interferogram image. These parameters are:
+- ***[Experimental Parameteres]*** Form to set the experimental parameters used to obtain the interferogram image. These parameters are
   - ***[Laser Wavelength]*** and ***[Laser bandwidth FHWM]*** in nm;
 
-- ***[Analysis Parameters]*** This form contains the parameters for analysis of the interferogram images:
-  - ***[Scaling Factor]*** of an interferogram image in pixels/micrometers;
-  - ***[Sigma - Gaussian filter]*** is a width of gaussian image filter. The initial width depends on the image dimension, but can changed by the user. 
-  - ***[Gaussian Filter Position]*** this parameter is different from Gaussian Blur. This parameter is set automatically by the algorithm and this position defines which frequency will be used to apply the Inverse Fourier Transform and build the phase map of the gas-jet.
+- ***[Analysis Parameters]*** Parameters form to analyse of the interferogram images:
+  - ***[Scaling Factor]*** Interferogram image scale in pixels/micrometers.
+  - ***[Sigma - Gaussian filter]***  Pixel spread of the gaussian image filter. The initial Sigma depends on the image dimension, but can changed by the user. 
+  - ***[Gaussian Filter Position]*** This parameter is set automatically by the algorithm and this position defines which frequency will be used to apply the Inverse Fourier Transform and build the phase map of the gas-jet.
 Both the above parameters are defined in pixels. 
     > **Note** 
     > The algorithm set the frequency that defines a positive phase map.  But, users can change the filter position.
-  - ***[Sigma - Gaussian Blur]*** is a multidimensional gaussian image filter. The standard deviation of the gaussian filter (Sigma) defined by the user is equal for all axes.
+  - ***[Sigma - Gaussian Blur]*** Spread of the multidimensional gaussian image filter. The standard deviation of the gaussian filter (Sigma) defined by the user is equal for all axes.
   
-  - ***[Fringes Orientation]*** can be vertical or horizontal.
-  - ***[Axisymmetric]*** An important parameter to apply the Inverse Abel Transform is the axis of symmetry (or axisymmetric). The axisymmetric can be horizontal or vertical.
+  - ***[Fringes Orientation]*** Definition of the interferogram fringes orientation as vertical or horizontal.
+  - ***[Axisymmetric]*** Definition of the axis of symmetry (or axisymmetric) to applying the Inverse Abel Transform. The axisymmetric can be horizontal or vertical.
 
 ### LIP Profile
-- ***[Stages]:*** The stages of the results obtained by the algorithm can be viewed by user.
-  - ***[Fourier Transform]*** This image is built through the Fourier Transform of gas-jet interferogram image. From this frequency map (*Fig. 2.A*), the software selects automatically the frequency that generates a positive phase map. The pixel position (red line) of the selected frequency is the ***[Gaussian Filter position]***.  
+- ***[Stages]:*** The Stages form allows the visualization of each result of the algorithm.
+  - ***[Fourier Transform]*** This image is built through the Fourier Transform of gas-jet interferogram image. From this frequency map (*Fig. 2.A*), the software selects automatically the frequency that generates a positive phase map. The selected frequency is marked with a red line over a pixels lne (or column) identifying the ***[Gaussian Filter position]***.
+  
   > **Note**   
   >  Case the ***[Gaussian Filter position]*** is zero, the software will set the valor automatically.  The user can change this ***[Gaussian Filter position]*** manually.
   - ***[Gaussian Filter]*** This image is the Gaussian filter map applied to generate the phase map using the selected frequency (*Fig. 2.B*).
@@ -108,13 +109,13 @@ Both the above parameters are defined in pixels.
 
     From the next three steps, users have the option of viewing the average values of the maps in 2D (using ***[2D Profile]*** button) or the 1D profile of the maps in different positions on a symmetrical axis (using ***[1D Profile]*** button). 2D standard deviation maps or 1D curves can be viewed using the ***[Standard Deviation]*** checkbox.
   
-    - ***[Accumulated Phase]*** Accumulated phase map of the gas-jet.
+    - ***[Accumulated Phase]*** Accumulated phase-shift map of the gas-jet recovered from the interferograms.
   
     |<img src = '/Images/Stage3.png'>|
     |:--:| 
     | *Fig. 3 - Example of: (A) 2D accumulated phase map  and (B) 2D standard deviation map; (C) 1D accumulated phase curves  and (D) standard deviation of one curve.*|   
     
-    - ***[Abel Transform]*** Phase map obtained after applying Inverse Abel Transform at the Accumulated Phase map.
+    - ***[Abel Transform]*** Phase-shift map obtained after applying Inverse Abel Transform at the Accumulated Phase map.
   
     | ![Phase map](/Images/Stage4.png) |
     |:--:| 
@@ -141,20 +142,17 @@ Both the above parameters are defined in pixels.
 | *Fig. 7 - Examples with the colormaps distributions: (A) Linear distribution, (B) Quadratic distribution, (C) Cubic Distribution.* |
 
 ## Example
-In the Example folder of this repository, you will find two interferogram images showed in Fig. 8. These images were obtained using a Mach-Zehnder-like interferometer, as discussed in [[20]](#reference).
+In the Example folder of this repository, the user will find two interferogram images showed in Fig. 8. These images were obtained using a Mach-Zehnder-like interferometer, as discussed in [[20]](#reference).
 
 |<img src = '/Example/interferogram (reference).png' width='40%'> <img src = '/Example/interferogram (plasma).png' width='40%'> |
 |:--:| 
-| *Fig. 8 - Examples of Interferogram images: Reference image (on the left), and Plasma image (on the rigth)* |
+| *Fig. 8 - Examples of Interferogram images: Reference image (on the left), and Plasma image (on the rigth).* |
 
 Using the example input parameters shown in the figure, the you will obtain the electron density plasma as in the example.
 
-|<img src = '/Example/software screen.png'> |
+|<img src = '/Example/example of analysis (software screen).png'> |
 |:--:| 
-| *Fig. 9 - Software main screen - input parameters for the example* |
-
-    ### Have Fun! ###
-
+| *Fig. 9 - Software main screen - input parameters for the example.* |
   
 ## Reference
 - [1] F. Albert, “Laser wakefield accelerators: next-generation light sources,” Opt. Photonics News 29(1), 42–49 (2018). [DOI: 10.1364/OPN.29.1.000042](https://doi.org/10.1364/OPN.29.1.000042).
