@@ -38,17 +38,17 @@ Among the various non-perturbing optical methods that can be used to diagnose th
 The [Interferometry Analysis - LIP Profile] and [Interferometry Analysis - Gas-Jet Profile] were developed due to this need for a new diagnostic tool to aid in the characterization of the supersonic jet of gas, quickly and reliably. Both softwares were developed by our research group as part of the work to implementation of a laser-plasma accelerator at the Nuclear and Energy Research Institute (IPEN).
 
 ## Installation
-Interferometry Analysis - PIL software was developed in Python 3.11 and the use of this algorithm requires the installation of the following packages: [NumPy](https://numpy.org/) [[28]](#reference), [Scipy](https://scipy.org/) [[29]](#reference) and [PyAbel](https://pyabel.readthedocs.io/en/latest/index.html) [[30]](#reference) for data processing, [Pillow](https://pypi.org/project/Pillow/) [[31]](#reference) and [Skimage](https://scikit-image.org/) [[32]](#reference) for the processing interferogram images, [Matplotlib](https://matplotlib.org/stable/index.html) [[33]](#reference) to plot results, and
-[PySimpleGui](https://www.pysimplegui.org/en/latest/) to create the users template.
-
-The second way to use this software is through the executable file available through the link. 
+Interferometry Analysis - PIL software was developed in Python 3.11. The use of this algorithm through an IDE requires the installation of the following packages: [NumPy](https://numpy.org/) [[28]](#reference), [Scipy](https://scipy.org/) [[29]](#reference) and [PyAbel](https://pyabel.readthedocs.io/en/latest/index.html) [[30]](#reference) for data processing, [Pillow](https://pypi.org/project/Pillow/) [[31]](#reference) and [Skimage](https://scikit-image.org/) [[32]](#reference) for the processing interferogram images, [Matplotlib](https://matplotlib.org/stable/index.html) [[33]](#reference) to plot results, and [PySimpleGui](https://www.pysimplegui.org/en/latest/) to create the users template.
 The users also can create a single .exe file using the [pyinstaller](https://pyinstaller.org/en/stable/) package trought the follow terminal command:
 
 <code>   pyinstaller --onefile -w IntAnalysis_LIPProfile.py                </code>
 
+Users who do not use Python IDEs can use the software through the executable file available through the link.
+
 ## How to use it
-Interferometry Analysis - LIP software has a graphical interface developed with PysimpleGUI. This interface assists users and facilitates their applications.
+The Interferometry Analysis - LIP software has a graphical interface that helps users by facilitating the use of the software.
 In this section, we provide users with a simple review of the software's functions and how to use them.
+
 ### Main Screen
 
 |<img src = '/Images/MainScreen1.png'> |
