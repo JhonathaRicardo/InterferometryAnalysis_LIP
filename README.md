@@ -20,8 +20,7 @@
   * [Interferogram Image](#interferogram-image)
   * [Options](#options)
   * [LIP Profile](#lip-profile)
-  * [Example](#example)
-* [How it works](#how-it-works)
+ * [Example](#example)
 * [Reference](#reference)
 * [Authors](#authors)
 * [Acknowledgment](#acknowledgment)
@@ -29,7 +28,7 @@
 * [Citation](#citation)
 
 ## Introduction
-  In recent decades, the continuous development of compact particle accelerators based on wakefield laser acceleration (LWFA) has promoted contributions to fundamental and applied research [[1, 2]](#reference), including possible future use in proton therapy and hadron therapy [[3, 4]](#reference), and in the production of radioisotopes for nuclear medicine [[5, 6]](#reference). In this approach, ultrafast high-intensity laser pulses focused on a gas target to create a plasma wave with longitudinal electric fields able to accelerate electrons [[7, 8]](#reference). The advances in high-peak-power tabletop lasers in the last years and the high longitudinal electric fields (up to ∼1 TV/m) supported by plasma waves attracted attention to LWFA as a compact alternative for RF conventional accelerators [[9]](#reference).
+  In the last years, the continuous development of compact particle accelerators based on wakefield laser acceleration (LWFA) has promoted contributions to fundamental and applied research [[1, 2]](#reference), including possible future use in proton therapy and hadron therapy [[3, 4]](#reference), and in the production of radioisotopes for nuclear medicine [[5, 6]](#reference). In this approach, ultrafast high-intensity laser pulses focused on a gas target to create a plasma wave with longitudinal electric fields able to accelerate electrons [[7, 8]](#reference). The advances in high-peak-power tabletop lasers in the last years and the high longitudinal electric fields (up to ∼1 TV/m) supported by plasma waves attracted attention to LWFA as a compact alternative for RF conventional accelerators [[9]](#reference).
 
 Many groups around the world have sought advances in the field of LWFA and other plasma acceleration schemes from institutions in North America, Europe, and Asia [[2]](#reference). In Latin America, our research group pioneered the implementation of a laser-plasma accelerator at the Institute of Energy and Nuclear Research (IPEN) [[10]](#reference).Our main objective is to produce electron beams with energy up to tens of megaelectron volts per LWFA. By bremsstrahlung, Electron beams with those energies are able to produce $\gamma$ radiation to induce a $^{100} Mo(\gamma , n) ^{99} Mo$ photonuclear reaction as a future application [[11]](#reference). 
 
@@ -39,10 +38,11 @@ Among the various non-perturbing optical methods that can be used to diagnose th
 The [Interferometry Analysis - LIP Profile] and [Interferometry Analysis - Gas-Jet Profile] were developed due to this need for a new diagnostic tool to aid in the characterization of the supersonic jet of gas, quickly and reliably. Both softwares were developed by our research group as part of the work to implementation of a laser-plasma accelerator at the Nuclear and Energy Research Institute (IPEN).
 
 ## Installation
-Interferometry Analysis - PIL software was developed in Python 3.11 and the use of this algorithm requires the installation of the following packages: [NumPy](https://numpy.org/) [[28]](#reference), [Scipy](https://scipy.org/) [[29]](#reference) and [PyAbel](https://pyabel.readthedocs.io/en/latest/index.html) [[30]](#reference) for data processing, [Pillow](https://pypi.org/project/Pillow/) [[31]](#reference) to manipulate interferogram images, [Matplotlib](https://matplotlib.org/stable/index.html) [[32]](#reference) to plot results, and
+Interferometry Analysis - PIL software was developed in Python 3.11 and the use of this algorithm requires the installation of the following packages: [NumPy](https://numpy.org/) [[28]](#reference), [Scipy](https://scipy.org/) [[29]](#reference) and [PyAbel](https://pyabel.readthedocs.io/en/latest/index.html) [[30]](#reference) for data processing, [Pillow](https://pypi.org/project/Pillow/) [[31]](#reference) and [Skimage](https://scikit-image.org/) [[32]](#reference) for the processing interferogram images, [Matplotlib](https://matplotlib.org/stable/index.html) [[33]](#reference) to plot results, and
 [PySimpleGui](https://www.pysimplegui.org/en/latest/) to create the users template.
 
-The second way to use this software is through the executable file. The users can create a single .exe file using the [pyinstaller](https://pyinstaller.org/en/stable/) package trought the follow terminal command:
+The second way to use this software is through the executable file available through the link. 
+The users also can create a single .exe file using the [pyinstaller](https://pyinstaller.org/en/stable/) package trought the follow terminal command:
 
 <code>   pyinstaller --onefile -w IntAnalysis_LIPProfile.py                </code>
 
@@ -140,99 +140,8 @@ Both the above parameters are defined in pixels.
 |:--:| 
 | *Fig. 7 - Examples with the colormaps distributions: (A) Linear distribution, (B) Quadratic distribution, (C) Cubic Distribution.* |
 
-### Example
+## Example
 One use example can be found in the [Example](/Example/EXAMPLE.md) folder within this repository.
-
-## How it works
-The interferogram analysis software algorithm works according to the flowchart below:
-
-|<img src = '/Images/Flowchart.png'>|
-|:--:| 
-| *Fig.  8 - Scheme for determining the LIP density profile from interferograms.* |
-
-### Accumulated Phase
-The Accumulated Phase map (or accumulated phase shift map) is obtained from the shifts of the speckle fields from two interferogram images. The first is the interferogram image with fringes disturbed due to the presence of gas and the second is a backgroung image (or reference) with undisturbed fringes. According to the flowchart, apply 2D Fourier transforms on both interferograms by transporting them in the frequency domain. Applying a Gaussian filter over the region containing the phase shift information [[33]](#reference) and inverting the Fourier transform over two frequency domain maps. Finally, we obtain the accumulated (or integrated) phase-shift map $\Delta\varphi_{z}$ [[33, 34]](#reference) along the beam propagation direction (z direction) by the following equation:
-
-$$ 
-\begin{equation}
-\Delta\varphi_{z} =  tan^{-1}\left({\varphi_{gas} - \phi_{ref}}\right)
-\tag{1}
-\end{equation}
-$$
-
-where  $\varphi_{gas}$  and  $\varphi_{ref}$   is, respectively, the gas-jet and background phase map.
-
-#### Standard Deviation of Accumulated Phase
-
-According to M. Lehmann [[35]](#reference), for two well-resolved speckle fields (background and perturbed by gas) the phase error is determined by the probability distributions of the intensities and phase derivatives of two speckle fields. Considering that each field has a Gaussian distribution of speckle intensities and since the measured phase is the difference between two speckle phases, its error also follows a Gaussian probability distribution, with standard deviation given by:
-
-$$ 
-\begin{equation}
-\sigma_{\Delta\varphi}(\Delta x, I_{0} ,I) = {\Delta x \over 2}{\pi \over \beta} \left\lbrack{ \overline{I} (I + I_{0}) \over 2 I I_{0}}\right\rbrack^{1/2}
-\tag{2}
-\end{equation}
-$$
-
-where $I$ and $I_{0}$ are the intensity distribution of both speckle fields (with mean intensity $\overline{I}$ each), $&Delta;x$ is the displacement of the image in the direction perpendicular to the direction axis of the fringes, and $\beta$ is the speckle size. 
-
-|<img src = '/Images/Scheme_fringewidth_and_disp.png' width = '50%'>|
-|:--:| 
-| Fig.  9 - Scheme for determining the fringes widths (or speckles size) and images displacement   . 
-
-### Inverse Abel Transform
-
-As mentioned above, $\Delta\phi_{z}$ the integrated phase map along the laser beam propagation direction (z direction).
-Assuming an axisymmetric gas-jet, the integrated information along $z$ is sufficient to reconstruct the radial information using inversion $\Delta\phi_{r}$ such as the Abel inversion method [[36]](#reference).
-
-$$ \Delta\phi_{r} = - {1 \over \pi} \int_{r}^{\infty} {d (\Delta\phi_{z}) \over dz} {dz \over \sqrt {z² - r²}} \tag{3}$$ 
-
-In this software, the phase map is determined from the application of the PyAbel [[30]](#reference) algorithm on the accumulated phase map.
-PyAbel is a Python package that provides functions for the forward and inverse Abel transforms. The inverse Abel transform takes a 2D projection and reconstructs a slice of the cylindrically symmetric 3D distribution, which makes this function an important tool in analyzing the projections of angle-resolved, plasma plumes, flames, solar occultation [[30]](#reference), and gas-jets.
-
-PyAbel provides efficient implementations of several Abel transform algorithms [[35]](#reference). In this software, the chosen method was the deconvolution algorithm Dash Onion Peeling because it is simple and computationally very efficient [[30]](#reference). According to Dash [[37]](#reference), this method requires less smoothing than other methods.
-
-#### Standard Deviation of Inverse Abel Transform
-The accuracy of applying the inverse Abel transform is associated with the standard deviation generated by a correlation between the normalized phase map curves $\left<\Delta\varphi_{r}\right>i$ and the mormalized accumulated phase map curves $\left<\Delta\varphi_{z}\right>i$.
-These standard deviation $\left(\sigma_{Abel}\right)_{i}$ is obtained for each position $i$ on the symmetrical axis.
-
-$$ \left(\sigma_{Abel}\right)_{i} = \sqrt{\left(\left<\Delta\varphi_{r}\right>_{i} - \left<\Delta\varphi_{z}\right>_{i}\right)^2} \tag{4}$$
-
-This way, the standard deviation map $\sigma_{Abel}$ is build from each $\left(\sigma_{Abel}\right)_{i}$ as show following scheme:
-
-|<img src = '/Images/Scheme_stdAbel.png' width = '50%'>|
-|:--:| 
-| *Fig.  10 - Scheme for determining the standard deviation of the phase map.* |
-
-### Density Profile
-From the $\Delta\varphi_{r}$ map, the 2D refractive index map for the plasma can be obtained by:
-
-$$ n = 1 + {\Delta\varphi_{r} \lambda \over 2\pi} \tag{5}$$
-
-where $\lambda$ is the wavelength of the laser inspecting the plasma. symmetry. Moreover, the plasma electronic density, $N_{e}$, can be evaluated from the
-plasma refractive index ($5$) by [[38]](#reference):
-
-$$ N_{e} = {4 \pi^2 c^2 \epsilon_{0} m_{e} \over e^2 \lambda^2} \left(1 - n^2\right) \tag{6}$$
-
-where &c& is the speed of light in a vacuum, $m_{e}$ and $e$ are the electron mass and charge, and $\epsilon_{0}$ is the vacuum permittivity. This model assumes that there is no variation of $N_{e}$ across the plasma diameter due to differences in the local number of ionizations [[20]](#reference).
-
-#### Standard Deviation of Density
-The accuracy of the gas density measurement depends on the accuracies of the phase-shift measurement ($\sigma_{\Delta\varphi_{z}}$), and the numerical accuracy of the Abel inversion [[40]](#reference) ($\sigma_{Abel}$). This way, the standard deviation of phase-shift map $\sigma_{\Delta\varphi_{r}}$ can be write as ($5$):
-
-$$  \sigma_{\Delta\varphi_{r}} = \sqrt{\left({\sigma_{\Delta\varphi_{z}}}^2 + {\sigma_{Abel}}^2\right)} \tag{5}$$
-
-So, the standard deviation of gas density $\sigma_{\rho}$ is given by ($6$):
-
-$$ 
-\begin{equation}
-\sigma_{\rho} = \sqrt{\left({\partial\rho \over \partial\Delta\varphi_{r}}\right)^2 \left({\sigma_{\Delta\varphi_{r}}}\right)^2 + 
-\left({\partial\rho \over \partial\lambda}\right)^2 \left({\sigma_{\lambda}}\right)^2}
-\tag{6}
-\end{equation}
-$$
-
-where $\sigma_{\lambda}$ is user-defined experimental parameter.
-  > **Note**
-  > The contribution of this parameter to the density standard deviation is usually very small. 
   
 ## Reference
 - [1] F. Albert, “Laser wakefield accelerators: next-generation light sources,” Opt. Photonics News 29(1), 42–49 (2018). [DOI: 10.1364/OPN.29.1.000042](https://doi.org/10.1364/OPN.29.1.000042).
@@ -270,22 +179,16 @@ and space density measurements for laser wakefield acceleration,” in SBFoton I
 - [29] Pauli Virtanen, et. al. (2020) SciPy 1.0: Fundamental Algorithms for Scientific Computing in Python. Nature Methods, 17(3), 261-272. [DOI: 10.1038/s41592-019-0686-2](https://www.nature.com/articles/s41592-019-0686-2).
 - [30] Gibson, Stephen; Hickstein, Daniel D.; Yurchak, Roman; Ryazanov, Mikhail; Das, Dhrubajyoti; Shih, Gilbert.(2022) PyAbel, PyAbel: v0.9.0, Zenodo,  [DOI: 10.5281/zenodo.7438595](https://doi.org/10.5281/zenodo.7438595).
 - [31] Clark, A. (2015). Pillow (PIL Fork) Documentation. readthedocs. Retrieved from [https://buildmedia.readthedocs.org/media/pdf/pillow/latest/pillow.pdf](https://buildmedia.readthedocs.org/media/pdf/pillow/latest/pillow.pdf).
-- [32] J. D. Hunter, Matplotlib: A 2D Graphics Environment. Computing in Science & Engineering, 9 (3), 90-95 (2007). [
+- [32] Stéfan van der Walt, Johannes L. Schönberger, Juan Nunez-Iglesias, François Boulogne, Joshua D. Warner, Neil Yager, Emmanuelle Gouillart, Tony Yu and the scikit-image contributors. scikit-image: Image processing in Python. PeerJ 2:e453 (2014). [DOI: 10.7717/peerj.453](https://doi.org/10.7717/peerj.453)
+- [33] J. D. Hunter, Matplotlib: A 2D Graphics Environment. Computing in Science & Engineering, 9 (3), 90-95 (2007). [
 DOI: 10.1109/MCSE.2007.55] (https://ieeexplore.ieee.org/document/4160265)
-- [33] J. P. Couperus, A. Kohler, T. A. W. Wolterink, A. Jochmann, O. Zarini, H. M. J. Bastiaens, K. J. Boller, A. Irman, and U. Schramm, Nucl Instrum Meth A 830, 504-509 (2016).[DOI: 10.1016/j.nima.2016.02.099](https://doi.org/10.1016/j.nima.2016.02.099).
-- [34] V. Malka, C. Coulaud, J. P. Geindre, V. Lopez, Z. Najmudin, D. Neely, and F. Amiranoff, Rev. Sci. Instrum. 71, 2329-2333 (2000). [DOI: 10.1063/1.1150619](https://doi.org/10.1063/1.1150619)
-- [35] Mathias Lehmann, "Decorrelation-induced phase errors in phase-shifting speckle interferometry," Appl. Opt. 36, 3657-3667 (1997). [DOI: 10.1364/AO.36.003657](https://doi.org/10.1364/AO.36.003657).
-- [36] Daniel D. Hickstein, Stephen T. Gibson, Roman Yurchak, Dhrubajyoti D. Das, Mikhail Ryazanov. A direct comparison of high-speed methods for the numerical Abel transform. Rev. Sci. Instrum., 90, 065115, 2019. [DOI: 10.1063/1.5092635](https://doi.org/10.1063/1.5092635).
-- [37] C. J. Dasch, “One-dimensional tomography: a comparison of Abel, onion-peeling, and filtered backprojection methods”, Appl. Opt. 31, 1146–1152 (1992). [DOI: 10.1364/AO.31.001146](https://doi.org/10.1364/AO.31.001146).
-- [38] J. T. Verdeyen and J. B. Gerardo, “Application of laser to plasma refractive index determination,” Ann. N.Y. Acad. Sci. 122, 676–684 (1965). [DOI: 10.1111/j.1749-6632.1965.tb20249.x](https://doi.org/10.1111/j.1749-6632.1965.tb20249.x)
-- [40] A. Saville, M. (2022). 2D Relative Phase Reconstruction in Plasma Diagnostics. Optical Interferometry - A Multidisciplinary Technique in Science and Engineering. [DOI: 10.5772/intechopen.104748](https://www.intechopen.com/chapters/81777).
-
 
 ## Authors
 Interferometry Analysis - Gas-Jet software was developed by researchs of the High Power Ultrashort Pulse Lasers Group of the Center for Lasers and Applications (CLA) at Instituto de Pesquisas Energéticas e Nucleares ([IPEN](https://www.ipen.br/portal_por/portal/default.php)).
 * Jhonatha Ricardo dos Santos [![logo_ORCID](/Images/logo_ORCID.png)](https://orcid.org/0000-0001-7877-0580)
 * Armando Valter Felicio Zuffi [![logo_ORCID](/Images/logo_ORCID.png)](https://orcid.org/0000-0001-5705-1499)
 * Ricardo Elgul Samad [![logo_ORCID](/Images/logo_ORCID.png)](https://orcid.org/0000-0001-7762-8961)
+* Edison Puig Maldonado [![logo_ORCID](/Images/logo_ORCID.png)](https://orcid.org/0000-0002-9462-8151)
 * Nilson Dias Vieira Junior [![logo_ORCID](/Images/logo_ORCID.png)](https://orcid.org/0000-0003-0092-9357)
 
 ## Acknowledgment
