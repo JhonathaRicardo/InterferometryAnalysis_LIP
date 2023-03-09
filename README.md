@@ -24,7 +24,7 @@
 * [Reference](#reference)
 * [Authors](#authors)
 * [Acknowledgment](#acknowledgment)
- * [License](#license)
+* [License](#license)
 * [Citation](#citation)
 
 ## Introduction
@@ -141,7 +141,20 @@ Both the above parameters are defined in pixels.
 | *Fig. 7 - Examples with the colormaps distributions: (A) Linear distribution, (B) Quadratic distribution, (C) Cubic Distribution.* |
 
 ## Example
-One use example can be found in the [Example](/Example/EXAMPLE.md) folder within this repository.
+In the Example folder of this repository, you will find two interferogram images showed in Fig. 8. These images were obtained using a Mach-Zehnder-like interferometer, as discussed in [[20]](#reference).
+
+|<img src = '/Example/interferogram (reference).png' width='40%'> <img src = '/Example/interferogram (plasma).png' width='40%'> |
+|:--:| 
+| *Fig. 8 - Examples of Interferogram images: Reference image (on the left), and Plasma image (on the rigth)* |
+
+Using the example input parameters shown in the figure, the you will obtain the electron density plasma as in the example.
+
+|<img src = '/Example/software screen.png'> |
+|:--:| 
+| *Fig. 9 - Software main screen - input parameters for the example* |
+
+    ### Have Fun! ###
+
   
 ## Reference
 - [1] F. Albert, “Laser wakefield accelerators: next-generation light sources,” Opt. Photonics News 29(1), 42–49 (2018). [DOI: 10.1364/OPN.29.1.000042](https://doi.org/10.1364/OPN.29.1.000042).
