@@ -75,10 +75,10 @@ The Interferometry Analysis - LIP software has a graphical interface that helps 
 - ***[Clear]*** Button to clear input and output data.
 
 ### Options
-- ***[Select Analysis Area]*** Form wtih parameters for the user to select the interferogram area to apply the algorithm. The selected area is defined by a rectangle with edges defined by X and Y coordinates (***[Coord X]*** and ***[Coord Y]***).
+- ***[Select Analysis Area]*** Parameters frame for users select the interferogram area to apply the algorithm. The selected area is defined by a rectangle with edges defined by X and Y coordinates(***[X Coord]*** and ***[Y Coord]***).
 The user that intends to use the whole interferogram figure needs to uncheck the checkbox ***[Use select area]***.
 
-- ***[Experimental Parameteres]*** Form to set the experimental parameters used to obtain the interferogram image. These parameters are
+- ***[Experimental Parameteres]*** Frame to set the experimental parameters used to obtain the interferogram image. These parameters are: 
   - ***[Laser Wavelength]*** and ***[Laser bandwidth FHWM]*** in nm;
 
 - ***[Analysis Parameters]*** Parameters form to analyse of the interferogram images:
