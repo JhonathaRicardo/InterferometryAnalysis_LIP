@@ -94,26 +94,27 @@ The user that intends to use the whole interferogram figure needs to uncheck the
   - ***[Sigma - Gaussian Blur]*** Spread of the multidimensional gaussian image filter. The standard deviation of the gaussian filter (Sigma) defined by the user is equal for all axes.
 
 ### LIP Profile
-- ***[Stages]:*** The Stages form allows the visualization of each result of the algorithm.
-  - ***[Fourier Transform]*** This image is built through the Fourier Transform of gas-jet interferogram image. From this frequency map (*Fig. 2.A*), the software selects automatically the frequency that generates a positive phase map. The selected frequency is marked with a red line over a pixels lne (or column) identifying the ***[Gaussian Filter position]***.
-  
+- ***[Stages]:*** Stages frame allows the visualization of each result of the algorithm.
+  - ***[Frequency Domain]*** This image is built through the Fourier Transform of plasma interferogram image. From this frequency map (*Fig. 2.A*), the software selects automatically the frequency that generates a positive phase-shift map. The selected frequency is marked with a red line over.
+  - 
+  - ***[Gaussian Filter position]*** This image is built through the Fourier Transform of plasma interferogram image. From this frequency map (Fig. 2.A), the software selects automatically the frequency that generates a positive phase-shift map. The selected frequency is marked with a red line over a pixels line (or column) identifying the ***[Gaussian Filter position]***.
   > **Note**   
-  >  Case the ***[Gaussian Filter position]*** is zero, the software will set the valor automatically.  The user can change this ***[Gaussian Filter position]*** manually.
+  >  Case the ***[Gaussian Filter position]*** is equal to zero, the software will set the new valor automatically. But the user can change this ***[Gaussian Filter position]*** manually.
   - ***[Gaussian Filter]*** This image is the Gaussian filter map applied to generate the phase map using the selected frequency (*Fig. 2.B*).
 
     |<img src = '/Images/Stage1and2.png' width="40%"> |
     |:--:| 
     | *Fig. 2 -  Example of: (A) 2D freguency domain obtained from Fourier Transform with selected frequency; (B) Gaussian filter applied on selected frequency.* |
 
-    From the next three steps, users have the option of viewing the average values of the maps in 2D (using ***[2D Profile]*** button) or the 1D profile of the maps in different positions on a symmetrical axis (using ***[1D Profile]*** button). 2D standard deviation maps or 1D curves can be viewed using the ***[Standard Deviation]*** checkbox.
+    From the next three steps, users have the option of viewing the 2D maps or 1D curves with standard deviation using the ***[Standard Deviation]*** checkbox.
   
-    - ***[Accumulated Phase]*** Accumulated phase-shift map of the gas-jet recovered from the interferograms.
-  
+  - ***[Acc. Phase-shift]*** Accumulated phase-shift ($\Delta\phi$) of the plasma (in rad) recovered from the interferograms.
+  - 
     |<img src = '/Images/Stage3.png'>|
     |:--:| 
-    | *Fig. 3 - Example of: (A) 2D accumulated phase map  and (B) 2D standard deviation map; (C) 1D accumulated phase curves  and (D) standard deviation of one curve.*|   
+    | *Fig. 3 - Example of: (A) 2D accumulated phase-shift map and (B) 2D standard deviation map; (C) 1D accumulated phase curves and (D) standard deviation of one curve. All phase values are given in rad.*|   
     
-    - ***[Abel Transform]*** Phase-shift map obtained after applying Inverse Abel Transform at the Accumulated Phase map.
+  - ***[Radial Phase-shift]*** Radial phase-shift ($\Delta\phi_{r}$) in rad⁄μm obtained after applying Inverse Abel Transform from Accumulated Phase-shift ($\Delta\phi$).
   
     | ![Phase map](/Images/Stage4.png) |
     |:--:| 
