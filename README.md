@@ -54,25 +54,25 @@ The Interferometry Analysis - LIP software has a graphical interface that helps 
 | *Fig.1 - Software Main Screen* |
 
 ### Interferogram Image
-- ***[Interferogram (LIP)]*** Scaled LIP interferogram image.
+- ***[Interferogram (LIP)]*** LIP interferogram image frame.
 
-- ***[Open File(s)]*** Open interferogram image(s) file(s) with the presence of gas jet. Image file extensions should preferably be .png or .snp. However, all image extensions (.gif, .jpg, .bmp, etc) could be used. The path to opened file is shown in text box above. If more than one file has been opened, each file will be analyzed individually and the average of all results will be presented to the user.
+- ***[Open File(s)]*** Open interferogram image(s) file(s) with the presence of plasma. Image file extensions should preferably be .png or .snp. However, all image extensions (*.gif*, *.jpg*, *.bmp*, etc) could be used. The path to opened file is shown in text box above. If more than one file has been opened, each file will be analyzed individually and the average of all results will be presented to the user.
   > **Warning**   
   >  Interferometry Analysis - LIP software only works with grayscale image files. 
+  
+- ***[Rotate]*** The image rotates in degrees. Positive degrees promote counterclockwise rotation. So, negative degrees promote clockwise rotation..  
+
+- ***[Image Scale]*** The interferogram image shown is scaled to screen size (428,342) for users' viewing only. However, all processes to determine the electronic density profile are done with the original dimensions of the image file.
 
 - ***[Interferogram (Ref.)]*** Scaled reference interferogram image.
 
 - ***[Open File]*** Open an undisturbed interferogram image file. Image file extensions should preferably be .png or .snp. However, all image extensions (.gif, .jpg, .bmp, etc) could be used. The path to opened file is shown in text box above. Unlike interferogram gas jet files, the algorithm allows the insertion of only one reference file.
   > **Warning**   
   >  Interferometry Analysis - LIP software only works with grayscale image files. 
- 
-- ***[Rotate]*** The image rotates in degrees. Positive degrees promote counterclockwise rotation.  
-
-- ***[Image Scale]*** The interferogram image shown is scaled to screen size (428,342) for users' viewing only. However, all processes to determine the gas jet density profile are done with the original dimensions of the image file.
 
 - ***[Analyse Data]*** From this command button, the software will apply data processing to generate accumulated phase, inverse Abel transforms, and gas jet density profile.
 
-- ***[Clear]*** This button clears software input datas.
+- ***[Clear]*** Button to clear input and output data.
 
 ### Options
 - ***[Select Analysis Area]*** Form wtih parameters for the user to select the interferogram area to apply the algorithm. The selected area is defined by a rectangle with edges defined by X and Y coordinates (***[Coord X]*** and ***[Coord Y]***).
