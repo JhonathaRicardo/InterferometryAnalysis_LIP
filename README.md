@@ -34,7 +34,7 @@ Institutions in North America, Europe, and Asia [[2]](#reference). have sought a
 Currently, we are focusing efforts on several developments required for a LWFA installation, such as computational simulation support [[12–14]](#reference), a source of high-peak-power laser pulses [[15]](#reference), proper gaseous and plasma target creation [[16, 17]](#reference), and development and implementation of diagnostic tools to assist and monitor the experiments [[18, 19]](#reference). The development of diagnostic tools is very important for a better understanding of the laser-plasma interaction [[20]](#reference). Diagnostic efficiency is crucial, as instabilities in both targets and laser pulses can result in low reproducibility of LWFA processes and impair the quality of accelerated electron beams [[21]](#reference).
 Among the various non-perturbing optical methods that can be used to diagnose the gaseous target [[22-25]](#reference), interferometry is a very accurate technique capable of quantifying very small optical path differences and therefore suitable for measuring density variations in LWFA targets [[26, 27]](#reference) and laser-induced plasmas [[20]](#reference). 
 
-The *Interferometry Analysis - LIP* and *Interferometry Analysis - Gas-Jet* were developed due to this need for a new diagnostic tool to aid in the characterization of the supersonic jet of gas, quickly and reliably. Both software were developed by our research group as part of the work to implementation of a laser-plasma accelerator at the Nuclear and Energy Research Institute (IPEN)..
+The *Interferometry Analysis - LIP* and *Interferometry Analysis - Gas-Jet* were developed due to this need for a new diagnostic tool to aid in the characterization of the supersonic jet of gas, quickly and reliably. Both software were developed by our research group as part of the work to implementation of a laser-plasma accelerator at the Nuclear and Energy Research Institute (IPEN).
 
 ## Installation
 Interferometry Analysis - PIL software was developed in Python 3.11. The use of this algorithm through an IDE requires the installation of the following packages: [NumPy](https://numpy.org/) [[28]](#reference), [Scipy](https://scipy.org/) [[29]](#reference) and [PyAbel](https://pyabel.readthedocs.io/en/latest/index.html) [[30]](#reference) for data processing, [Pillow](https://pypi.org/project/Pillow/) [[31]](#reference) and [Skimage](https://scikit-image.org/) [[32]](#reference) for the processing interferogram images, [Matplotlib](https://matplotlib.org/stable/index.html) [[33]](#reference) to plot results, and [PySimpleGui](https://www.pysimplegui.org/en/latest/) to create the users template.
@@ -81,17 +81,17 @@ The user that intends to use the whole interferogram figure needs to uncheck the
 - ***[Experimental Parameteres]*** Frame to set the experimental parameters used to obtain the interferogram image. These parameters are: 
   - ***[Laser Wavelength]*** and ***[Laser bandwidth FHWM]*** in nm;
 
-- ***[Analysis Parameters]*** Parameters form to analyse of the interferogram images:
+- ***[Analysis Parameters]*** Parameters frame to analyse of the interferogram images:
   - ***[Scaling Factor]*** Interferogram image scale in pixels/micrometers.
   - ***[Sigma - Gaussian filter]***  Pixel spread of the gaussian image filter. The initial Sigma depends on the image dimension, but can changed by the user. 
-  - ***[Gaussian Filter Position]*** This parameter is set automatically by the algorithm and this position defines which frequency will be used to apply the Inverse Fourier Transform and build the phase map of the gas-jet.
-Both the above parameters are defined in pixels. 
+  - ***[Gaussian Filter Position]*** This parameter is set automatically by the algorithm and this position defines which frequency will be used to apply the Inverse Fourier Transform and build the phase map of the gas-jet. Both the above parameters are defined in pixels.
+
     > **Note** 
-    > The algorithm set the frequency that defines a positive phase map.  But, users can change the filter position.
-  - ***[Sigma - Gaussian Blur]*** Spread of the multidimensional gaussian image filter. The standard deviation of the gaussian filter (Sigma) defined by the user is equal for all axes.
+    > The algorithm set the frequency that generate a positive phase map. But users can change the filter position.
   
   - ***[Fringes Orientation]*** Definition of the interferogram fringes orientation as vertical or horizontal.
   - ***[Axisymmetric]*** Definition of the axis of symmetry (or axisymmetric) to applying the Inverse Abel Transform. The axisymmetric can be horizontal or vertical.
+  - ***[Sigma - Gaussian Blur]*** Spread of the multidimensional gaussian image filter. The standard deviation of the gaussian filter (Sigma) defined by the user is equal for all axes.
 
 ### LIP Profile
 - ***[Stages]:*** The Stages form allows the visualization of each result of the algorithm.
