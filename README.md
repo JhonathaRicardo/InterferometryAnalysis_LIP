@@ -40,7 +40,7 @@ The *Interferometry Analysis - LIP* and *Interferometry Analysis - Gas-Jet* were
 Interferometry Analysis - PIL software was developed in Python 3.11. The use of this algorithm through an IDE requires the installation of the following packages: [NumPy](https://numpy.org/) [[28]](#reference), [Scipy](https://scipy.org/) [[29]](#reference) and [PyAbel](https://pyabel.readthedocs.io/en/latest/index.html) [[30]](#reference) for data processing, [Pillow](https://pypi.org/project/Pillow/) [[31]](#reference) and [Skimage](https://scikit-image.org/) [[32]](#reference) for the processing interferogram images, [Matplotlib](https://matplotlib.org/stable/index.html) [[33]](#reference) to plot results, and [PySimpleGui](https://www.pysimplegui.org/en/latest/) to create the users template.
 The users also can create a single .exe file using the [pyinstaller](https://pyinstaller.org/en/stable/) package through the follow terminal command:
 
-<code>   pyinstaller --onefile -w IntAnalysis_LIPProfile.py                </code>
+<code>   pyinstaller --onefile -w IntAnalysis_LIP_v1.py                </code>
 
 Users who do not use Python IDEs can use the software through the executable file available for download in this directory.
 
