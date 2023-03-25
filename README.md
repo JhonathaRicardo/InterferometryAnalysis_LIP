@@ -16,15 +16,16 @@
 * [Installation](#installation)
 * [How to use it](#how-to-use-it)
   * [Main Screen](#main-screen)
-  * [Interferogram Image](#interferogram-image)
+  * [Interferogram Images](#interferogram-images)
   * [Options](#options)
-  * [LIP Profile](#lip-profile)
- * [Example](#example)
-* [Reference](#reference)
+  * [Gas-Jet Profile](#gas-jet-profile)
+* [How it works](#how-it-works)
+* [Example](#example)
 * [Authors](#authors)
 * [Acknowledgment](#acknowledgment)
 * [License](#license)
 * [Citation](#citation)
+* [Reference](#reference)
 
 ## Introduction
   In the last years, the continuous development of compact particle accelerators based on wakefield laser acceleration (LWFA) has promoted contributions to fundamental and applied research [[1, 2]](#reference), ], including possible future use in proton therapy and hadron therapy [[3, 4]](#reference)and in the production of radioisotopes for nuclear medicine [[5, 6]](#reference). In this approach, ultrafast high-intensity laser pulses focused on a gas target to create a plasma wave with longitudinal electric fields able to accelerate electrons [[7, 8]](#reference). The advances in high-peak-power tabletop lasers in the last years and the high longitudinal electric fields (up to ∼1 TV/m) supported by plasma waves attracted attention to LWFA as a compact alternative for RF conventional accelerators [[9]](#reference).
@@ -37,15 +38,16 @@ Among the various non-perturbing optical methods that can be used to diagnose th
 The *Interferometry Analysis - LIP* and *Interferometry Analysis - Gas-Jet* were developed due to this need for a new diagnostic tool to aid in the characterization of the supersonic jet of gas, quickly and reliably. Both software were developed by our research group as part of the work to implementation of a laser-plasma accelerator at the Nuclear and Energy Research Institute (IPEN).
 
 ## Installation
-Interferometry Analysis - PIL software was developed in Python 3.11. The use of this algorithm through an IDE requires the installation of the following packages: [NumPy](https://numpy.org/) [[28]](#reference), [Scipy](https://scipy.org/) [[29]](#reference) and [PyAbel](https://pyabel.readthedocs.io/en/latest/index.html) [[30]](#reference) for data processing, [Pillow](https://pypi.org/project/Pillow/) [[31]](#reference) and [Skimage](https://scikit-image.org/) [[32]](#reference) for the processing interferogram images, [Matplotlib](https://matplotlib.org/stable/index.html) [[33]](#reference) to plot results, and [PySimpleGui](https://www.pysimplegui.org/en/latest/) to create the users template.
-The users also can create a single .exe file using the [pyinstaller](https://pyinstaller.org/en/stable/) package through the follow terminal command:
+The *Interferometry Analysis - LIP* software was developed in Python 3.11. The use of this algorithm requires the installation of the following packages: [NumPy](https://numpy.org/) [[9]](#reference), [Scipy](https://scipy.org/) [[10]](#reference) and [PyAbel](https://pyabel.readthedocs.io/en/latest/index.html) [[11]](#reference) for data processing, [Pillow](https://pypi.org/project/Pillow/) [[12]](#reference) and Scikit-image [[13]](#reference) for the procrssing of interferogram images, [Matplotlib](https://matplotlib.org/stable/index.html) [[14]](#reference) to plot results, and [PySimpleGui](https://www.pysimplegui.org/en/latest/) to create the user's template.
+
+TUsers also can create a single .exe file using the [pyinstaller](https://pyinstaller.org/en/stable/) package trought the follow terminal command:
 
 <code>   pyinstaller --onefile -w IntAnalysis_LIP_v1.py                </code>
 
-Users who do not use Python IDEs can use the software through the executable file available for download in this directory.
+Users who do not use Python IDEs can utilize the software through the executable file available for download.
 
 ## How to use it
-The Interferometry Analysis - LIP software has a graphical interface that helps users by facilitating the use of the software. In this section, we provide users with a simple review of the software's functions and how to use them.
+The “Interferometry Analysis – Gas-Jet” has a graphical interface to facilitate its use, and this section provide a simple review of the software's functions and how to employ them.
 
 ### Main Screen
 
@@ -54,23 +56,26 @@ The Interferometry Analysis - LIP software has a graphical interface that helps 
 | *Fig.1 - Software Main Screen* |
 
 ### Interferogram Image
-- ***[Interferogram (LIP)]*** LIP interferogram image frame.
+- ***[Interferogram (Gas-Jet)]*** interferogram image frame.
 
-- ***[Open File(s)]*** Open interferogram image(s) file(s) with the presence of plasma. Image file extensions should preferably be .png or .snp. However, all image extensions (*.gif*, *.jpg*, *.bmp*, etc) could be used. The path to opened file is shown in text box above. If more than one file has been opened, each file will be analyzed individually and the average of all results will be presented to the user.
+- ***[Open File(s)]*** Open interferogram image(s) file(s) with the presence of a gas jet. Image file extensions should preferably be .png or .snp.
+However, all image extensions (*.gif*, *.jpg*, *.bmp*, etc) could be used. The path to the opened file is shown in the text box immediately above. If
+more than one file has been opened, each file will be analyzed individually, and the average of all results will be presented to the user.
   > **Warning**   
-  >  Interferometry Analysis - LIP software only works with grayscale image files. 
+  >  Interferometry Analysis - Gas-Jet software only works with grayscale image files. 
   
-- ***[Rotate]*** The image rotates in degrees. Positive degrees promote counterclockwise rotation. So, negative degrees promote clockwise rotation..  
+- ***[Rotate]*** The image rotation in degrees. Positive degrees promote counterclockwise rotation.  
 
-- ***[Image Scale]*** The interferogram image shown is scaled to screen size (428,342) for users' viewing only. However, all processes to determine the electronic density profile are done with the original dimensions of the image file.
+- ***[Original Size]*** Original dimensions of the image file (width,height). 
+  > **Note** The interferogram image shown is scaled to screen size (428,342) for users' viewing only. However, all processes to determine the gas jet density profile are done with the original dimensions of the image file.
 
 - ***[Interferogram (Ref.)]*** Scaled reference interferogram image.
 
 - ***[Open File]*** Open an undisturbed interferogram image file. Image file extensions should preferably be .png or .snp. However, all image extensions (.gif, .jpg, .bmp, etc) could be used. The path to opened file is shown in text box above. Unlike interferogram gas jet files, the algorithm allows the insertion of only one reference file.
   > **Warning**   
-  >  Interferometry Analysis - LIP software only works with grayscale image files. 
+  >  Interferometry Analysis - Gas-Jet software only works with grayscale image files. 
 
-- ***[Analyse Data]*** From this command button, the software will apply data processing to generate accumulated phase, inverse Abel transforms, and gas jet density profile.
+- ***[Analyse Data]*** From this command button, the software will apply data processing to generate the accumulated phase-shift map, the radial phase-shift map, and the map of the molecular density distribution of the gas.
 
 - ***[Clear]*** Button to clear input and output data.
 
