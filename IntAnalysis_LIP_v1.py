@@ -1,7 +1,7 @@
 # Software: Interferometry Analysis - PIL (Version 1.0)
 # Authors: Jhonatha Ricardo dos Santos, Armando Zuffi, Ricardo Edgul Samad, Edison Puig Maldonado, Nilson Dias Vieira Junior
 # Python 3.11
-# Last update: 2023_03_10
+# Last update: 2023_03_26
 
 # LYBRARIES
 # The Python Standard Library
@@ -54,7 +54,7 @@ lambda0 = '395'  # nm
 unc_lambda0 = '0'
 factor = '1.000'  # factor um/pixel
 sigma_gfilter = '0'  # sigma of gauss function
-sigma_gblur = '2' # sigma of gaussian blur
+sigma_gblur = '2'  # sigma of gaussian blur
 centerfilter = '0'  # Center of the gaussian filter application
 # Image parameters
 h_prof = -1.0  # heigth null
@@ -75,8 +75,9 @@ width2, height2 = size2 = 214, 172  # Scale image - Ref
 width3, height3 = size3 = 428, 342  # Scale image - Result
 # Min and Max values of Interferogram Image
 minvalue_x, maxvalue_x, minvalue_y, maxvalue_y = 0, 428, 0, 342
-#Frame 1D visible
-visible_f1d =  False
+# Frame 1D visible
+visible_f1d = False
+
 
 #################################################################################
 # FUNCTIONS
@@ -95,6 +96,8 @@ def getBinaryData(filename):
             binary_values.append(ord(data))
             data = f.read(1)
         return binary_values
+
+
 # DRAW FIGURE FROM FILES
 def draw_figure(canvas, figure):
     '''
@@ -107,6 +110,8 @@ def draw_figure(canvas, figure):
     figure_canvas_agg.draw()
     figure_canvas_agg.get_tk_widget().pack(side='top', fill='both', expand=1)
     return figure_canvas_agg
+
+
 # GET VALUES FROM INPUTBOX
 def get_value(key, values):
     '''
@@ -117,6 +122,8 @@ def get_value(key, values):
     '''
     value = values[key]
     return float(value)
+
+
 # GET IMAGE FILE FROM PATH FILE
 def image_to_data(im):
     '''
@@ -128,6 +135,8 @@ def image_to_data(im):
         im.save(output, format="PNG")
         data = output.getvalue()
     return data
+
+
 # DRAW RECTANGLE ON INTERFEROMETER FIGURE
 def apply_drawing(values, window):
     '''
@@ -153,6 +162,8 @@ def apply_drawing(values, window):
         bio = io.BytesIO()
         imagetmp.save(bio, format='PNG')
         window["image1"].update(data=bio.getvalue(), size=size)
+
+
 # NEW COLORMAPS
 def func_colormap(n):
     '''
@@ -161,6 +172,8 @@ def func_colormap(n):
     :return: colormap distribution
     '''
     return ListedColormap(cm.get_cmap('rainbow_r', 512)(np.power(np.linspace(1, 0, 512), n)))
+
+
 # CREATING MEAN MAPS/ARRAY AND STD ARRAY
 def mean_maps(data):
     '''
@@ -172,6 +185,8 @@ def mean_maps(data):
     for i in range(1, len(data)):
         mean_data = mean_data + data[i] / len(data)
     return mean_data
+
+
 def std_maps(data, mean_data):
     '''
     standard deviation of 2D Array maps
@@ -183,8 +198,10 @@ def std_maps(data, mean_data):
         desv = desv + (data[i] - mean_data) * (data[i] - mean_data)
 
     return np.sqrt(desv / len(data))
-#CREATING SHIFT AND WIDTHS OF THE FRINGES
-def fringes_info(data1,data2):
+
+
+# CREATING SHIFT AND WIDTHS OF THE FRINGES
+def fringes_info(data1, data2):
     '''
     Calculate 2D array shifts and widths fringes distribution
     :param n: 2D arrays, 2D array of ref. image.
@@ -219,6 +236,7 @@ def fringes_info(data1,data2):
 
     return shift_i, dist_i
 
+
 '''
 ########################################################################################
 #Windows LAYOUTS
@@ -234,7 +252,7 @@ layout_frame_ImgSample = [
     [sg.Button('Open File(s)', font='Arial 10 bold'),
      sg.Button('Rotate (°)', visible=True, font='Arial 10 bold', disabled=True),
      sg.Input('0', size=(5, 1), key='-DEGREE-', enable_events=True),
-     sg.Text('  Image Scale (w,h):'),
+     sg.Text('Original Size (w,h):'),
      sg.Text('', key='-scale1-')],
 ]
 # LAYOUT REFERENCE IMAGE
@@ -280,7 +298,8 @@ layout_analysis_parameters = [
     [sg.Text('Sigma - Gaussian filter (pixel):    '),
      sg.Input(sigma_gfilter, size=(5, 1), key='-sigma_gfilter-', enable_events=True)],
     [sg.Text('Gaussian Filter position (pixel):  '),
-     sg.Spin([i for i in range(minvalue_x, maxvalue_x + 1)], initial_value=0, size=(4, 1), key='-centerfilter-', enable_events=True)],
+     sg.Spin([i for i in range(minvalue_x, maxvalue_x + 1)], initial_value=0, size=(4, 1), key='-centerfilter-',
+             enable_events=True)],
     [sg.Text('Fringes Orientation:      '),
      sg.Combo(['vertical', 'horizontal'], default_value='vertical', key='-combofringe-')],
     [sg.Text('Axisymmetric:             '),
@@ -349,7 +368,8 @@ layout_frame_Result = [
      sg.Text('Colormap Dist.:'),
      sg.Combo(['Linear', 'Quadratic', 'Cubic'], default_value='Linear', key='-cmapcombo-', enable_events=True)
      ],
-    [sg.Frame('Density Profile - 1D (Axisymmetry)', layout_frame_plot1D, size=(490, 100), title_location=sg.TITLE_LOCATION_TOP_LEFT,
+    [sg.Frame('Density Profile - 1D (Axisymmetry)', layout_frame_plot1D, size=(490, 100),
+              title_location=sg.TITLE_LOCATION_TOP_LEFT,
               visible=False, key='frame1d', font='Arial 10')],
 
 ]
@@ -376,7 +396,7 @@ while True:
             os.remove(path2)
         break
 
-    if event =='Clear':
+    if event == 'Clear':
         if '_temp.png' in path1:
             os.remove(path1)
             os.remove(path2)
@@ -385,7 +405,7 @@ while True:
         window['Analyse Data'].update(disabled=True)
         window['Select Analysis Area'].update(disabled=True)
 
-        #Disable specific buttons and frames for 2D analysis
+        # Disable specific buttons and frames for 2D analysis
         window['Save Data'].update(disabled=True)
         window['Save Plot'].update(disabled=True)
         window['frame1d'].update(visible=False)
@@ -405,9 +425,11 @@ while True:
         window['file2'].update(path1)
         window['-centerfilter-'].update('0')
         window['-sigma_gfilter-'].update('0')
-        # clearing figures and plots
-        fig_canvas_agg.get_tk_widget().forget()
-        plt.close('all')
+        # Cleaning plots
+        try:
+            fig_canvas_agg.get_tk_widget().forget()
+        except:
+            plt.close('all')
 
     ########################################################################
     # OPEN INTERFEROGRAM IMAGE
@@ -453,7 +475,7 @@ while True:
 
         # scale 1: scale for interferogram image
         w, h = originalgas[0].size
-        scale = (round(width / w, 2), round(height / h, 2))
+        scale = (width / w), (height / h)
 
         if scale != 1:
             im1 = originalgas[0].resize(size)
@@ -462,7 +484,7 @@ while True:
         data1 = image_to_data(im1)
 
         window['image1'].update(data=data1, size=size)
-        window['-scale1-'].update(scale)
+        window['-scale1-'].update(originalgas[0].size)
 
         # Enable buttons
         if path1 != '' and path2 != '':
@@ -502,7 +524,7 @@ while True:
         except UnidentifiedImageError:
             continue
         w2, h2 = originalref.size
-        scale2 = (round(width2 / w2, 2), round(height2 / h2, 2))
+        scale2 = (width2 / w2), (height2 / h2)
 
         if scale2 != 1:
             im2 = originalref.resize(size2)
@@ -586,7 +608,7 @@ while True:
             sigma = int(get_value('-sigma_gblur-', values))
             # Wavelength laser
             lambda0 = float(get_value('-lambda0-', values)) * 1e-9  # in meters
-            unc_lambda0 = float(get_value('-unclambda0-', values)) *0.8493218 * 1e-9  # 1/e in meters
+            unc_lambda0 = float(get_value('-unclambda0-', values)) * 0.8493218 * 1e-9  # 1/e in meters
         except:
             sg.popup_error(f"WARNING: Data fields must have numerical values! ")
             continue
@@ -609,7 +631,7 @@ while True:
         # Input original files
         phasemaps = []
         plasma_dens, plasma_abelphasemap, plasma_phasemap = [], [], []
-        std_phasemap, std_abelmap, std_plasma_dens = [],[],[]
+        std_phasemap, std_abelmap, std_plasma_dens = [], [], []
 
         for j in range(0, len(path_files)):
             if rotate_degree != 0:
@@ -688,7 +710,7 @@ while True:
                         centerfilter2 = filterpoints[len(filterpoints) - 2]
                         f_range = int(filterspoints_widths[len(filterpoints) - 1])
 
-            window['-centerfilter-'].update(str(centerfilter),str(centerfilter2))
+            window['-centerfilter-'].update(str(centerfilter), str(centerfilter2))
 
             # Creating filter array from null array
             gfilter = np.zeros(np.shape(fftgas))
@@ -762,10 +784,11 @@ while True:
 
             frgs_shifts = gaussian_filter(frgs_shifts, sigma=sigma)
             frgs_widths = gaussian_filter(frgs_widths, sigma=sigma)
-
-            std_phasemap_i = ((np.pi * frgs_shifts) / (2 * frgs_widths)) * \
-                             np.sqrt((np.mean(dist1) * (dist1 + dist2)) / (2 * dist1 * dist2))
-            std_phasemap.append(std_phasemap_i)
+            try:
+                std_phasemap_i = ((np.pi * frgs_shifts) / (2*frgs_widths))*\
+                                 np.sqrt((np.mean(dist1) * (dist1 + dist2)) / (2 * dist1 * dist2))
+            except:
+                std_phasemap_i = np.zeros(np.shape(intref))
 
             '''
             ################################################################################
@@ -784,87 +807,89 @@ while True:
             if values['-comboaxisymm-'] == 'horizontal':
                 phasemap_corr = np.transpose(phasemap_corr)
                 std_phasemap_i = np.transpose(std_phasemap_i)
-                
+
+            # Remove rising background of PIL
             nlines, nrows = np.shape(phasemap_corr)
-            for l in range(0,nlines):
-                bl_map = np.min(phasemap_corr[l])*np.ones(nrows)
-                phasemap_corr[l] = (phasemap_corr[l] - bl_map)*(-1)
+
+            for l in range(0, nlines):
+                bl_map = np.min(phasemap_corr[l]) * np.ones(nrows)
+                phasemap_corr[l] = (phasemap_corr[l] - bl_map) * (-1)
 
             # Define region with more intensity pixel - position x and y
-            cline, crow = np.where(phasemap_corr <= np.min(phasemap_corr) * 0.95)
+            cline, crow = np.where(phasemap_corr <= np.min(phasemap_corr) * 0.98)
             cy, cx = int(np.median(cline)), int(np.median(crow))
 
             # If the region not found, set symmetric point like half image
             if math.isnan(cx) == True:
-                cx = int(nrows/2)
+                cx = int(nrows / 2)
             # If right-side of image is more width
-            if cx >= int(nrows/2):
-                  phasemap_corr = np.flip(phasemap_corr,0)
-                  std_phasemap_i = np.flip(std_phasemap_i,0)
-                  fliped_array = True
-                  vert_lim = int(2*(nrows-cx)+1)
+            if cx >= int(nrows / 2):
+                phasemap_corr = np.flip(phasemap_corr, 0)
+                std_phasemap_i = np.flip(std_phasemap_i, 0)
+                fliped_array = True
+                vert_lim = int(2 * (nrows - cx) + 1)
             # If left-side of image is more width
             else:
-                 fliped_array = False
-                 vert_lim = int(2*cx+1)
+                fliped_array = False
+                vert_lim = int(2 * cx + 1)
 
             phasemap_symm = phasemap_corr[:, 0:vert_lim]
-            std_phasemap_symm = std_phasemap_i[:,0:vert_lim]
-            plasma_diameter = vert_lim # diameter of the cylinder used in IAT
+            std_phasemap_symm = std_phasemap_i[:, 0:vert_lim]
 
             try:
                 # Applying inverse Abel Transform
-                phase_abel = abel.Transform((phasemap_symm), symmetry_axis=0, direction='inverse',
+                phase_abel0 = abel.Transform((phasemap_symm), symmetry_axis=0, direction='inverse',
+                                             method='onion_peeling').transform
+                std_phase0 = abel.Transform((std_phasemap_symm), symmetry_axis=0, direction='inverse',
                                             method='onion_peeling').transform
             except:
-                phase_abel = np.zeros(np.shape(phasemap_symm))
+                phase_abel0 = np.zeros(np.shape(phasemap_symm))
+                std_abel0 = np.zeros(np.shape(phasemap_symm))
                 sg.popup_error(f"WARNING: Unable to apply the Abel transform to the selected image! ")
 
             if fliped_array == True:
-                phase_abel = np.flip(phase_abel,0)
-                phasemap_corr = np.flip(phasemap_corr,0)
-                phasemap_symm = np.flip(phasemap_symm,0)
-                std_phasemap_symm = np.flip(std_phasemap_symm,0)
+                phase_abel0 = np.flip(phase_abel0, 0)
+                phasemap_corr = np.flip(phasemap_corr, 0)
+                phasemap_symm = np.flip(phasemap_symm, 0)
+                std_phasemap_symm = np.flip(std_phasemap_symm, 0)
+                std_phase0 = np.flip(std_phase0, 0)
             '''
             ############################################################################################
             Calculating std from Abel Transform:
             The std is calculated using deviation of mormalized phasemap and normalized IAT phasemap  
             '''
+            rangeh0, rangev0 = np.shape(phase_abel0)
+            phase_abel = phase_abel0[:, int(0.05 * vert_lim): int(0.95 * vert_lim)]
             norm_phasemap = np.zeros(np.shape(phase_abel))
-            for k in range(0, nlines):
-                norm_phasemap[k] = phasemap_symm[k] * np.max(abs(phase_abel[k])) / np.max(abs(phasemap_symm[k]))
-            std_abelmap0 = abs(phase_abel - norm_phasemap)
+            for k in range(0, rangeh0):
+                try:
+                    norm_phasemap[k] = phasemap_symm[k, int(0.05 * vert_lim): int(0.95 * vert_lim)] \
+                                       * np.max(abs(phase_abel[k, :])) \
+                                       / np.max(abs(phasemap_symm[k, int(0.05 * vert_lim): int(0.95 * vert_lim)]))
+                except:
+                    norm_phasemap[k] = np.zeros(np.shape(phase_abel[k, :]))
 
-            if values['-comboaxisymm-'] == 'horizontal':
-                vert_lim = nlines
-                phasemap_corr = np.transpose(phasemap_corr)
-                phasemap_symm = np.transpose(phasemap_symm)
-                phase_abel = np.transpose(phase_abel)
-                std_abelmap0 = np.transpose(std_abelmap0)
-                std_phasemap_symm = np.transpose(std_phasemap_symm)
+            std_abelmap_2 = np.sqrt(np.square(phase_abel - norm_phasemap))
 
-            plasma_phasemap.append(phasemap_corr)
             '''
             ########################################################################################
             Calculating refraction index and plasma electronic density from IAT phasemap.        
             '''
             # Calculating index refraction from IAT of phasemap
-            n_index0 = (1 + (phase_abel * lambda0) / (2 * np.pi*factor))
+            n_index0 = (1 + (phase_abel0 * lambda0) / (2 * np.pi * factor))
             # Cutting border of images due the computational artefacts generated by IAT and problems with no symmetric images
             n_index = n_index0[:, int(0.05 * vert_lim): int(0.95 * vert_lim)]
             # Calculating plasma density. Const 1.11485e15 1/m
             try:
                 const_plasma = 1.11485e15
-                plasma_dens_i = (const_plasma*((np.ones(np.shape(n_index)))-np.square(n_index)))\
-                                / (lambda0*lambda0)*1e-6 #cm-3
+                plasma_dens_i = (const_plasma * ((np.ones(np.shape(n_index))) - np.square(n_index))) \
+                                / (lambda0 * lambda0) * 1e-6  # cm-3
 
-                plasma_dens_i = plasma_dens_i-np.min(plasma_dens_i)*np.ones(np.shape(plasma_dens_i))
+                plasma_dens_i = plasma_dens_i - np.min(plasma_dens_i) * np.ones(np.shape(plasma_dens_i))
             except:
                 plasma_dens_i = np.zeros(np.shape(n_index))
-            #new matrix size for plot
+            # new matrix size for plot
             rangeh, rangev = np.shape(plasma_dens_i)
-            plasma_abelphasemap.append(phase_abel[:, int(0.05 * vert_lim): int(0.95 * vert_lim)])
-            plasma_dens.append(plasma_dens_i)
 
             '''
             CALCULATION TOTAL STANDARD DEVIATION FROM:
@@ -873,55 +898,73 @@ while True:
             3. FWHM Laser wavelength
             '''
             dN_n = (-const_plasma * 2 * n_index) / (np.square(lambda0))
+
             # Contribution 1: measurement interferogram
-            std_phase1 = np.square(std_phasemap_symm[:, int(0.05 * vert_lim): int(0.95 * vert_lim)]\
-                                   /(factor*plasma_diameter)) #rad/metro
-            # Contribution 2: Abel transformation accuracy
-            std_abelmap_i = std_abelmap0[:, int(0.05 * vert_lim): int(0.95 * vert_lim)]
-            std_abelmap.append(std_abelmap_i)
-            std_phase2 = np.square(std_abelmap_i/factor) #rad/metro
-            std_phase = np.sqrt(std_phase2+std_phase1) #rad/metro
-            dn_phase = (lambda0)/(2*np.pi)#
+            # Contribution 1: measurement interferogram
+            std_phase1 = abs(std_phase0[:, int(0.05 * vert_lim): int(0.95 * vert_lim)] / factor)  # rad/um
+            # Contribution 2: Abel inversion Accuracy
+            std_phase2 = abs(std_abelmap_2 / factor)  # rad/m
+
+            std_phase = np.sqrt(np.square(std_phase1) + np.square(std_phase2))  # rad/m
+            dn_phase = (lambda0) / (2 * np.pi)  #
 
             # Contribution 3: laser wavelength
-            dn_lambda = phase_abel[:, int(0.05 * vert_lim): int(0.95 * vert_lim)]\
-                                  /(2*np.pi*factor)#rad/m
+            dn_lambda = phase_abel / (2 * np.pi * factor)  # rad/m
 
-            std_plasma_dens_i =abs(dN_n)*np.sqrt(np.square(dn_phase*std_phase)+np.square(dn_lambda*unc_lambda0))*1e-6
+            std_plasma_dens_i = abs(dN_n) * np.sqrt(np.square(dn_phase * std_phase) +
+                                                    np.square(dn_lambda * unc_lambda0)) * 1e-6
+
+            if values['-comboaxisymm-'] == 'horizontal':
+                phasemap_corr = np.transpose(phasemap_corr)
+                phase_abel = np.transpose(phase_abel)
+                std_abelmap_2 = np.transpose(std_abelmap_2)
+                std_phase = np.transpose(std_phase)
+                std_plasma_dens_i = np.transpose(std_plasma_dens_i)
+                plasma_dens_i = np.transpose(plasma_dens_i)
+                std_phasemap_i = np.transpose(std_phasemap_i)
+                norm_phasemap = np.transpose(norm_phasemap)
+
+            plasma_phasemap.append(phasemap_corr)
+            std_phasemap.append(std_phasemap_i)
+
+            plasma_abelphasemap.append(phase_abel)
+            std_abelmap.append(std_abelmap_2)
+
+            plasma_dens.append(plasma_dens_i)
             std_plasma_dens.append(std_plasma_dens_i)
 
-        #BUILDING 2D ARRAYS RESULTS FOR:
-        if len(plasma_phasemap)>1: # Many files
+        # BUILDING 2D ARRAYS RESULTS FOR:
+        if len(plasma_phasemap) > 1:  # Many files
             # PHASEMAP
             plasma_phasemap_mean = mean_maps(plasma_phasemap)
-            std_phasemap_mean = np.sqrt(np.square(mean_maps(std_phasemap))+\
-                                                  np.square(std_maps(plasma_phasemap,plasma_phasemap_mean)))
-            #INV. ABEL TRANSF. MAP
+            std_phasemap_mean = np.sqrt(np.square(mean_maps(std_phasemap)) + \
+                                        np.square(std_maps(plasma_phasemap, plasma_phasemap_mean)))
+            # INV. ABEL TRANSF. MAP
             plasma_abelmap_mean = mean_maps(plasma_abelphasemap)
             std_abelmap_mean = np.sqrt(np.square(mean_maps(std_abelmap)) + \
-                                        np.square(std_maps(plasma_abelphasemap, std_abelmap_mean)))
+                                       np.square(std_maps(plasma_abelphasemap, std_abelmap_mean)))
             # PLASMA DENSITY
             plasma_dens_mean = mean_maps(plasma_dens)
             std_dens_mean = np.sqrt(np.square(mean_maps(std_plasma_dens)) + \
-                                       np.square(std_maps(plasma_dens, std_dens_mean)))
+                                    np.square(std_maps(plasma_dens, std_dens_mean)))
         else:
-            #PHASEMAP
+            # PHASEMAP
             plasma_phasemap_mean = (plasma_phasemap[0])
-            std_phasemap_mean =(std_phasemap[0])
-            #INV. ABEL TRANSF. MAP
+            std_phasemap_mean = (std_phasemap[0])
+            # INV. ABEL TRANSF. MAP
             plasma_abelmap_mean = (plasma_abelphasemap[0])
             std_abelmap_mean = (std_abelmap[0])
-            #PLASMA DENSITY
+            # PLASMA DENSITY
             plasma_dens_mean = (plasma_dens[0])
             std_dens_mean = (std_plasma_dens[0])
         '''
         BUILDING 2D AND 1D PLOTS
         '''
-        #Ajust slider for horizontal/vertical
+        # Ajust slider for horizontal/vertical
         if values['-comboaxisymm-'] == 'vertical':
-            window['sliderh'].update(range=(0, rangeh - 1))
-        else:
             window['sliderh'].update(range=(0, rangev - 1))
+        elif values['-comboaxisymm-'] == 'horizontal':
+            window['sliderh'].update(range=(0, rangeh - 1))
 
         # Plots are building from user select
         if values['fftradio'] == True:  # Plot FFT map result
@@ -973,10 +1016,12 @@ while True:
             cax = divider.append_axes("right", size="5%", pad=0.05)
             abel_plot = ax1.imshow(matrix_plot, extent=[0, x_max, 0, y_max], cmap=newcmp)
             cb1 = fig.colorbar(abel_plot, cax=cax)
+            ax1.set_xlabel('$x\hspace{.5}(\mu m)$', fontsize=12)
+            ax1.set_ylabel('$y\hspace{.5}(\mu m)$', fontsize=12)
             if values['-checkstd-'] == False:
                 cb1.set_label(label='$\Delta\phi\hspace{.5} (rad)$', size=12, weight='bold')
             else:
-                cb1.set_label(label='$\sigma_{\Delta\phi}\hspace{.5} (rad)$',size=12, weight='bold')
+                cb1.set_label(label='$\sigma_{\Delta\phi}\hspace{.5} (rad)$', size=12, weight='bold')
 
         elif values['densradio'] == True:
             divider = make_axes_locatable(ax1)
@@ -991,7 +1036,7 @@ while True:
             if values['-checkstd-'] == False:
                 cb1.set_label(label='$N_{e}\hspace{.5} (cm^{-3})$', size=12, weight='bold')
             else:
-                cb1.set_label(label='$\sigma_{N_e}\hspace{.5} (cm^{-3})$',size=12, weight='bold')
+                cb1.set_label(label='$\sigma_{N_e}\hspace{.5} (cm^{-3})$', size=12, weight='bold')
 
         else:
             divider = make_axes_locatable(ax1)
@@ -1007,7 +1052,7 @@ while True:
             if values['-checkstd-'] == False:
                 cb1.set_label(label='$\Delta\phi_{r}\hspace{.5} (rad/ \mu m)$', size=12, weight='bold')
             else:
-                cb1.set_label(label='$\sigma_{\Delta\phi_{r}}\hspace{.5} (rad/ \mu m)$',size=12, weight='bold')
+                cb1.set_label(label='$\sigma_{\Delta\phi_{r}}\hspace{.5} (rad/ \mu m)$', size=12, weight='bold')
 
         fig.tight_layout(pad=2)
         fig_canvas_agg = draw_figure(window['canvasabel'].TKCanvas, fig)
@@ -1022,6 +1067,11 @@ while True:
     #########################################################################
     # BUTTON DENS.PROFILE 2
     if event == '2D Profile':
+        # Cleaning plots
+        try:
+            fig_canvas_agg.get_tk_widget().forget()
+        except:
+            plt.close('all')
         # set height position
         h_prof = -1.0
         # Plots are building from user select
@@ -1080,6 +1130,8 @@ while True:
                 cax = divider.append_axes("right", size="5%", pad=0.05)
                 abel_plot = ax1.imshow(matrix_plot, extent=[0, x_max, 0, y_max], cmap=newcmp)
                 cb1 = fig.colorbar(abel_plot, cax=cax)
+                ax1.set_xlabel('$x\hspace{.5}(\mu m)$', fontsize=12)
+                ax1.set_ylabel('$y\hspace{.5}(\mu m)$', fontsize=12)
                 if values['-checkstd-'] == False:
                     cb1.set_label(label='$\Delta\phi\hspace{.5} (rad)$', size=12, weight='bold')
                 else:
@@ -1125,10 +1177,19 @@ while True:
         except:
             continue
     #########################################################################
-    # SLIDER POSITION
+    # BUTTON DENS.PROFILE 1D AND SLIDER POSITION
     if (event == '1D Profile') or (event == 'sliderh'):
+        # Cleaning plots
+        try:
+            fig_canvas_agg.get_tk_widget().forget()
+        except:
+            plt.close('all')
         # set height position
         h_prof = -1.0
+        if values['-checkstd-'] == True:
+            window['-checkpos1-'].update(False)
+            window['-checkpos2-'].update(False)
+            window['-checkpos3-'].update(False)
         # Plots are building from user select
         if values['fftradio'] == True:  # Plot FFT map result
             matrix_plot = fftmap
@@ -1139,10 +1200,13 @@ while True:
         elif values['phaseradio'] == True:  # Plot phase map result
             matrix_plot = plasma_phasemap_mean
             matrix_plot_std = std_phasemap_mean
+            headerfile = '\nx[µm] \t\t 𝚫𝝓[rad] \n'
         elif values['abelradio'] == True:  # Plot gas density profile from IAT
             matrix_plot = plasma_abelmap_mean
-            matrix_plot_std = std_abelmap_mean
+            matrix_plot_std = norm_phasemap
+            headerfile = '\nx[µm] \t\t 𝚫𝝓r[rad/µm] \n'
         elif values['densradio'] == True:  # Plot gas density profile
+            headerfile = '\nx[µm] \t\t N [𝒄𝒎^(−𝟑)] \n'
             matrix_plot = plasma_dens_mean
             matrix_plot_std = std_dens_mean
 
@@ -1178,51 +1242,66 @@ while True:
 
             # Creating plot parameters
             fig, ax1 = plt.subplots(figsize=(4.9, 4))
-            ax1.plot(raxis_um, array_plot, label='$%d \hspace{.5}\mu m$' % h_prof, lw=2, color="blue")
-            if values['-checkstd-'] == True:
-                ax1.errorbar(raxis_um, array_plot, yerr=array_std, label='$\sigma_{N_{e}}$', alpha=0.2,
-                             color="blue")
-
-            # Including new 1D density profile for another height from origin height position
-            if values['-checkpos1-'] == True:
-                h_prof1 = int(get_value('-pos1-', values))
-                pos1 = int(h_prof1 / (factor * 1e6))
-                if values['-comboaxisymm-'] == 'vertical':
-                    ax1.plot(raxis_um, matrix_plot[pos1], label='$%d \hspace{.5}\mu m$' % h_prof1, lw=1,
-                             color="red")
-                elif values['-comboaxisymm-'] == 'horizontal':
-                    ax1.plot(raxis_um, matrix_plot[:, pos1], label='$%d \hspace{.5}\mu m$' % h_prof1, lw=1,
-                             color="red")
-            if values['-checkpos2-'] == True:
-                h_prof2 = int(get_value('-pos2-', values))
-                pos2 = int(h_prof2 / (factor * 1e6))
-                if values['-comboaxisymm-'] == 'vertical':
-                    ax1.plot(raxis_um, matrix_plot[pos2], label='$%d \hspace{.5}\mu m$' % h_prof2, lw=1,
-                             color="orange")
-                elif values['-comboaxisymm-'] == 'horizontal':
-                    ax1.plot(raxis_um, matrix_plot[:, pos2], label='$%d \hspace{.5}\mu m$' % h_prof2, lw=1,
-                             color="orange")
-            if values['-checkpos3-'] == True:
-                h_prof3 = int(get_value('-pos3-', values))
-                pos3 = int(h_prof3 / (factor * 1e6))
-                if values['-comboaxisymm-'] == 'vertical':
-                    ax1.plot(raxis_um, matrix_plot[pos3], label='$%d \hspace{.5}\mu m$' % h_prof3, lw=1,
-                             color="yellow")
-                elif values['-comboaxisymm-'] == 'horizontal':
-                    ax1.plot(raxis_um, matrix_plot[:, pos3], label='$%d \hspace{.5}\mu m$' % h_prof3, lw=1,
-                             color="yellow")
 
             ax1.set_xlabel('$r\hspace{.5}(\mu m)$', fontsize=12)
 
             if values['densradio'] == True:
-                ax1.set_ylim(0., np.max(array_std + array_plot) * 1.05)
-                ax1.set_ylabel('$N_{e}\hspace{.5} (cm^{-3})$', fontsize=12)
+                labelplot = '$%d \hspace{.5}\mu m$'
+                ax1.plot(raxis_um, array_plot, label=labelplot % h_prof, lw=2, color="blue")
+                ax1.set_ylabel('$N\hspace{.5} (cm^{-3})$', fontsize=12)
+                if values['-checkstd-'] == True:
+                    ax1.set_ylim(0., (np.max(array_std + array_plot)) * 1.05)
+                    ax1.errorbar(raxis_um, array_plot, yerr=array_std, label='$\sigma_{N}$', alpha=0.2,
+                                 color="blue")
 
-            elif values['abelradio'] == True:
+            if values['abelradio'] == True:
+                labelplot = '$(\Delta\phi_r)_{%d \hspace{.5}\mu m}$'
+                ax1.plot(raxis_um, array_plot, label=labelplot % h_prof, lw=2, color="blue")
                 ax1.set_ylabel('$\Delta\phi_{r}\hspace{.5} (rad/ \mu m)$', fontsize=12)
+                if values['-checkstd-'] == True:
+                    ax1.plot(raxis_um, array_std, '--', label='$\||\Delta\phi\||_{%d \hspace{.5}\mu m}$' % h_prof,
+                             lw=2, color="red")
+                    ax1.fill_between(raxis_um, array_plot, array_std, color="orange", alpha=0.5,
+                                     label='$(\sigma_{Abel})_{%d}$' % h_prof)
+                    # ax1.errorbar(raxis_um, array_plot, yerr=array_std, label='$N$', alpha=0.2, color="blue")
 
-            elif values['phaseradio'] == True:
+            if values['phaseradio'] == True:
+                labelplot = '$%d \hspace{.5}\mu m$'
+                ax1.plot(raxis_um, array_plot, label=labelplot % h_prof, lw=2, color="blue")
                 ax1.set_ylabel('$\Delta\phi\hspace{.5} (rad)$', fontsize=12)
+                if values['-checkstd-'] == True:
+                    ax1.set_ylim(top = 0.)
+                    ax1.errorbar(raxis_um, array_plot, yerr=array_std, label='$\sigma_{\Delta\phi}$', alpha=0.2,
+                                 color="blue")
+
+            # Including new 1D density profile for another height from origin height position
+            if values['-checkpos1-'] == True and values['-checkstd-'] == False:
+                h_prof1 = int(get_value('-pos1-', values))
+                pos1 = int(h_prof1 / (factor * 1e6))
+                if values['-comboaxisymm-'] == 'vertical':
+                    ax1.plot(raxis_um, matrix_plot[pos_0 - pos1], label=labelplot % (h_prof1), lw=1,
+                             color="red")
+                elif values['-comboaxisymm-'] == 'horizontal':
+                    ax1.plot(raxis_um, matrix_plot[:, pos1], label=labelplot % (h_prof1), lw=1,
+                             color="red")
+            if values['-checkpos2-'] == True and values['-checkstd-'] == False:
+                h_prof2 = int(get_value('-pos2-', values))
+                pos2 = int(h_prof2 / (factor * 1e6))
+                if values['-comboaxisymm-'] == 'vertical':
+                    ax1.plot(raxis_um, matrix_plot[pos_0 - pos2], label=labelplot % (h_prof2), lw=1,
+                             color="orange")
+                elif values['-comboaxisymm-'] == 'horizontal':
+                    ax1.plot(raxis_um, matrix_plot[:, pos2], label=labelplot % h_prof2, lw=1,
+                             color="orange")
+            if values['-checkpos3-'] == True and values['-checkstd-'] == False:
+                h_prof3 = int(get_value('-pos3-', values))
+                pos3 = int(h_prof3 / (factor * 1e6))
+                if values['-comboaxisymm-'] == 'vertical':
+                    ax1.plot(raxis_um, matrix_plot[pos_0 - pos3], label=labelplot % (h_prof3), lw=1,
+                             color="yellow")
+                elif values['-comboaxisymm-'] == 'horizontal':
+                    ax1.plot(raxis_um, matrix_plot[:, pos3], label=labelplot % h_prof3, lw=1,
+                             color="yellow")
 
             ax1.legend()
             ax1.grid(True)
@@ -1245,10 +1324,12 @@ while True:
             # save the plot
             plt.savefig(save_filename_plot)
             sg.popup(f"Saved: {save_filename_plot}")
+
     ########################################################################
     #  BUTTON SAVE DATA
     elif event == 'Save Data':
-        save_filename_data = sg.popup_get_file('File', file_types=[("DAT (*.dat)", "*.dat"), ("TXT (*.txt)", "*.txt")],
+        save_filename_data = sg.popup_get_file('File',
+                                               file_types=[("DAT (*.dat)", "*.dat"), ("TXT (*.txt)", "*.txt")],
                                                save_as=True, no_window=True)
 
         if save_filename_data:
@@ -1257,18 +1338,20 @@ while True:
             file_data.truncate()
 
             # Saving 1D plots
-            if visible_f1d==True:
-                rangeh, rangev = np.shape(matrix_plot)
-                raxis = np.arange(-rangev / 2, rangev / 2, 1)
-                raxis_um = raxis * factor * 1e6  # um
+            if visible_f1d == True:
                 # save data plot
-                file_data.write('\nx[µm] \t f(x)\n')
+                file_data.write(headerfile)
                 # Plot1D
-                if h_prof >= 0.0:
-                    file_data.write('\t (%.0f µm)' % h_prof)
+                if h_prof >= 0.0 and values['abelradio'] == True:
+                    file_data.write('\t\t (%.0f µm) \t 𝚫𝝓r[rad/µm] \t ||𝚫𝝓||[rad/µm]$' % h_prof)
+                    list_data = np.vstack((raxis_um, array_plot))
+                    list_data = np.vstack((raxis_um, array_std))
+
+                if h_prof >= 0.0 and values['abelradio'] == False:
+                    file_data.write('\t\t (%.0f µm)' % h_prof)
                     list_data = np.vstack((raxis_um, array_plot))
                     if values['-checkstd-'] == True:
-                        file_data.write('\t (error)')
+                        file_data.write('\t $\sigma$')
                         list_data = np.vstack((raxis_um, array_std))
                     # verify additional height positions 1, 2 and 3
                     if values['-checkpos1-'] == True:
@@ -1276,35 +1359,26 @@ while True:
                             list_data = np.vstack((list_data, matrix_plot[pos1]))
                         else:
                             list_data = np.vstack((list_data, matrix_plot[:, pos1]))
-                        file_data.write('\t(%.0f µm)' % h_prof1)
+                        file_data.write('\t\t(%.0f µm)' % h_prof1)
 
                     if values['-checkpos2-'] == True:
                         if values['-comboaxisymm-'] == 'vertical':
                             list_data = np.vstack((list_data, matrix_plot[pos2]))
                         else:
                             list_data = np.vstack((list_data, matrix_plot[:, pos2]))
-                        file_data.write('\t(%.0f µm)' % h_prof2)
+                        file_data.write('\t\t(%.0f µm)' % h_prof2)
 
                     if values['-checkpos3-'] == True:
                         if values['-comboaxisymm-'] == 'vertical':
                             list_data = np.vstack((list_data, matrix_plot[pos3]))
                         else:
                             list_data = np.vstack((list_data, matrix_plot[:, pos3]))
-                        file_data.write('\t(%.0f µm)' % h_prof3)
+                        file_data.write('\t\t(%.0f µm)' % h_prof3)
 
                     file_data.write('\n')
                     list_str = (np.transpose(list_data))
                     np.savetxt(file_data, list_str, fmt='%.2e', delimiter='\t')
 
-                elif h_prof < 0.0:
-                    # Write density in H=0
-
-                    list_data = np.vstack((raxis_um, matrix_plot))
-                    file_data.write('\nx[µm] \t\t f(x)\n')
-                    list_str = (np.transpose(list_data))
-                    np.savetxt(file_data, list_str, fmt='%.2e')
-                sg.popup(f"Saved: {save_filename_data}")
-                file_data.close()
             else:
                 if values['-checkstd-'] == False:
                     np.savetxt(file_data, matrix_plot, fmt='%.3e')
