@@ -42,7 +42,7 @@ The *Interferometry Analysis - LIP* software was developed in Python 3.11. The u
 
 TUsers also can create a single .exe file using the [pyinstaller](https://pyinstaller.org/en/stable/) package trought the follow terminal command:
 
-<code>   pyinstaller --onefile -w IntAnalysis_LIP_v100.py                </code>
+<code>   pyinstaller --onefile -w IntAnalysis_LIP_v1.py                </code>
 
 Users who do not use Python IDEs can utilize the software through the executable file available for download.
 
