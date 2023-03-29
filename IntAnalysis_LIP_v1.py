@@ -1,7 +1,7 @@
-# Software: Interferometry Analysis - PIL (Version 1.0)
+# Software: Interferometry Analysis - PIL (Version 1.0.0)
 # Authors: Jhonatha Ricardo dos Santos, Armando Zuffi, Ricardo Edgul Samad, Edison Puig Maldonado, Nilson Dias Vieira Junior
 # Python 3.11
-# Last update: 2023_03_26
+# Last update: 2023_03_10
 
 # LYBRARIES
 # The Python Standard Library
@@ -608,7 +608,7 @@ while True:
             sigma = int(get_value('-sigma_gblur-', values))
             # Wavelength laser
             lambda0 = float(get_value('-lambda0-', values)) * 1e-9  # in meters
-            unc_lambda0 = float(get_value('-unclambda0-', values)) * 0.8493218 * 1e-9  # 1/e in meters
+            unc_lambda0 = float(get_value('-unclambda0-', values)) * 0.424661 * 1e-9  # 1/e in meters
         except:
             sg.popup_error(f"WARNING: Data fields must have numerical values! ")
             continue
@@ -919,6 +919,7 @@ while True:
                 phase_abel = np.transpose(phase_abel)
                 std_abelmap_2 = np.transpose(std_abelmap_2)
                 std_phase = np.transpose(std_phase)
+                std_phase1 = np.transpose(std_phase1)
                 std_plasma_dens_i = np.transpose(std_plasma_dens_i)
                 plasma_dens_i = np.transpose(plasma_dens_i)
                 std_phasemap_i = np.transpose(std_phasemap_i)
