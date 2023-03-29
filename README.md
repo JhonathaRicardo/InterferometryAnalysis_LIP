@@ -1,4 +1,4 @@
-# <h1 align = "center">Interferometry Analysis - LIP</h1>
+# <h1 align = "center">Interferometry Analysis - LIP (v.1.0.0)</h1>
 <p align="justify">
   The interferometric technique is an important analysis and diagnostic tool in astronomy, spectroscopy, metrology, plasma physics, particle physics, and other areas. Interferometry Analysis - LIP (Laser-induced Plasma) is a Python algorithm developed to recover the accumulated phase across the plasma induced by focusing laser radiation as well as estimate its electronic density distribution.
 </p>
@@ -42,7 +42,7 @@ The *Interferometry Analysis - LIP* software was developed in Python 3.11. The u
 
 TUsers also can create a single .exe file using the [pyinstaller](https://pyinstaller.org/en/stable/) package trought the follow terminal command:
 
-<code>   pyinstaller --onefile -w IntAnalysis_LIP_v1.py                </code>
+<code>   pyinstaller --onefile -w IntAnalysis_LIP_v100.py                </code>
 
 Users who do not use Python IDEs can utilize the software through the executable file available for download.
 
