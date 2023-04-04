@@ -1,4 +1,4 @@
-# Software: Interferometry Analysis - PIL (Version 1.0.0)
+# Software: Interferometry Analysis - PIL (Version 1.0)
 # Authors: Jhonatha Ricardo dos Santos, Armando Zuffi, Ricardo Edgul Samad, Edison Puig Maldonado, Nilson Dias Vieira Junior
 # Python 3.11
 # Last update: 2023_03_10
@@ -31,6 +31,7 @@ from scipy.ndimage import gaussian_filter
 from scipy.signal import peak_widths, find_peaks
 from PIL import Image, ImageDraw, UnidentifiedImageError
 from skimage.restoration import unwrap_phase
+from skimage.registration import phase_cross_correlation
 
 # Matplotlib Tk style
 matplotlib.use('TkAgg')
@@ -199,43 +200,23 @@ def std_maps(data, mean_data):
 
     return np.sqrt(desv / len(data))
 
-
-# CREATING SHIFT AND WIDTHS OF THE FRINGES
-def fringes_info(data1, data2):
+# CREATING FRINGES WIDTHS
+def fringes_width(data1):
     '''
     Calculate 2D array shifts and widths fringes distribution
-    :param n: 2D arrays, 2D array of ref. image.
-    :return: 2D arrays of shifts and widths fringes distribution
+    :param n: 2D array, 2D array of ref. image.
+    :return: mean fringe width
     '''
-    nr = len(data1)
-    ypeaks2, _ = find_peaks(data2)
-    ypeaks1, _ = find_peaks(data1)
-    if len(ypeaks1) != 0 and len(ypeaks2) != 0:
-        mean_width = np.mean(np.diff(ypeaks1)) / 2
+    #array with fringes width
+    f_width = np.zeros(np.shape(data1))
+    nl, nr = np.shape(data1)
+    for l in range(0, nl):
+        line1 = (data1[l, :])
+        ypeaks1, _ = find_peaks(line1)
+        x = np.arange(nr)
+        f_width[l,:] = np.interp(x, np.arange(len(np.diff(ypeaks1))), np.diff(ypeaks1))
 
-        for i in range(0, len(ypeaks1)):
-            try:
-                teste = np.isclose(ypeaks2[:i + 1], ypeaks1[:i + 1], rtol=0, atol=mean_width)
-                if teste[i] == False and ypeaks1[i] > ypeaks2[i]:
-                    ypeaks2 = np.delete(ypeaks2, i)
-                    i = 0
-                if teste[i] == False and ypeaks1[i] < ypeaks2[i]:
-                    ypeaks1 = np.delete(ypeaks1, i)
-                    i = 0
-            except:
-                break
-        while len(ypeaks1) > len(ypeaks2):
-            ypeaks1 = np.delete(ypeaks1, -1)
-        while len(ypeaks1) < len(ypeaks2):
-            ypeaks2 = np.delete(ypeaks2, -1)
-
-        if len(ypeaks1) != 0 or len(ypeaks2) != 0:
-            x = np.arange(nr)
-            dist_i = np.interp(x, np.arange(len(np.diff(ypeaks2))), np.diff(ypeaks2))
-            shift_i = np.interp(x, np.arange(len(ypeaks1)), (abs(ypeaks2 - ypeaks1) - np.min(abs(ypeaks2 - ypeaks1))))
-
-    return shift_i, dist_i
-
+    return f_width
 
 '''
 ########################################################################################
@@ -745,48 +726,39 @@ while True:
             uwphasemap = unwrap_phase(phasemaps)
             '''
             DEFINING STANDARD DEVIATION:
-            The standard deviation is calculation from fringes intensity distribution, fringes widths and 
-            fringes shifts displacement.
+            The standard deviation is calculated from fringes intensity distribution, fringes widths and 
+            fringes displacement.
             '''
-            frgs_shifts = np.zeros(np.shape(intref))
-            frgs_widths = np.zeros(np.shape(intref))
+            # Estimating displacement (vertical and horizontal) between interferograms
+            disp_xy, _, _ = phase_cross_correlation(intgas, intref, upsample_factor=100)
 
             if values['-combofringe-'] == 'vertical':
-                # Determining fringes shifts and fringes widths
-                for l in range(0, nlmap):
-                    frgs_ref = (intref[l, :])
-                    frgs_gas = (intgas[l, :])
-                    frgs_shifts[l], frgs_widths[l] = fringes_info(frgs_gas, frgs_ref)
+                disp = np.absolute(disp_xy[1])
+                # Creating 2D array for fringes width distribution
+                dist_fw = fringes_width(intref)
 
             if values['-combofringe-'] == 'horizontal':
-                frgs_shifts = np.transpose(frgs_shifts)
-                frgs_widths = np.transpose(frgs_widths)
-                # Determining fringes shifts and fringes widths
-                for r in range(0, nrmap):
-                    frgs_ref = np.transpose(intref[:, r])
-                    frgs_gas = np.transpose(intgas[:, r])
-                    frgs_shifts[r], frgs_widths[r] = fringes_info(frgs_gas, frgs_ref)
+                disp = np.absolute(disp_xy[0])
+                # Creating 2D array for fringes width distribution
+                dist_fw = np.transpose(fringes_width(np.transpose(intref)))
 
-                frgs_shifts = np.transpose(frgs_shifts)
-                frgs_widths = np.transpose(frgs_widths)
-
-            # Intensity distribution
             '''
             NOTE: During our algorithm tests we verify some computational artefacts. 
             These artifacts are detected only in the multiplication of the intensity distributions. 
             To correct this error we add a baseline line over data. The baseline has a value equal 
             to 0.1% of the lesser intensity.  
             '''
-            basedist = gaussian_filter(0.001 * np.min(intref) * np.ones(np.shape(intref)),
-                                       sigma=int(np.mean(frgs_widths) / 2))
-            dist1 = gaussian_filter(intref, sigma=int(np.mean(frgs_widths) / 2)) + basedist
-            dist2 = gaussian_filter(intgas, sigma=int(np.mean(frgs_widths) / 2)) + basedist
+            # Intensity distribution
+            basedist = 0.001 * np.min(intref) * np.ones(np.shape(intref))
+            if np.min(basedist) == 0.0:
+                basedist = 0.001 * np.min(intgas) * np.ones(np.shape(intref))
 
-            frgs_shifts = gaussian_filter(frgs_shifts, sigma=sigma)
-            frgs_widths = gaussian_filter(frgs_widths, sigma=sigma)
+            distI1 = intref + basedist
+            distI2 = intgas + basedist
+            print(np.min(distI1), np.min(distI2),np.min(distI2*distI1))
             try:
-                std_phasemap_i = ((np.pi * frgs_shifts) / (2*frgs_widths))*\
-                                 np.sqrt((np.mean(dist1) * (dist1 + dist2)) / (2 * dist1 * dist2))
+                std_phasemap_i = ((np.pi * disp) / (2 * dist_fw)) * \
+                                 np.sqrt((np.mean(distI1) * (distI1 + distI2)) / (2 * distI1 * distI2))
             except:
                 std_phasemap_i = np.zeros(np.shape(intref))
 
@@ -798,10 +770,11 @@ while True:
             So, the image is cut according axissymetric.
             NOTE: the Abel transform is always performed around the vertical axis, so when the image have horizontal
             axissymmetry the matrix must be transposed.
-
+        
             '''
             # Apply gaussian filter to define the region with more intensity pixel value
             phasemap_corr = (gaussian_filter(uwphasemap, sigma=sigma))
+            std_phasemap_i = (gaussian_filter(std_phasemap_i, sigma=sigma))
 
             # Transpose Matrix for Horizontal Axissmetry
             if values['-comboaxisymm-'] == 'horizontal':
@@ -827,11 +800,13 @@ while True:
                 phasemap_corr = np.flip(phasemap_corr, 0)
                 std_phasemap_i = np.flip(std_phasemap_i, 0)
                 fliped_array = True
-                vert_lim = int(2 * (nrows - cx) + 1)
+                if j == 0:
+                    vert_lim = int(2 * (nrows - cx) + 1)
             # If left-side of image is more width
             else:
                 fliped_array = False
-                vert_lim = int(2 * cx + 1)
+                if j == 0:
+                    vert_lim = int(2 * cx + 1)
 
             phasemap_symm = phasemap_corr[:, 0:vert_lim]
             std_phasemap_symm = std_phasemap_i[:, 0:vert_lim]
@@ -943,11 +918,11 @@ while True:
             # INV. ABEL TRANSF. MAP
             plasma_abelmap_mean = mean_maps(plasma_abelphasemap)
             std_abelmap_mean = np.sqrt(np.square(mean_maps(std_abelmap)) + \
-                                       np.square(std_maps(plasma_abelphasemap, std_abelmap_mean)))
+                                       np.square(std_maps(plasma_abelphasemap, plasma_abelmap_mean)))
             # PLASMA DENSITY
             plasma_dens_mean = mean_maps(plasma_dens)
             std_dens_mean = np.sqrt(np.square(mean_maps(std_plasma_dens)) + \
-                                    np.square(std_maps(plasma_dens, std_dens_mean)))
+                                    np.square(std_maps(plasma_dens, plasma_dens_mean)))
         else:
             # PHASEMAP
             plasma_phasemap_mean = (plasma_phasemap[0])
