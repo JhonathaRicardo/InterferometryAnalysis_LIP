@@ -1,6 +1,6 @@
 # <h1 align = "center">Interferometry Analysis - LIP (version 1.2)</h1>
 <p align="justify">
-  The interferometric technique is an important analysis and diagnostic tool in astronomy, spectroscopy, metrology, plasma physics, particle physics, and other areas. Interferometry Analysis - LIP (Laser-induced Plasma) is a Python algorithm developed to recover the accumulated phase across the plasma induced by focusing laser radiation as well as estimate its electronic density distribution.
+  Interferometric technique is an important analysis and diagnostic tool in astronomy, spectroscopy, metrology, plasma physics, particle physics, and other areas. Interferometry Analysis - LIP (Laser-induced Plasma) is a Python algorithm developed to recover the accumulated phase across the plasma induced by focusing laser radiation as well as estimate its electronic density distribution.
 </p>
 
 <p align="center">
@@ -18,7 +18,7 @@
   * [Main Screen](#main-screen)
   * [Interferogram Images](#interferogram-images)
   * [Options](#options)
-  * [Gas-Jet Profile](#gas-jet-profile)
+  * [LIP Profile](#lip-profile)
 * [How it works](#how-it-works)
 * [Example](#example)
 * [Authors](#authors)
