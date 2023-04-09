@@ -1,6 +1,6 @@
 # <h1 align = "center">Interferometry Analysis - LIP (version 1.2)</h1>
 <p align="justify">
-  Interferometric technique is an important analysis and diagnostic tool in astronomy, spectroscopy, metrology, plasma physics, particle physics, and other areas. Interferometry Analysis - LIP (Laser-induced Plasma) is a Python algorithm developed to recover the accumulated phase across the plasma induced by focusing laser radiation as well as estimate its electronic density distribution.
+  Interferometric techniques are important tools for analysis and diagnosis in astronomy, spectroscopy, metrology, plasma physics, particle physics, and other areas, frequently applied to quantify changes in the refractive index of a material or a medium. For example, knowing the density distribution of a gas target is crucial to understand laser plasmas interactions and processes. This software was developed in Python to recover the accumulated optical phase-shift across a plasma induced by focusing laser radiation as well as estimate the plasma density distribution.
 </p>
 
 <p align="center">
@@ -28,26 +28,19 @@
 * [Reference](#reference)
 
 ## Introduction
-  In the last years, the continuous development of compact particle accelerators based on wakefield laser acceleration (LWFA) has promoted contributions to fundamental and applied research [[1, 2]](#reference), ], including possible future use in proton therapy and hadron therapy [[3, 4]](#reference)and in the production of radioisotopes for nuclear medicine [[5, 6]](#reference). In this approach, ultrafast high-intensity laser pulses focused on a gas target to create a plasma wave with longitudinal electric fields able to accelerate electrons [[7, 8]](#reference). The advances in high-peak-power tabletop lasers in the last years and the high longitudinal electric fields (up to ∼1 TV/m) supported by plasma waves attracted attention to LWFA as a compact alternative for RF conventional accelerators [[9]](#reference).
-
-Institutions in North America, Europe, and Asia [[2]](#reference). have sought advances in the field of LWFA and other plasma acceleration schemes from. In Latin America, our research group pioneered the implementation of a laser-plasma accelerator at the Institute of Energy and Nuclear Research (IPEN) [[10]](#reference).Our main objective is to produce electron beams with energy up to tens of megaelectron volts per LWFA. By bremsstrahlung, Electron beams with those energies are able to produce $\gamma$ radiation to induce a $^{100} Mo(\gamma , n) ^{99} Mo$ photonuclear reaction as a future application [[11]](#reference). 
-
-Currently, we are focusing efforts on several developments required for a LWFA installation, such as computational simulation support [[12–14]](#reference), a source of high-peak-power laser pulses [[15]](#reference), proper gaseous and plasma target creation [[16, 17]](#reference), and development and implementation of diagnostic tools to assist and monitor the experiments [[18, 19]](#reference). The development of diagnostic tools is very important for a better understanding of the laser-plasma interaction [[20]](#reference). Diagnostic efficiency is crucial, as instabilities in both targets and laser pulses can result in low reproducibility of LWFA processes and impair the quality of accelerated electron beams [[21]](#reference).
-Among the various non-perturbing optical methods that can be used to diagnose the gaseous target [[22-25]](#reference), interferometry is a very accurate technique capable of quantifying very small optical path differences and therefore suitable for measuring density variations in LWFA targets [[26, 27]](#reference) and laser-induced plasmas [[20]](#reference). 
-
-The *Interferometry Analysis - LIP* and *Interferometry Analysis - Gas-Jet* were developed due to this need for a new diagnostic tool to aid in the characterization of the supersonic jet of gas, quickly and reliably. Both software were developed by our research group as part of the work to implementation of a laser-plasma accelerator at the Nuclear and Energy Research Institute (IPEN).
+  The development of diagnostic tools is very important for a better understanding of laser-plasma interactions [[1]](#reference). An accurate diagnostic is crucial, as instabilities in both target and laser pulses can result in low reproducibility of processes and impair the quality of the intended interaction [[2]](#reference). Among the various non-perturbing optical methods that can be used to diagnose a gaseous target [[3-6]](#reference), interferometry is a very accurate technique capable of quantifying very small optical path differences and, therefore, suitable for measuring density variations of gases [[7, 8]](#reference) and laser-induced plasmas [[1]](#reference). The main drawback of the technique is that returns the integrated phase along the light path, requiring deconvolution methods for retrieving the target density profile. The software “Interferometry Analysis – LIP” was developed due to the need for a new diagnostic tool to aid in the characterization of supersonic gas jets, quickly and reliably. It was developed by our research group as part of the work to implement a laser-plasma accelerator infrastructure at the Nuclear and Energy Research Institute (IPEN), in Brazil.
 
 ## Installation
 The *Interferometry Analysis - LIP* software was developed in Python 3.11. The use of this algorithm requires the installation of the following packages: [NumPy](https://numpy.org/) [[9]](#reference), [Scipy](https://scipy.org/) [[10]](#reference) and [PyAbel](https://pyabel.readthedocs.io/en/latest/index.html) [[11]](#reference) for data processing, [Pillow](https://pypi.org/project/Pillow/) [[12]](#reference) and Scikit-image [[13]](#reference) for the procrssing of interferogram images, [Matplotlib](https://matplotlib.org/stable/index.html) [[14]](#reference) to plot results, and [PySimpleGui](https://www.pysimplegui.org/en/latest/) to create the user's template.
 
-TUsers also can create a single .exe file using the [pyinstaller](https://pyinstaller.org/en/stable/) package trought the follow terminal command:
+Users also can create a single .exe file using the [pyinstaller](https://pyinstaller.org/en/stable/) package trought the follow terminal command:
 
-<code>   pyinstaller --onefile -w IntAnalysis_LIP_v1.py                </code>
+<code>   pyinstaller --onefile -w IntAnalysis_LIP_v1.2.py                </code>
 
-Users who do not use Python IDEs can utilize the software through the executable file available for download.
+Users who do not use Python IDEs can utilize the software through the executable file available for download [here](https://drive.google.com/file/d/1KXjkSNreBf5OsbCz0-O0pDPYxaD-Rx6_/view?usp=sharing)
 
 ## How to use it
-The “Interferometry Analysis – Gas-Jet” has a graphical interface to facilitate its use, and this section provide a simple review of the software's functions and how to employ them.
+The “Interferometry Analysis – LIP” has a graphical interface to facilitate its use, and this section provide a simple review of the software's functions and how to employ them.
 
 ### Main Screen
 
@@ -56,107 +49,93 @@ The “Interferometry Analysis – Gas-Jet” has a graphical interface to facil
 | *Fig.1 - Software Main Screen* |
 
 ### Interferogram Image
-- ***[Interferogram (Gas-Jet)]*** interferogram image frame.
+- ***[Interferogram (LIP)]*** interferogram image frame.
 
-- ***[Open File(s)]*** Open interferogram image(s) file(s) with the presence of a gas jet. Image file extensions should preferably be .png or .snp.
+- ***[Open File(s)]*** Open interferogram image(s) file(s) with the presence of a laser-induced plasma. Image file extensions should preferably be .png or .snp.
 However, all image extensions (*.gif*, *.jpg*, *.bmp*, etc) could be used. The path to the opened file is shown in the text box immediately above. If
 more than one file has been opened, each file will be analyzed individually, and the average of all results will be presented to the user.
   > **Warning**   
-  >  Interferometry Analysis - Gas-Jet software only works with grayscale image files. 
+  >  Interferometry Analysis - LIP software only works with grayscale image files. 
   
 - ***[Rotate]*** The image rotation in degrees. Positive degrees promote counterclockwise rotation.  
 
 - ***[Original Size]*** Original dimensions of the image file (width,height). 
-  > **Note** The interferogram image shown is scaled to screen size (428,342) for users' viewing only. However, all processes to determine the gas jet density profile are done with the original dimensions of the image file.
+  > **Note** The interferogram image shown is scaled to screen size (428,342) for users' viewing only. However, all processes to determine the plasma density profile are done with the original dimensions of the image file.
 
 - ***[Interferogram (Ref.)]*** Scaled reference interferogram image.
 
 - ***[Open File]*** Open an undisturbed interferogram image file. Image file extensions should preferably be .png or .snp. However, all image extensions (.gif, .jpg, .bmp, etc) could be used. The path to opened file is shown in text box above. Unlike interferogram gas jet files, the algorithm allows the insertion of only one reference file.
   > **Warning**   
-  >  Interferometry Analysis - Gas-Jet software only works with grayscale image files. 
+  >  Interferometry Analysis - LIP software only works with grayscale image files. 
 
-- ***[Analyse Data]*** From this command button, the software will apply data processing to generate the accumulated phase-shift map, the radial phase-shift map, and the map of the molecular density distribution of the gas.
+- ***[Analyse Data]*** From this command button, the software will apply data processing to generate the accumulated phase-shift map, the radial phase-shift map, and the map of the electron density distribution of the plasma.
 
 - ***[Clear]*** Button to clear input and output data.
 
 ### Options
-- ***[Select Analysis Area]*** Parameters frame for users select the interferogram area to apply the algorithm. The selected area is defined by a rectangle with edges defined by X and Y coordinates(***[X Coord]*** and ***[Y Coord]***).
-The user that intends to use the whole interferogram figure needs to uncheck the checkbox ***[Use select area]***.
+- ***[Select Analysis Area]*** Parameters to select the interferogram area to apply the algorithm. The selected area is defined by a rectangle with edges defined by X and Y coordinates (***[Y Coord]*** and ***[X Coord]***). The user that intends to use the whole interferogram needs to uncheck the checkbox  ***[Use select area]***.
 
-- ***[Experimental Parameteres]*** Frame to set the experimental parameters used to obtain the interferogram image. These parameters are: 
-  - ***[Laser Wavelength]*** and ***[Laser bandwidth FHWM]*** in nm;
+- ***[Experimental Parameteres]*** Frame to set the experimental parameters used to obtain the interferogram image. These parameters are:
+  - ***[Laser Wavelength]*** ($\lambda$) and ***[Laser bandwidth FHWM]*** in nm;
 
-- ***[Analysis Parameters]*** Parameters frame to analyse of the interferogram images:
-  - ***[Scaling Factor]*** Interferogram image scale in pixels/micrometers.
-  - ***[Sigma - Gaussian filter]***  Pixel spread of the gaussian image filter. The initial Sigma depends on the image dimension, but can changed by the user. 
-  - ***[Gaussian Filter Position]*** This parameter is set automatically by the algorithm and this position defines which frequency will be used to apply the Inverse Fourier Transform and build the phase map of the gas-jet. Both the above parameters are defined in pixels.
-
+- ***[Analysis Parameters]*** Parameters frame to analyze of the interferogram images.
+  - ***[Scaling Factor]*** Interferogram image scale in micrometers/pixel.
+  - ***[Sigma - Gaussian filter]*** Pixel spread of the gaussian image filter. The initial Sigma depends on the image dimension, but can changed by the
+user. 
+  - ***[Gaussian Filter Position]*** This parameter is set automatically by the algorithm and this position defines which frequency will be used to apply
+the Inverse Fourier Transform and build the phase map of the gas-jet. Both the above parameters are defined in pixels. 
     > **Note** 
-    > The algorithm set the frequency that generate a positive phase map. But users can change the filter position.
+    > The algorithm set the frequency that generate a positive phase map. Users can change the filter position.
   
-  - ***[Fringes Orientation]*** Definition of the interferogram fringes orientation as vertical or horizontal.
-  - ***[Axisymmetric]*** Definition of the axis of symmetry (or axisymmetric) to applying the Inverse Abel Transform. The axisymmetric can be horizontal or vertical.
-  - ***[Sigma - Gaussian Blur]*** Spread of the multidimensional gaussian image filter. The standard deviation of the gaussian filter (Sigma) defined by the user is equal for all axes.
+  - ***[Fringes Orientation]*** Definition of the interferogram fringes orientation (vertical or horizontal).
+  - ***[Axisymmetric]*** Definition of the axis of symmetry (or axisymmetric) to apply the Inverse Abel Transform. The axisymmetric can be horizontal or vertical.
+  - ***[Sigma - Gaussian Blur]*** Spread of the multidimensional gaussian image filter. The standard deviation of the gaussian filter ($\sigma$) defined by the user is equal for all axes..
 
 ### LIP Profile
-- ***[Stages]:*** Stages frame allows the visualization of each result of the algorithm.
-  - ***[Frequency Domain]*** This image is built through the Fourier Transform of plasma interferogram image. From this frequency map (*Fig. 2.A*), the software selects automatically the frequency that generates a positive phase-shift map. The selected frequency is marked with a red line over.
-  - 
-  - ***[Gaussian Filter position]*** This image is built through the Fourier Transform of plasma interferogram image. From this frequency map (Fig. 2.A), the software selects automatically the frequency that generates a positive phase-shift map. The selected frequency is marked with a red line over a pixels line (or column) identifying the ***[Gaussian Filter position]***.
+- ***[Stages]:*** Stages frame allows the visualization of each step of the algorithm.
+  - ***[Fourier Transform]*** This image is the 2D Fourier Transform of the interferogram. From this frequency map (Fig. 2.A), the software automatically selects the frequency that generates a positive phase-shift map. The selected frequency is marked by a red line over a pixels line (or column) identifying the ***[Gaussian Filter position]***.  
   > **Note**   
-  >  Case the ***[Gaussian Filter position]*** is equal to zero, the software will set the new valor automatically. But the user can change this ***[Gaussian Filter position]*** manually.
-  - ***[Gaussian Filter]*** This image is the Gaussian filter map applied to generate the phase map using the selected frequency (*Fig. 2.B*).
+  >  If the ***[Gaussian Filter position]*** is equal to zero, the software will set the new valor automatically.  The user can change this ***[Gaussian Filter position]*** manually.
+  - ***[Gaussian Filter]*** This image represents the Gaussian filter map applied to generate the phase map using the selected frequency (Fig. 2.B).
 
-    |<img src = '/Images/Stage1and2.png' width="40%"> |
+    |<img src = '/Images/Stages1and2.png' width="60%"> |
     |:--:| 
-    | *Fig. 2 -  Example of: (A) 2D freguency domain obtained from Fourier Transform with selected frequency; (B) Gaussian filter applied on selected frequency.* |
+    | *Fig. 2. Example of: (a) 2D frequency domain obtained by the interferogram Fourier Transform with the selected frequency to be filtered; (b) Gaussian filter to be applied on the selected frequency.* |
 
-    From the next three steps, users have the option of viewing the 2D maps or 1D curves with standard deviation using the ***[Standard Deviation]*** checkbox.
-  
+From the next three steps, users have the option of viewing the 2D maps or 1D curves with standard deviation using the ***[Standard Deviation]*** checkbox.
+ 
   - ***[Acc. Phase-shift]*** Accumulated phase-shift ($\Delta\phi$) of the plasma (in rad) recovered from the interferograms.
-  - 
+  
     |<img src = '/Images/Stage3.png'>|
     |:--:| 
-    | *Fig. 3 - Example of: (A) 2D accumulated phase-shift map and (B) 2D standard deviation map; (C) 1D accumulated phase curves and (D) standard deviation of one curve. All phase values are given in rad.*|   
+    | *Fig. 3. Example of: (a) 2D accumulated phase-shift map and (b) 2D standard deviation map; (c) 1D accumulated phase curves and (d) standard deviation of one curve. All phase values are given in* $rad$.|   
     
-  - ***[Radial Phase-shift]*** Radial phase-shift ($\Delta\phi_{r}$) in rad⁄μm obtained after applying Inverse Abel Transform from Accumulated Phase-shift ($\Delta\phi$).
+  - ***[Radial Phase-shift]*** Radial phase-shift ($\Delta\phi_r$) map in $rad/\mu m$ obtained after applying an Inverse Abel Transform to the Accumulated Phase-shift map ($\Delta\phi$).
   
-    | ![Phase map](/Images/Stage4.png) |
+    | <img src='/Images/Stage4.png> |
     |:--:| 
-    | *Fig.4 - Example of: (A) 2D phase map obtained from inverse Abel transform, and (B) 2D standard deviation map.* |  
+    | *Fig. 4. Example of: (a) 2D radial phase-shift map and (b) 2D standard deviation map; (c) and (d) accuracy between 1D radial phase-shift and normalized phase-shift curves. All phase values are given in* $rad / \mu m$. |  
     
-    - ***[Density Profile]*** Phase map obtained after applying Inverse Abel Transform at the Accumulated Phase map.
+  - ***[Density Profile]*** Electron density distribution ($N_e$) of the LIP in $cm^{−3}$ built from the radial phase-shift map ($\Delta\phi_r$) and ***[Laser Wavelength]*** ($\lambda$) defined by the use..
     
-    | ![Gasjet_density](/Images/Stage5.png)|
+    | <img src='/Images/Stage5.png'>|
     |:--:| 
-    | *Fig.5 - Example of: (A) 2D gas density map  and (B) 2D standard deviation map; (C) 1D gas density curves  and (D) standard deviation of one density curve.*|
+    | *Fig. 5. Example of: (a) 2D plasma density map and (b) 2D standard deviation map; (c) 1D gas density curves and (d) standard deviation of one density curve. All density values are given in* $cm^{-3}$. |
 
-- ***[1D Profile]*** This button enable 1D form options (*Fig. 6*) where the user can visualize the curves of each select stage for different positions on the symmetrical axis.
-- ***[2D Profile]*** This button enable the visualization of each *Stage* in 2D images.
+- ***[1D Profile]*** This button enables 1D frame (*Fig. 6*) with options for the user to visualize the curves of each select stage for different positions on the chosen symmetrical axis.
+- ***[2D Profile]*** This button enables the visualization of each ***[Stage]*** in 2D images.
     
 |<img src = '/Images/MainScreen2.png'>|
 |:--:| 
-| *Fig. 6 - Software Main Screen with 1D form enabled and Standard Deviation checkbox selected.* |
+| *Fig. 6. Software Main Screen with 1D form enabled and Standard Deviation checkbox selected.* |
 
-- ***[Save Plot]*** with this button the user can save the visualized graph as an image file (*.png*, *.jpg*, *.bmp*, etc).
-- ***[Save Data]*** with this button the user can save the 2D array that generated the visualized graph as a *.dat* or *.txt* file.
+- ***[Save Plot]*** This button allows the user to save the visualized plot as an image file (*.png*, *.jpg*, *.bmp*, etc).
+- ***[Save Data]*** This button allows the user to save the 2D array that generated the visualized plot as a *.dat* or *.txt* file.
+- ***[Colormap dist.]*** With this list box the user can choose between three different color scalings: linear (*Fig 7.a*), quadratic (*Fig 7.a*), or cubic(*Fig 7.c*).
 
-|<img src = '/Images/Colormaps.png' width="60%"> |
+|<img src = '/Images/Colormaps.png' width="100%"> |
 |:--:| 
-| *Fig. 7 - Examples with the colormaps distributions: (A) Linear distribution, (B) Quadratic distribution, (C) Cubic Distribution.* |
-
-## Example
-In the Example folder of this repository, the user will find two interferogram images showed in Fig. 8. These images were obtained using a Mach-Zehnder-like interferometer, as discussed in [[20]](#reference).
-
-|<img src = '/Example/interferogram (reference).png' width='40%'> <img src = '/Example/interferogram (plasma).png' width='40%'> |
-|:--:| 
-| *Fig. 8 - Examples of Interferogram images: Reference image (on the left), and Plasma image (on the rigth).* |
-
-Using the example input parameters shown in the figure, the you will obtain the electron density plasma as in the example.
-
-|<img src = '/Example/example of analysis (software screen).png'> |
-|:--:| 
-| *Fig. 9 - Software main screen - input parameters for the example.* |
+| *Fig. 7. Examples with the colormaps distributions: (a) Linear distribution, (b) Quadratic distribution, (c) Cubic Distribution.* |
   
 ## Reference
 - [1] F. Albert, “Laser wakefield accelerators: next-generation light sources,” Opt. Photonics News 29(1), 42–49 (2018). [DOI: 10.1364/OPN.29.1.000042](https://doi.org/10.1364/OPN.29.1.000042).
