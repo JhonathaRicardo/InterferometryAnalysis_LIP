@@ -112,7 +112,7 @@ From the next three steps, users have the option of viewing the 2D maps or 1D cu
     
   - ***[Radial Phase-shift]*** Radial phase-shift ($\Delta\phi_r$) map in $rad/\mu m$ obtained after applying an Inverse Abel Transform to the Accumulated Phase-shift map ($\Delta\phi$).
   
-    | <img src='/Images/Stage4.png> |
+    | <img src='/Images/Stage4.png'> |
     |:--:| 
     | *Fig. 4. Example of: (a) 2D radial phase-shift map and (b) 2D standard deviation map; (c) and (d) accuracy between 1D radial phase-shift and normalized phase-shift curves. All phase values are given in* $rad / \mu m$. |  
     
