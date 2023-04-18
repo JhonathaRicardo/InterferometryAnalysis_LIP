@@ -83,13 +83,13 @@ more than one file has been opened, each file will be analyzed individually, and
   - ***[Sigma - Gaussian filter]*** Pixel spread of the gaussian image filter. The initial Sigma depends on the image dimension, but can changed by the
 user. 
   - ***[Gaussian Filter Position]*** This parameter is set automatically by the algorithm and this position defines which frequency will be used to apply
-the Inverse Fourier Transform and build the phase map of the gas-jet. Both the above parameters are defined in pixels. 
+the Inverse Fourier Transform and build the phase map of the plasma. Both the above parameters are defined in pixels. 
     > **Note** 
     > The algorithm set the frequency that generate a positive phase map. Users can change the filter position.
   
   - ***[Fringes Orientation]*** Definition of the interferogram fringes orientation (vertical or horizontal).
   - ***[Axisymmetric]*** Definition of the axis of symmetry (or axisymmetric) to apply the Inverse Abel Transform. The axisymmetric can be horizontal or vertical.
-  - ***[Sigma - Gaussian Blur]*** Spread of the multidimensional gaussian image filter. The standard deviation of the gaussian filter ($\sigma$) defined by the user is equal for all axes..
+  - ***[Sigma - Gaussian Blur]*** Spread of the multidimensional gaussian image filter. The standard deviation of the gaussian filter ($\sigma$) defined by the user is equal for all axes.
 
 ### LIP Profile
 - ***[Stages]:*** Stages frame allows the visualization of each step of the algorithm.
