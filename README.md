@@ -120,7 +120,7 @@ From the next three steps, users have the option of viewing the 2D maps or 1D cu
     
     | <img src='/Images/Stage5.png'>|
     |:--:| 
-    | *Fig. 5. Example of: (a) 2D plasma density map and (b) 2D standard deviation map; (c) 1D gas density curves and (d) standard deviation of one density curve. All density values are given in* $cm^{-3}$. |
+    | *Fig. 5. Example of: (a) 2D plasma density map and (b) 2D standard deviation map; (c) 1D plasma density curves and (d) standard deviation of one density curve. All density values are given in* $cm^{-3}$. |
 
 - ***[1D Profile]*** This button enables 1D frame (*Fig. 6*) with options for the user to visualize the curves of each select stage for different positions on the chosen symmetrical axis.
 - ***[2D Profile]*** This button enables the visualization of each ***[Stage]*** in 2D images.
