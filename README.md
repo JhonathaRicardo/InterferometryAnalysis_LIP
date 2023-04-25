@@ -66,8 +66,6 @@ The “Interferometry Analysis – LIP” has a graphical user interface (GUI) t
   > **Warning**   
   >  Interferometry Analysis - LIP software only works with grayscale image files. 
  
-- ***[Image Scale]*** The interferogram image shown is scaled to screen size (428,342) for users' viewing only. However, all processes to determine the electronic density profile are done with the original dimensions of the image file.
-- 
 - ***[Analyse Data]*** From this command button, the software will apply data processing to generate the accumulated phase-shift map, the radial phase-shift map, and the map of the electron density distribution of the plasma.
 
 - ***[Clear]*** Button to clear input and output data.
