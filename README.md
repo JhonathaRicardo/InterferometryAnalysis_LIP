@@ -1,4 +1,4 @@
-# <h1 align = "center">Interferometry Analysis - LIP (version 1)</h1>
+# <h1 align = "center">Interferometry Analysis - LIP (version 1.0)</h1>
 <p align="justify">
   Interferometric techniques are important tools for analysis and diagnosis in astronomy, spectroscopy, metrology, plasma physics, particle physics, and other areas, frequently applied to quantify changes in the refractive index of a material or a medium. For example, knowing the density distribution of a gas target is crucial to understand laser plasmas interactions and processes. This software was developed in Python to recover the accumulated optical phase-shift across a plasma induced by focusing laser radiation, as well as estimate the plasma density distribution.
 </p>
@@ -74,7 +74,7 @@ The “Interferometry Analysis – LIP” has a graphical user interface (GUI) t
 > The algorithm set the frequency that generate negative phase map. Because the refractive index of the plasma is less than 1. This is an intrinsic characteristic of plasmas, and which is considered in the calculations of the algorithm.
 
 ### Options
-- ***[Select Analysis Area]*** Parameters to select the interferogram area to apply the algorithm. The selected area is defined by a rectangle with edges defined by X and Y coordinates (***[Y Coord]*** and ***[X Coord]***). The user that intends to use the whole interferogram needs to uncheck the checkbox  ***[Use select area]***.
+- ***[Select Analysis Area]*** Parameters frame for users select the interferogram area to apply the algorithm. The selected area is defined by a rectangle with edges defined by X and Y coordinates (***[Y Coord]*** and ***[X Coord]***). To use the whole interferogram figure the user has to uncheck the checkbox ***[Use select area]***.
 
 - ***[Experimental Parameteres]*** Frame to set the experimental parameters used to obtain the interferogram image. These parameters are:
   - ***[Laser Wavelength]*** ($\lambda$) and ***[Laser bandwidth FHWM]*** in nm;
@@ -83,27 +83,27 @@ The “Interferometry Analysis – LIP” has a graphical user interface (GUI) t
   - ***[Scaling Factor]*** Interferogram image scale in micrometers/pixel.
   - ***[Sigma - Gaussian filter]*** Pixel spread of the gaussian image filter. The initial Sigma depends on the image dimension, but can changed by the
 user. 
-  - ***[Gaussian Filter Position]*** This parameter is set automatically by the algorithm and this position defines which frequency will be used to apply
-the Inverse Fourier Transform and build the phase map of the plasma. Both the above parameters are defined in pixels. 
+  - ***[Gaussian Filter Position]*** This parameter is set automatically by the algorithm and this position defines which frequency will be used to apply the Inverse Fourier Transform and build the phase map of the plasma. This parameter is given in pixels. 
     > **Note** 
-    > The algorithm set the frequency that generate a positive phase map. Users can change the filter position.
+    > The algorithm set the frequency that generate negative phase map. Because the refractive index of the plasma is less than 1. This is an intrinsic characteristic of plasmas, and which is considered in the calculations of the algorithm.
   
   - ***[Fringes Orientation]*** Definition of the interferogram fringes orientation (vertical or horizontal).
   - ***[Axisymmetric]*** Definition of the axis of symmetry (or axisymmetric) to apply the Inverse Abel Transform. The axisymmetric can be horizontal or vertical.
   - ***[Sigma - Gaussian Blur]*** Spread of the multidimensional gaussian image filter. The standard deviation of the gaussian filter ($\sigma$) defined by the user is equal for all axes.
 
 ### LIP Profile
-- ***[Stages]:*** Stages frame allows the visualization of each step of the algorithm.
-  - ***[Fourier Transform]*** This image is the 2D Fourier Transform of the interferogram. From this frequency map (Fig. 2.A), the software automatically selects the frequency that generates a positive phase-shift map. The selected frequency is marked by a red line over a pixels line (or column) identifying the ***[Gaussian Filter position]***.  
+- ***[Stages]:*** Stages frame allows the visualization of each result of the algorithm.
+  - ***[Fourier Transform]*** This image is built from the Fourier Transform of the plasma interferogram. From this frequency map (Fig. 2.A), the software selects automatically the frequency that generates a positive phase-shift map. The selected frequency is marked with a red line over a pixels line (or column) identifying the ***[Gaussian Filter position]***. . If the ***[Gaussian Filter position]***.  is equal to zero, the software will set the new valor value automatically.   
   > **Note**   
-  >  If the ***[Gaussian Filter position]*** is equal to zero, the software will set the new valor automatically.  The user can change this ***[Gaussian Filter position]*** manually.
-  - ***[Gaussian Filter]*** This image represents the Gaussian filter map applied to generate the phase map using the selected frequency (Fig. 2.B).
+  >  The user can change this ***[Gaussian Filter position]*** manually.
+  
+  - ***[Gaussian Filter]*** This image is the Gaussian filter map applied to generate the phase map using the selected frequency (Fig. 2.B).
 
     |<img src = '/Images/Stages1and2.png' width="60%"> |
     |:--:| 
     | *Fig. 2. Example of: (a) 2D frequency domain obtained by the interferogram Fourier Transform with the selected frequency to be filtered; (b) Gaussian filter to be applied on the selected frequency.* |
 
-From the next three steps, users have the option of viewing the 2D maps or 1D curves with standard deviation using the ***[Standard Deviation]*** checkbox.
+For the next three steps, users have the option of viewing the 2D maps or 1D curves with standard deviation using the ***[Standard Deviation]*** checkbox.
  
   - ***[Acc. Phase-shift]*** Accumulated phase-shift ($\Delta\phi$) of the plasma (in rad) recovered from the interferograms.
   
@@ -111,19 +111,19 @@ From the next three steps, users have the option of viewing the 2D maps or 1D cu
     |:--:| 
     | *Fig. 3. Example of: (a) 2D accumulated phase-shift map and (b) 2D standard deviation map; (c) 1D accumulated phase curves and (d) standard deviation of one curve. All phase values are given in* $rad$.|   
     
-  - ***[Radial Phase-shift]*** Radial phase-shift ($\Delta\phi_r$) map in $rad/\mu m$ obtained after applying an Inverse Abel Transform to the Accumulated Phase-shift map ($\Delta\phi$).
+  - ***[Radial Phase-shift]*** Radial phase-shift ($\Delta\phi_r$) map in $rad/\mu m$ obtained after applying an Inverse Abel Transform from Accumulated Phase-shift map ($\Delta\phi$).
   
     | <img src='/Images/Stage4.png'> |
     |:--:| 
-    | *Fig. 4. Example of: (a) 2D radial phase-shift map and (b) 2D standard deviation map; (c) and (d) accuracy between 1D radial phase-shift and normalized phase-shift curves. All phase values are given in* $rad / \mu m$. |  
+    | *Fig. 4. Example of: (a) 2D radial phase-shift map and (b) 2D standard deviation map; (c) and (d) accuracy between 1D radial phase-shift and normalized phase-shift curves. All radial phase values are given in* $rad / \mu m$. |  
     
-  - ***[Density Profile]*** Electron density distribution ($N_e$) of the LIP in $cm^{−3}$ built from the radial phase-shift map ($\Delta\phi_r$) and ***[Laser Wavelength]*** ($\lambda$).
+  - ***[Density Profile]*** Electron density distribution ($N_e$) of LIP in $cm^{−3}$ built from the radial phase-shift ($\Delta\phi_r$) and ***[Laser Wavelength]*** ($\lambda$).
     
     | <img src='/Images/Stage5.png'>|
     |:--:| 
     | *Fig. 5. Example of: (a) 2D plasma density map and (b) 2D standard deviation map; (c) 1D plasma density curves and (d) standard deviation of one density curve. All density values are given in* $cm^{-3}$. |
 
-- ***[1D Profile]*** This button enables 1D frame (*Fig. 6*) with options for the user to visualize the curves of each select stage for different positions on the chosen symmetrical axis.
+- ***[1D Profile]*** This button enables 1D frame (*Fig. 6*) with options for the user to visualize the curves of each select stage for different positions on the chosen symmetry axis.
 - ***[2D Profile]*** This button enables the visualization of each ***[Stage]*** in 2D images.
     
 |<img src = '/Images/MainScreen2.png'>|
@@ -132,7 +132,7 @@ From the next three steps, users have the option of viewing the 2D maps or 1D cu
 
 - ***[Save Plot]*** This button allows the user to save the visualized plot as an image file (*.png*, *.jpg*, *.bmp*, etc).
 - ***[Save Data]*** This button allows the user to save the 2D array that generated the visualized plot as a *.dat* or *.txt* file.
-- ***[Colormap dist.]*** With this list box the user can choose between three different color scalings: linear (*Fig 7.a*), quadratic (*Fig 7.a*), or cubic(*Fig 7.c*).
+- ***[Colormap dist.]*** With this list box the user can choose between three colormaps distributions: linear (*Fig 7.a*), quadratic (*Fig 7.a*), or cubic(*Fig 7.c*).
 
 |<img src = '/Images/Colormaps.png' width="100%"> |
 |:--:| 
@@ -144,7 +144,7 @@ The detailed description of the algorithm will be presented in a future article.
 |:--:| 
 | *Fig. 8. Scheme of the algorithm data processing.* |
 
-In the scheme of algorithm data processing (Fig. 8): $I$ and $I_0$ are the intensity functions of the bi-dimensional fringes fields obtained from gas and reference interferogram, respectively; the hats denotes the Fourier transform of the intensity and $I_C^*$ is complex conjugate of intensity with frequencies belong to $-v_0$; and, $N_e$ is the electron density of LIP determined from refractive index $n$ and wavelength of laser $λ$ define by user. The equation to calculate the $N_e$, (described in detail in [[15]](#reference) also depends on physical constants defined within the algorithm.
+In the scheme of the data processing algorithm (Fig. 8): $I$ and $I_0$ are the bi-dimensional fringes intensity distributions obtained from the gas and reference interferograms, respectively; the hats denotes the intensity Fourier transform, and $I_C^*$ is complex conjugate of intensity with frequencies belong to $-v_0$; and, $N_e$ is the plasma electron density determined from the refractive index $n$ and laser wavelength $λ$ defined by user. The equation to calculate $N_e$, (described in detail in [[15]](#reference)) also depends on physical constants defined within the algorithm.
   
 ## Example
 In the Example folder of this repository, the user will find two interferogram images showed in Fig. 9. These images were obtained using a Mach-Zehnder-like interferometer, as discussed in [16].
@@ -162,7 +162,7 @@ All input parameters used for plasma characterization are shown in Fig. 10.
 
 ## Authors
 Interferometry Analysis - Gas-Jet software was developed by researchers of the High-Power Ultrashort Pulse Lasers Group from the Center for Lasers and
-Applications (CLA) from the Instituto de Pesquisas Energéticas e Nucleares ([IPEN](https://www.ipen.br/portal_por/portal/default.php)), and of the Instituto Tecnológico de Aeronáutica ([ITA](http://www.ita.br/)).
+Applications (CLA) from the Instituto de Pesquisas Energéticas e Nucleares ([IPEN-CNEN](https://www.ipen.br/portal_por/portal/default.php)), and of the Instituto Tecnológico de Aeronáutica ([ITA](http://www.ita.br/)).
 
 * Jhonatha Ricardo dos Santos [![logo_ORCID](/Images/logo_ORCID.png)](https://orcid.org/0000-0001-7877-0580)
 * Armando Valter Felicio Zuffi [![logo_ORCID](/Images/logo_ORCID.png)](https://orcid.org/0000-0001-5705-1499)
