@@ -48,36 +48,38 @@ The “Interferometry Analysis – LIP” has a graphical user interface (GUI) t
 |:--:| 
 | *Fig.1 - Software Main Screen* |
 
-### Interferogram Image
-- ***[Interferogram (LIP)]*** interferogram frame.
+### Interferograms
+- ***(1) [Interferogram (LIP)]*** interferogram frame \&#x2460.
 
-- ***[Open File(s)]*** Open interferogram image(s) file(s) with the presence of a laser-induced plasma. Image file extensions should preferably be *.png* or *.snp.* (Newport proprietary format) for Newport CCD. However, all image extensions (*.gif*, *.jpg*, *.bmp*, etc) can be used. The path to the opened file is shown in the text box immediately above. If more than one file has been opened, each one is analyzed individually, and the average of all results is presented to the user.
+  - ***[Open File(s)]*** Open interferogram(s) file(s) with the presence of a laser-induced plasma. Image file extensions should preferably be *.png* or *.snp.* (Newport proprietary format) for Newport CCD. However, all image extensions (*.gif*, *.jpg*, *.bmp*, etc) can be used. The path to the opened file is shown in the text box immediately above. If more than one file has been opened, each one is analyzed individually, and the average of all results is presented to the user.
   > **Warning**   
   >  Interferometry Analysis - LIP software only works with grayscale image files. 
   
-- ***[Rotate]*** The image rotation in degrees. Positive degrees promote counterclockwise rotation.  
+  - ***[Rotate]*** The image rotation in degrees. Positive degrees promote counterclockwise rotation.  
 
-- ***[Original Size]*** Original dimensions of the image file (width,height). 
-  > **Note** The interferogram image shown is scaled to screen size (428,342) for users' viewing only. However, all processes to determine the plasma density profile are done with the original dimensions of the image file.
+  - ***[Original Size]*** Original dimensions of the image file (width,height). 
+  > **Note** The interferogram shown is scaled to screen size (428,342) for users' viewing only. However, all processes to determine the plasma density profile are done with the original dimensions of the image file.
 
-- ***[Interferogram (Ref.)]*** Scaled reference interferogram image.
+- ***(2) [Interferogram (Ref.)]*** Scaled reference interferogram.
 
-- ***[Open File]*** Open an undisturbed interferogram image file. Image file extensions should preferably be .png or .snp. However, all image extensions (*.gif*, *.jpg*, *.bmp*, etc) can be used. The path to opened file is shown in text box above. Unlike interferogram gas jet files, the algorithm allows the insertion of only one reference file.
+  - ***[Open File]*** Open an undisturbed interferogram file. Image file extensions should preferably be .png or .snp. However, all image extensions (*.gif*, *.jpg*, *.bmp*, etc) can be used. The path to open the file is shown in the textbox above. Unlike interferogram gas jet files, the algorithm allows the insertion of only one reference file.
   > **Warning**   
   >  Interferometry Analysis - LIP software only works with grayscale image files. 
  
-- ***[Analyse Data]*** From this command button, the software will apply data processing to generate the accumulated phase-shift map, the radial phase-shift map, and the map of the electron density distribution of the plasma.
+- ***(3) [Analyse Data]*** From this command button, the software will apply data processing to generate the accumulated phase-shift map, the radial phase-shift map, and the map of the electron density distribution of the plasma.
 
-- ***[Clear]*** Button to clear input and output data.
+- ***(4) [Clear]*** Button to clear input and output data.
 
 > **Note**
-> The algorithm set the frequency that generate negative phase map. Because the refractive index of the plasma is less than 1. This is an intrinsic characteristic of plasmas, and which is considered in the calculations of the algorithm.
+> The algorithm sets the frequency that generates a negative phase map. Because the refractive index of the plasma is less than 1. This is an intrinsic characteristic of plasmas, and it is considered in the calculations of the algorithm.
 
 ### Options
-- ***[Select Analysis Area]*** Parameters frame for users select the interferogram area to apply the algorithm. The selected area is defined by a rectangle with edges defined by X and Y coordinates (***[Y Coord]*** and ***[X Coord]***). To use the whole interferogram figure the user has to uncheck the checkbox ***[Use select area]***.
+- ***(5) [Select Area]*** Parameters frame for users select the interferogram area to apply the algorithm. The selected area is defined by a rectangle with edges defined by X and Y coordinates. The user can select an area using the mouse click over the image or the combobox ***[Y Coord]*** and ***[X Coord]***.
+  > **Note:** The first click of the mouse defines de first value of the X and Y triangle coordinates, and the second click defines the end coordinates of the triangle. Case, the initial X (or Y) is bigger than the final X (or Y), these values will be exchanged. 
+  
 
-- ***[Experimental Parameteres]*** Frame to set the experimental parameters used to obtain the interferogram image. These parameters are:
-  - ***[Laser Wavelength]*** ($\lambda$) and ***[Laser bandwidth FHWM]*** in nm;
+- ***[Experimental Parameteres]*** Frame to set the experimental parameters used to obtain the interferogram. These parameters are:
+  - ***[Laser Wavelength] ($\lambda$)*** and ***[Laser FHWM ($\Delta\lambda$)]*** in nm;
 
 - ***[Analysis Parameters]*** Parameters frame to analyze of the interferogram images.
   - ***[Scaling Factor]*** Interferogram image scale in micrometers/pixel.
