@@ -31,9 +31,9 @@
 The development of diagnostic tools is very important for a better understanding of laser-plasma interactions [[1]](#reference). An accurate diagnostic is crucial, as instabilities in both target and laser pulses can result in low reproducibility of processes and impair the quality of the intended interaction [[2]](#reference). Among the various non-disturbing optical methods that can be used to diagnose a gaseous target [[3-6]](#reference), interferometry is a very accurate technique capable of quantifying very small optical path differences and, therefore, suitable for measuring density variations of gases [[7, 8]](#reference) and laser-induced plasmas [[1]](#reference). The main drawback of the technique is that returns the integrated phase along the light path, requiring deconvolution methods for retrieving the target density profile. The software “Interferometry Analysis – LIP” was developed to meet the need for a new diagnostic tool to aid in the characterization of laser induced plasmas, quickly and reliably. It was developed by our research group as part of the work to implement a laser-plasma accelerator infrastructure at the Nuclear and Energy Research Institute (IPEN), in Brazil.
 
 ## Installation
-The *Interferometry Analysis - LIP* software was developed in Python 3.11. The use of this algorithm requires the installation of the following packages: [NumPy](https://numpy.org/) [[9]](#reference), [Scipy](https://scipy.org/) [[10]](#reference) and [PyAbel](https://pyabel.readthedocs.io/en/latest/index.html) [[11]](#reference) for data processing, [Pillow](https://pypi.org/project/Pillow/) [[12]](#reference) and Scikit-image [[13]](#reference) for the procrssing of interferogram images, [Matplotlib](https://matplotlib.org/stable/index.html) [[14]](#reference) to plot results, and [PySimpleGui](https://www.pysimplegui.org/en/latest/) to create the user's template.
+The *Interferometry Analysis - LIP* software was developed in Python 3.11. The use of this algorithm requires the installation of the following packages: [NumPy](https://numpy.org/) [[9]](#reference), [Scipy](https://scipy.org/) [[10]](#reference) and [PyAbel](https://pyabel.readthedocs.io/en/latest/index.html) [[11]](#reference) for data processing, [Pillow](https://pypi.org/project/Pillow/) [[12]](#reference) and Scikit-image [[13]](#reference) for the processing of interferogram images, [Matplotlib](https://matplotlib.org/stable/index.html) [[14]](#reference) to plot results, and [PySimpleGui](https://www.pysimplegui.org/en/latest/) to create the user's template.
 
-Users also can create a single .exe file using the [pyinstaller](https://pyinstaller.org/en/stable/) package trought the follow terminal command:
+Users also can create a single .exe file using the [pyinstaller](https://pyinstaller.org/en/stable/) package through the follow terminal command:
 
 <code>   pyinstaller --onefile -w IntAnalysis_LIP_v1.0.py                </code>
 
@@ -57,7 +57,7 @@ The “Interferometry Analysis – LIP” has a graphical user interface (GUI) t
   
   - ***[Rotate]*** The image rotation in degrees. Positive degrees promote counterclockwise rotation.  
 
-  - ***[Original Size]*** Original dimensions of the image file (width,height). 
+  - ***[Original Size]*** Original dimensions of the image file (width, height). 
   > **Note** The interferogram shown is scaled to screen size (428,342) for users' viewing only. However, all processes to determine the plasma density profile are done with the original dimensions of the image file.
 
 - ***(2) [Interferogram (Ref.)]*** Scaled reference interferogram.
@@ -65,33 +65,32 @@ The “Interferometry Analysis – LIP” has a graphical user interface (GUI) t
   - ***[Open File]*** Open an undisturbed interferogram file. Image file extensions should preferably be .png or .snp. However, all image extensions (*.gif*, *.jpg*, *.bmp*, etc) can be used. The path to open the file is shown in the textbox above. Unlike interferogram gas jet files, the algorithm allows the insertion of only one reference file.
   > **Warning**   
   >  Interferometry Analysis - LIP software only works with grayscale image files. 
- 
+
 - ***(3) [Analyse Data]*** From this command button, the software will apply data processing to generate the accumulated phase-shift map, the radial phase-shift map, and the map of the electron density distribution of the plasma.
 
 - ***(4) [Clear]*** Button to clear input and output data.
-
 > **Note**
 > The algorithm sets the frequency that generates a negative phase map. Because the refractive index of the plasma is less than 1. This is an intrinsic characteristic of plasmas, and it is considered in the calculations of the algorithm.
 
 ### Options
 - ***(5) [Select Area]*** Parameters frame for users select the interferogram area to apply the algorithm. The selected area is defined by a rectangle with edges defined by X and Y coordinates. The user can select an area using the mouse click over the image or the combobox ***[Y Coord]*** and ***[X Coord]***.
     > **Note:** The first click of the mouse defines de first value of the X and Y triangle coordinates, and the second click defines the end coordinates of the triangle. Case, the initial X (or Y) is bigger than the final X (or Y), these values will be exchanged. 
-- The ***[Phase BG]*** is an important parameter in analysis, because it defines the border sizes to construct the background of the accumulated phase $\Delta\phi$. This background is obtained using a 4th-order 2D polynomial fitting from selected border as shown in Fig. X.   
-  
-  
+  - The ***[Phase BG]*** is an important parameter in analysis, because it defines the border sizes to construct the background of the accumulated phase $\Delta\phi$. This background is obtained using a 4th-order 2D polynomial fitting from the selected border as shown in Fig. X. 
 
-- ***[Experimental Parameteres]*** Frame to set the experimental parameters used to obtain the interferogram. These parameters are:
+- ***(6) [Experimental Parameteres]*** Frame to set the experimental parameters used to obtain the interferogram. These parameters are:
+  - ***[Scaling Factor]*** Interferogram scale in micrometers/pixel.
+  - ***[Fringes Orientation]*** Definition of the interferogram fringes orientation (vertical or horizontal).
   - ***[Laser Wavelength]*** ($\lambda$) and ***[Laser FHWM]*** ($\Delta\lambda$) in nm;
 
 - ***[Analysis Parameters]*** Parameters frame to analyze of the interferogram images.
-  - ***[Scaling Factor]*** Interferogram image scale in micrometers/pixel.
+  
   - ***[Sigma - Gaussian filter]*** Pixel spread of the gaussian image filter. The initial Sigma depends on the image dimension, but can changed by the
 user. 
   - ***[Gaussian Filter Position]*** This parameter is set automatically by the algorithm and this position defines which frequency will be used to apply the Inverse Fourier Transform and build the phase map of the plasma. This parameter is given in pixels. 
     > **Note** 
-    > The algorithm set the frequency that generate negative phase map. Because the refractive index of the plasma is less than 1. This is an intrinsic characteristic of plasmas, and which is considered in the calculations of the algorithm.
+    > The algorithm sets the frequency that generates a negative phase map. Because the refractive index of the plasma is less than 1. This is an intrinsic characteristic of plasmas, and it is considered in the calculations of the algorithm.
   
-  - ***[Fringes Orientation]*** Definition of the interferogram fringes orientation (vertical or horizontal).
+  
   - ***[Axisymmetric]*** Definition of the axis of symmetry (or axisymmetric) to apply the Inverse Abel Transform. The axisymmetric can be horizontal or vertical.
   - ***[Sigma - Gaussian Blur]*** Spread of the multidimensional gaussian image filter. The standard deviation of the gaussian filter ($\sigma$) defined by the user is equal for all axes.
 
