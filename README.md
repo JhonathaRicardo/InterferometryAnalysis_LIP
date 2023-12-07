@@ -75,7 +75,11 @@ The Software Main Screen (*Fig. 1*) can be divided into 3 main parts: Interferog
 ### Options
 - ***5. [Select Area]*** Parameters frame for users select the interferogram area to apply the algorithm. The selected area is defined by a rectangle with edges defined by X and Y coordinates. The user can select an area using the mouse click over the image or the combo box ***[Y Coord]*** and ***[X Coord]***.
   > **Note:** The first click of the mouse defines de first value of the X and Y triangle coordinates, and the second click defines the end coordinates of the triangle. Case, the initial X (or Y) is bigger than the final X (or Y), these values will be exchanged. 
-  - The ***[Phase BG]*** is an important parameter in analysis, because it defines the border sizes to construct the background of the accumulated phase $\Delta\phi$. This background is obtained using a 4th-order 2D polynomial fitting from the selected border as shown in Fig. X. 
+  - ***[Phase BG]*** This parameter defines the border size border used to construct the background of the accumulated phase $\Delta\phi$. The borders are defined based on a percentage of the selected area, and the background is obtained using a 4th-order 2D polynomial fitting from the selected border as shown in *Fig. 3.a*. The *Fig. 3.b* shows the accumulated phase-shift without the fitted background.
+  - 
+|<img src = '/Images/Figure2BG.PNG' width="40%">|
+|:--:| 
+| *Fig. 2. (a) Accumulated phase map of LIP in 3D with a non-linear background and the selected border (in gray) used to construct the isolated background map; (b) Accumulated phase map of LIP in 3D after removing the background.* |
 
 - ***6. [Input Parameteres]*** Frame to set the experimental parameters used to obtain the interferogram. These parameters are:
   - ***[Scaling Factor]*** and ***[Uncertainty Scaling Factor]*** Interferogram scale in micrometers/pixel.
@@ -108,7 +112,7 @@ For the next three steps, users have the option of viewing the 2D maps or 1D cur
 
 |<img src = '/Images/Figure3.jpg'>|
 |:--:| 
-| *Fig. 3. Example of: (a) 2D accumulated phase-shift map and (b) 2D standard deviation map; (c) 1D accumulated phase curves and (d) standard     deviation of one curve. All phase values are given in* $rad$.*|   
+| *Fig. 3. Example of: (a) 2D accumulated phase-shift map and (b) 2D standard deviation map; (c) 1D accumulated phase curves and (d) standard     deviation of one curve. All phase values are given in $rad$.*|   
 
 Teste 1234.
     
