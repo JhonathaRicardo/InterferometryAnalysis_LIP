@@ -47,7 +47,7 @@ The Software Main Screen (*Fig. 1*) can be divided into 3 main parts: Interferog
 
 |<img src = '/Images/Figure2.PNG'> |
 |:--:| 
-| *Fig.1 - Software Main Screen* |
+|*Fig.1 - Software Main Screen*|
 
 ### Interferograms
 - ***1. [Interferogram (LIP)]*** interferogram frame.
@@ -98,29 +98,29 @@ The Software Main Screen (*Fig. 1*) can be divided into 3 main parts: Interferog
   
   - ***[Gaussian Filter]*** This image is the Gaussian filter map applied to generate the phase map using the selected frequency (Fig. 2.B).
 
-|<img src = '/Images/Figure3.PNG' width="60%">|
+|<img src = '/Images/Figure3.PNG' width="40%">|
 |:--:| 
 | *Fig. 2. Example of: (a) 2D frequency domain obtained by the interferogram Fourier Transform with the selected frequency to be filtered; (b) Gaussian filter to be applied on the selected frequency.* |
 
 For the next three steps, users have the option of viewing the 2D maps or 1D curves with standard deviation using the ***[Standard Deviation]*** checkbox.
  
   - ***[Acc. Phase-shift]*** Accumulated phase-shift ($\Delta\phi$) of the plasma (in rad) recovered from the interferograms.
-  
-|<img src = '/Images/Figure.PNG'>|
+
+|<img src = '/Images/Figure4.PNG'>|
 |:--:| 
-| *Fig. 3. Example of: (a) 2D accumulated phase-shift map and (b) 2D standard deviation map; (c) 1D accumulated phase curves and (d) standard deviation of one curve. All phase values are given in* $rad$.|   
+|*Fig. 3. Example of: (a) 2D accumulated phase-shift map and (b) 2D standard deviation map; (c) 1D accumulated phase curves and (d) standard deviation of one curve. All phase values are given in* $rad$.|   
     
   - ***[Radial Phase-shift]*** Radial phase-shift ($\Delta\phi_r$) map in $rad/\mu m$ obtained after applying an Inverse Abel Transform from Accumulated Phase-shift map ($\Delta\phi$).
-  
-| <img src='/Images/Figure5.PNG'> |
+
+|<img src='/Images/Figure5.PNG'>|
 |:--:| 
-| *Fig. 4. Example of: (a) 2D radial phase-shift map and (b) 2D standard deviation map; (c) and (d) accuracy between 1D radial phase-shift and normalized phase-shift curves. All radial phase values are given in* $rad / \mu m$. |  
+|*Fig. 4. Example of: (a) 2D radial phase-shift map and (b) 2D standard deviation map; (c) and (d) accuracy between 1D radial phase-shift and normalized phase-shift curves. All radial phase values are given in* $rad / \mu m$.|  
     
   - ***[Density Profile]*** Electron density distribution ($N_e$) of LIP in $cm^{−3}$ built from the radial phase-shift ($\Delta\phi_r$) and ***[Laser Wavelength]*** ($\lambda$).
     
-| <img src='/Images/Figure6.PNG'>|
+|<img src='/Images/Figure6.PNG'>|
 |:--:| 
-| *Fig. 5. Example of: (a) 2D plasma density map and (b) 2D standard deviation map; (c) 1D plasma density curves and (d) standard deviation of one density curve. All density values are given in* $cm^{-3}$. |
+|*Fig. 5. Example of: (a) 2D plasma density map and (b) 2D standard deviation map; (c) 1D plasma density curves and (d) standard deviation of one density curve. All density values are given in* $cm^{-3}$.|
 
 - ***[1D Profile]*** This button enables 1D frame (*Fig. 6*) with options for the user to visualize the curves of each select stage for different positions on the chosen symmetry axis.
 - ***[2D Profile]*** This button enables the visualization of each ***[Stage]*** in 2D images.
@@ -128,9 +128,9 @@ For the next three steps, users have the option of viewing the 2D maps or 1D cur
 - ***[Save Data]*** This button allows the user to save the 2D array that generated the visualized plot as a *.dat* or *.txt* file.
 - ***[Colormap dist.]*** With this list box the user can choose between three colormaps distributions: linear (*Fig 7.a*), quadratic (*Fig 7.a*), or cubic(*Fig 7.c*).
 
-|<img src = '/Images/Figure7.PNG' width="100%"> |
+|<img src = '/Images/Figure7.PNG' width="100%">|
 |:--:| 
-| *Fig. 7. Examples with the colormaps distributions: (a) Linear distribution, (b) Quadratic distribution, (c) Cubic Distribution.* |
+|*Fig. 7. Examples with the colormaps distributions: (a) Linear distribution, (b) Quadratic distribution, (c) Cubic Distribution.* |
 
 ## How it works
 A detailed description of the algorithm will be presented in a future article. However, the summarized data processing by the software algorithm is described by the flowchart shown in *Fig. 8*:
@@ -144,16 +144,16 @@ In the scheme of the data processing algorithm (Fig. 8): $I$ and $I_0$ are the b
 ## Example
 In the Example folder of this repository, the user will find two interferogram images shown in Fig. 9. These images were obtained using a Mach-Zehnder-like interferometer, as discussed in [16].
   
-|<img src = '/Example/interferogram (reference).png' width='40%'> <img src = '/Example/interferogram (plasma).png' width='40%'> |
+|<img src = '/Example/interferogram (reference).png' width='40%'> <img src = '/Example/interferogram (plasma).png' width='40%'>|
 |:--:| 
-| *Fig. 9. Examples of Interferogram images: reference image (on the left), and laser-induced plasma image (on the right).* |
+|*Fig. 9. Examples of Interferogram images: reference image (on the left), and laser-induced plasma image (on the right).*|
 
 The plasma was generated in the atmosphere (~80%) and the interferograms were generated by the second harmonic (395 nm) from ultrashort pulses of a Ti:sapphire multipass CPA system [1]. To characterize the registered plasma the user must select the area around the plasma.
 All input parameters used for plasma characterization are shown in Fig. 10.
 
 |<img src = '/Example/MainScreen_Example.png'> |
 |:--:| 
-| *Fig. 10. Software main screen: input parameters and the result of the example.* |
+|*Fig. 10. Software main screen: input parameters and the result of the example.*|
 
 ## Authors
 Interferometry Analysis - Gas-Jet software was developed by researchers of the High-Power Ultrashort Pulse Lasers Group from the Center for Lasers and
