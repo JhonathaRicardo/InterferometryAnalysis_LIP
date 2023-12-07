@@ -4,7 +4,7 @@
 </p>
 
 <p align="center">
-  <img src = '/Images/Intro_LIP.png' width="80%" align="center">
+  <img src = '/Images/Figure1.PNG' width="80%" align="center">
 </p>
 
 ![license](https://img.shields.io/badge/license-MIT-green)
