@@ -77,7 +77,7 @@ The Software Main Screen (*Fig. 1*) can be divided into 3 main parts: Interferog
   > **Note:** The first click of the mouse defines de first value of the X and Y triangle coordinates, and the second click defines the end coordinates of the triangle. Case, the initial X (or Y) is bigger than the final X (or Y), these values will be exchanged. 
   - ***[Phase BG]*** This parameter defines the border size border used to construct the background of the accumulated phase $\Delta\phi$. The borders are defined based on a percentage of the selected area, and the background is obtained using a 4th-order 2D polynomial fitting from the selected border as shown in *Fig. 3.a*. The *Fig. 3.b* shows the accumulated phase-shift without the fitted background.
   - 
-|<img src = '/Images/Figure2BG.PNG' width="40%">|
+|<img src = '/Images/Figure2.PNG'>|
 |:--:| 
 | *Fig. 2. (a) Accumulated phase map of LIP in 3D with a non-linear background and the selected border (in gray) used to construct the isolated background map; (b) Accumulated phase map of LIP in 3D after removing the background.* |
 
@@ -102,7 +102,7 @@ The Software Main Screen (*Fig. 1*) can be divided into 3 main parts: Interferog
   
   - ***[Gaussian Filter]*** This image is the Gaussian filter map applied to generate the phase map using the selected frequency (Fig. 2.B).
 
-|<img src = '/Images/Figure2.PNG' width="40%">|
+|<img src = '/Images/Figure3.PNG' width="40%">|
 |:--:| 
 | *Fig. 2. Example of: (a) 2D frequency domain obtained by the interferogram Fourier Transform with the selected frequency to be filtered; (b) Gaussian filter to be applied on the selected frequency.* |
 
@@ -110,7 +110,7 @@ For the next three steps, users have the option of viewing the 2D maps or 1D cur
  
   - ***[Acc. Phase-shift]*** Accumulated phase-shift ($\Delta\phi$) of the plasma (in rad) recovered from the interferograms.
 
-|<img src = '/Images/Figure3.jpg'>|
+|<img src = '/Images/Figure4.jpg'>|
 |:--:| 
 | *Fig. 3. Example of: (a) 2D accumulated phase-shift map and (b) 2D standard deviation map; (c) 1D accumulated phase curves and (d) standard     deviation of one curve. All phase values are given in $rad$.*|   
 
@@ -118,7 +118,7 @@ Teste 1234.
     
   - ***[Radial Phase-shift]*** Radial phase-shift ($\Delta\phi_r$) map in $rad/\mu m$ obtained after applying an Inverse Abel Transform from Accumulated Phase-shift map ($\Delta\phi$).
 
-|<img src='/Images/Figure4.PNG'>|
+|<img src='/Images/Figure5.PNG'>|
 |:--:| 
 |*Fig. 4. Example of: (a) 2D radial phase-shift map and (b) 2D standard deviation map; (c) and (d) accuracy between 1D radial phase-shift and normalized phase-shift curves. All radial phase values are given in* $rad / \mu m$.*|  
 
@@ -126,7 +126,7 @@ Teste1234
 
   - ***[Density Profile]*** Electron density distribution ($N_e$) of LIP in $cm^{−3}$ built from the radial phase-shift ($\Delta\phi_r$) and ***[Laser Wavelength]*** ($\lambda$).
     
-|<img src='/Images/Figure5.PNG'>|
+|<img src='/Images/Figure6.PNG'>|
 |:--:| 
 |*Fig. 5. Example of: (a) 2D plasma density map and (b) 2D standard deviation map; (c) 1D plasma density curves and (d) standard deviation of one density curve. All density values are given in* $cm^{-3}$.*|
 
@@ -136,14 +136,14 @@ Teste1234
 - ***[Save Data]*** This button allows the user to save the 2D array that generated the visualized plot as a *.dat* or *.txt* file.
 - ***[Colormap dist.]*** With this list box the user can choose between three colormaps distributions: linear (*Fig 7.a*), quadratic (*Fig 7.a*), or cubic(*Fig 7.c*).
 
-|<img src = '/Images/Figure6.PNG' width="100%">|
+|<img src = '/Images/Figure7.PNG' width="100%">|
 |:--:| 
 |*Fig. 7. Examples with the colormaps distributions: (a) Linear distribution, (b) Quadratic distribution, (c) Cubic Distribution.* |
 
 ## How it works
 A detailed description of the algorithm will be presented in a future article. However, the summarized data processing by the software algorithm is described by the flowchart shown in *Fig. 8*:
 
-|<img src = '/Images/Figure7.PNG'>|
+|<img src = '/Images/Figure8.PNG'>|
 |:--:| 
 | *Fig. 8. Scheme of the algorithm data processing.* |
 
