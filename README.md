@@ -77,7 +77,7 @@ The Software Main Screen (*Fig. 1*) can be divided into 3 main parts: Interferog
   > **Note:** The first click of the mouse defines de first value of the X and Y triangle coordinates, and the second click defines the end coordinates of the triangle. Case, the initial X (or Y) is bigger than the final X (or Y), these values will be exchanged. 
   - ***[Phase BG]*** This parameter defines the border size border used to construct the background of the accumulated phase $\Delta\phi$. The borders are defined based on a percentage of the selected area, and the background is obtained using a 4th-order 2D polynomial fitting from the selected border as shown in *Fig. 3.a*. The *Fig. 3.b* shows the accumulated phase-shift without the fitted background.
   - 
-|<img src = '/Images/Figure2.PNG'>|
+|<img src = '/Images/Figure2.png'>|
 |:--:| 
 | *Fig. 2. (a) Accumulated phase map of LIP in 3D with a non-linear background and the selected border (in gray) used to construct the isolated background map; (b) Accumulated phase map of LIP in 3D after removing the background.* |
 
@@ -120,7 +120,7 @@ Teste 1234.
 
 |<img src='/Images/Figure5.PNG'>|
 |:--:| 
-|*Fig. 4. Example of: (a) 2D radial phase-shift map and (b) 2D standard deviation map; (c) and (d) accuracy between 1D radial phase-shift and normalized phase-shift curves. All radial phase values are given in* $rad / \mu m$.*|  
+|*Fig. 4. Example of: (a) 2D radial phase-shift map and (b) 2D standard deviation map; (c) and (d) accuracy between 1D radial phase-shift and normalized phase-shift curves. All radial phase values are given in $rad / \mu m$.*|  
 
 Teste1234
 
@@ -128,7 +128,7 @@ Teste1234
     
 |<img src='/Images/Figure6.PNG'>|
 |:--:| 
-|*Fig. 5. Example of: (a) 2D plasma density map and (b) 2D standard deviation map; (c) 1D plasma density curves and (d) standard deviation of one density curve. All density values are given in* $cm^{-3}$.*|
+|*Fig. 5. Example of: (a) 2D plasma density map and (b) 2D standard deviation map; (c) 1D plasma density curves and (d) standard deviation of one density curve. All density values are given in $cm^{-3}$.*|
 
 - ***[1D Profile]*** This button enables 1D frame (*Fig. 6*) with options for the user to visualize the curves of each select stage for different positions on the chosen symmetry axis.
 - ***[2D Profile]*** This button enables the visualization of each ***[Stage]*** in 2D images.
