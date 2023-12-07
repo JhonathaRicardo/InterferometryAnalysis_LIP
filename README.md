@@ -44,7 +44,7 @@ The “Interferometry Analysis – LIP” has a graphical user interface (GUI) t
 
 ### Main Screen
 
-|<img src = '/Images/MainScreen1.PNG'> |
+|<img src = '/Images/MainScreen1.png'> |
 |:--:| 
 | *Fig.1 - Software Main Screen* |
 
