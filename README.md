@@ -69,34 +69,30 @@ The “Interferometry Analysis – LIP” has a graphical user interface (GUI) t
 - ***(3) [Analyse Data]*** From this command button, the software will apply data processing to generate the accumulated phase-shift map, the radial phase-shift map, and the map of the electron density distribution of the plasma.
 
 - ***(4) [Clear]*** Button to clear input and output data.
-> **Note**
-> The algorithm sets the frequency that generates a negative phase map. Because the refractive index of the plasma is less than 1. This is an intrinsic characteristic of plasmas, and it is considered in the calculations of the algorithm.
+> **Note:** The algorithm sets the frequency that generates a negative phase map. Because the refractive index of the plasma is less than 1. This is an intrinsic characteristic of plasmas, and it is considered in the calculations of the algorithm.
 
 ### Options
 - ***(5) [Select Area]*** Parameters frame for users select the interferogram area to apply the algorithm. The selected area is defined by a rectangle with edges defined by X and Y coordinates. The user can select an area using the mouse click over the image or the combobox ***[Y Coord]*** and ***[X Coord]***.
     > **Note:** The first click of the mouse defines de first value of the X and Y triangle coordinates, and the second click defines the end coordinates of the triangle. Case, the initial X (or Y) is bigger than the final X (or Y), these values will be exchanged. 
   - The ***[Phase BG]*** is an important parameter in analysis, because it defines the border sizes to construct the background of the accumulated phase $\Delta\phi$. This background is obtained using a 4th-order 2D polynomial fitting from the selected border as shown in Fig. X. 
 
-- ***(6) [Experimental Parameteres]*** Frame to set the experimental parameters used to obtain the interferogram. These parameters are:
-  - ***[Scaling Factor]*** Interferogram scale in micrometers/pixel.
+- ***6. [Input Parameteres]*** Frame to set the experimental parameters used to obtain the interferogram. These parameters are:
+  - ***[Scaling Factor]*** and ***[Uncertainty Scaling Factor]*** Interferogram scale in micrometers/pixel.
   - ***[Fringes Orientation]*** Definition of the interferogram fringes orientation (vertical or horizontal).
   - ***[Laser Wavelength]*** ($\lambda$) and ***[Laser FHWM]*** ($\Delta\lambda$) in nm;
 
-- ***[Analysis Parameters]*** Parameters frame to analyze of the interferogram images.
+- ***7. [Analysis Parameters]*** Parameters frame to analyze the interferogram.
+  - ***[Filter Frequency]*** ($\nu_0$) This parameter is set automatically by the algorithm and this position defines which frequency will be used to apply the Inverse Fourier Transform and build the phase map of the plasma. This parameter is given in pixels.
+  - ***[Filter Range]*** ($\Delta\nu$) frequency spread of the Gaussian frequency filter in pixel. The initial $\Delta\nu$ depends on the image dimension but can changed by the user. 
+    > **Note:** The algorithm sets the frequency that generates a negative phase map. Because the refractive index of the plasma is less than 1. This is an intrinsic characteristic of plasmas, and it is considered in the calculations of the algorithm.
+  - ***[Gaussian Blur]*** (\sigma_{blur}) Spread of the bi-dimensional Gaussian image filter. The standard deviation of the Gaussian filter ($\sigma$) defined by the user is equal for all axes.
   
-  - ***[Sigma - Gaussian filter]*** Pixel spread of the gaussian image filter. The initial Sigma depends on the image dimension, but can changed by the
-user. 
-  - ***[Gaussian Filter Position]*** This parameter is set automatically by the algorithm and this position defines which frequency will be used to apply the Inverse Fourier Transform and build the phase map of the plasma. This parameter is given in pixels. 
-    > **Note** 
-    > The algorithm sets the frequency that generates a negative phase map. Because the refractive index of the plasma is less than 1. This is an intrinsic characteristic of plasmas, and it is considered in the calculations of the algorithm.
-  
-  
-  - ***[Axisymmetric]*** Definition of the axis of symmetry (or axisymmetric) to apply the Inverse Abel Transform. The axisymmetric can be horizontal or vertical.
-  - ***[Sigma - Gaussian Blur]*** Spread of the multidimensional gaussian image filter. The standard deviation of the gaussian filter ($\sigma$) defined by the user is equal for all axes.
+  - ***[Axisymmetric Orientation]*** Definition of the axis of symmetry (or axisymmetric) to apply the Inverse Abel Transform. The axisymmetric can be horizontal or vertical.
+  - ***[Axisymmetric Position]*** Axisymmetric position on the accumulated phase map to apply the Abel inversion.
 
 ### LIP Profile
 - ***[Stages]:*** Stages frame allows the visualization of each result of the algorithm.
-  - ***[Fourier Transform]*** This image is built from the Fourier Transform of the plasma interferogram. From this frequency map (Fig. 2.A), the software selects automatically the frequency that generates a positive phase-shift map. The selected frequency is marked with a red line over a pixels line (or column) identifying the ***[Gaussian Filter position]***. . If the ***[Gaussian Filter position]***.  is equal to zero, the software will set the new valor value automatically.   
+  - ***[Fourier Transform]*** This image is built from the Fourier Transform of the plasma interferogram. From this frequency map (Fig. 2.A), the software selects automatically the frequency that generates a negative phase-shift map. The selected frequency is marked with a red line over a pixel line (or column) identifying the ***[Filter Frequency]*** ($\nu_0$). If the ***[Gaussian Filter position]***.  is equal to zero, the software will set the new valor value automatically.   
   > **Note**   
   >  The user can change this ***[Gaussian Filter position]*** manually.
   
