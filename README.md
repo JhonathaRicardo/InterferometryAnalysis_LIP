@@ -45,7 +45,7 @@ The *Interferometry Analysis – LIP* has a graphical user interface (GUI) to fa
 ### Main Screen
 The Software Main Screen (*Fig. 1*) can be divided into 3 main parts: Interferograms, Options, and LIP Profile. Each of these parts will be detailed below.
 
-|<img src = '/Images/Figure2.PNG'> |
+|<img src = '/Images/Figure2.PNG'>|
 |:--:| 
 |*Fig.1 - Software Main Screen*|
 
@@ -108,7 +108,7 @@ For the next three steps, users have the option of viewing the 2D maps or 1D cur
 
 |<img src = '/Images/Figure4.PNG'>|
 |:--:| 
-|*Fig. 3. Example of: (a) 2D accumulated phase-shift map and (b) 2D standard deviation map; (c) 1D accumulated phase curves and (d) standard deviation of one curve. All phase values are given in* $rad$.|   
+| *Fig. 3. Example of: (a) 2D accumulated phase-shift map and (b) 2D standard deviation map; (c) 1D accumulated phase curves and (d) standard deviation of one curve. All phase values are given in* $rad$.|   
     
   - ***[Radial Phase-shift]*** Radial phase-shift ($\Delta\phi_r$) map in $rad/\mu m$ obtained after applying an Inverse Abel Transform from Accumulated Phase-shift map ($\Delta\phi$).
 
