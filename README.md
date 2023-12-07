@@ -75,11 +75,13 @@ The “Interferometry Analysis – LIP” has a graphical user interface (GUI) t
 
 ### Options
 - ***(5) [Select Area]*** Parameters frame for users select the interferogram area to apply the algorithm. The selected area is defined by a rectangle with edges defined by X and Y coordinates. The user can select an area using the mouse click over the image or the combobox ***[Y Coord]*** and ***[X Coord]***.
-  > **Note:** The first click of the mouse defines de first value of the X and Y triangle coordinates, and the second click defines the end coordinates of the triangle. Case, the initial X (or Y) is bigger than the final X (or Y), these values will be exchanged. 
+    > **Note:** The first click of the mouse defines de first value of the X and Y triangle coordinates, and the second click defines the end coordinates of the triangle. Case, the initial X (or Y) is bigger than the final X (or Y), these values will be exchanged. 
+- The ***[Phase BG]*** is an important parameter in analysis, because it defines the border sizes to construct the background of the accumulated phase $\Delta\phi$. This background is obtained using a 4th-order 2D polynomial fitting from selected border as shown in Fig. X.   
+  
   
 
 - ***[Experimental Parameteres]*** Frame to set the experimental parameters used to obtain the interferogram. These parameters are:
-  - ***[Laser Wavelength] ($\lambda$)*** and ***[Laser FHWM ($\Delta\lambda$)]*** in nm;
+  - ***[Laser Wavelength]*** ($\lambda$) and ***[Laser FHWM]*** ($\Delta\lambda$) in nm;
 
 - ***[Analysis Parameters]*** Parameters frame to analyze of the interferogram images.
   - ***[Scaling Factor]*** Interferogram image scale in micrometers/pixel.
