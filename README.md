@@ -106,6 +106,10 @@ For the next three steps, users have the option of viewing the 2D maps or 1D cur
  
   - ***[Acc. Phase-shift]*** Accumulated phase-shift ($\Delta\phi$) of the plasma (in rad) recovered from the interferograms.
 
+|<img src = '/Images/Figure2.PNG' width="40%">|
+|:--:| 
+| *Fig. 2. Example of: (a) 2D frequency domain obtained by the interferogram Fourier Transform with the selected frequency to be filtered; (b) Gaussian filter to be applied on the selected frequency.* |
+
 |<img src = '/Images/Figure3.jpg'>|
 |:--:| 
 | *Fig. 3. Example of: (a) 2D accumulated phase-shift map and (b) 2D standard deviation map; (c) 1D accumulated phase curves and (d) standard     deviation of one curve. All phase values are given in* $rad$.|   
