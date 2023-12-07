@@ -98,7 +98,7 @@ The Software Main Screen (*Fig. 1*) can be divided into 3 main parts: Interferog
   
   - ***[Gaussian Filter]*** This image is the Gaussian filter map applied to generate the phase map using the selected frequency (Fig. 2.B).
 
-    |<img src = '/Images/Figure3.PNG'> |
+    |<img src = '/Images/Figure3.PNG> |
     |:--:| 
     | *Fig. 2. Example of: (a) 2D frequency domain obtained by the interferogram Fourier Transform with the selected frequency to be filtered; (b) Gaussian filter to be applied on the selected frequency.* |
 
@@ -106,7 +106,7 @@ For the next three steps, users have the option of viewing the 2D maps or 1D cur
  
   - ***[Acc. Phase-shift]*** Accumulated phase-shift ($\Delta\phi$) of the plasma (in rad) recovered from the interferograms.
   
-    |<img src = '/Images/Figure4.PNG'>|
+    |<img src = '/Images/Figure.PNG'>|
     |:--:| 
     | *Fig. 3. Example of: (a) 2D accumulated phase-shift map and (b) 2D standard deviation map; (c) 1D accumulated phase curves and (d) standard deviation of one curve. All phase values are given in* $rad$.|   
     
