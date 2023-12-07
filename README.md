@@ -120,7 +120,7 @@ Teste 1234.
 
 |<img src='/Images/Figure5.PNG'>|
 |:--:| 
-|*Fig. 4. Example of: (a) 2D radial phase-shift map and (b) 2D standard deviation map; (c) and (d) accuracy between 1D radial phase-shift and normalized phase-shift curves. All radial phase values are given in $rad / \mu m$.*|  
+|*Fig. 4. Example of: (a) 2D radial phase-shift map and (b) 2D standard deviation map; (c) and (d) accuracy between 1D radial phase-shift and normalized phase-shift curves. All radial phase values are given in* $rad / \mu m$.|  
 
 Teste1234
 
