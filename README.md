@@ -49,7 +49,7 @@ The “Interferometry Analysis – LIP” has a graphical user interface (GUI) t
 | *Fig.1 - Software Main Screen* |
 
 ### Interferogram Image
-- ***[Interferogram (LIP)]*** interferogram image frame.
+- ***[Interferogram (LIP)]*** interferogram frame.
 
 - ***[Open File(s)]*** Open interferogram image(s) file(s) with the presence of a laser-induced plasma. Image file extensions should preferably be *.png* or *.snp.* (Newport proprietary format) for Newport CCD. However, all image extensions (*.gif*, *.jpg*, *.bmp*, etc) can be used. The path to the opened file is shown in the text box immediately above. If more than one file has been opened, each one is analyzed individually, and the average of all results is presented to the user.
   > **Warning**   
