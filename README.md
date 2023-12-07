@@ -4,7 +4,7 @@
 </p>
 
 <p align="center">
-  <img src = '/Images/Figure1.PNG' width="80%" align="center">
+  <img src = '/Images/Figure0.PNG' width="80%" align="center">
 </p>
 
 ![license](https://img.shields.io/badge/license-MIT-green)
@@ -45,7 +45,7 @@ The *Interferometry Analysis – LIP* has a graphical user interface (GUI) to fa
 ### Main Screen
 The Software Main Screen (*Fig. 1*) can be divided into 3 main parts: Interferograms, Options, and LIP Profile. Each of these parts will be detailed below.
 
-|<img src = '/Images/Figure2.PNG'>|
+|<img src = '/Images/Figure1.PNG'>|
 |:--:| 
 |*Fig.1 - Software Main Screen*|
 
@@ -98,7 +98,7 @@ The Software Main Screen (*Fig. 1*) can be divided into 3 main parts: Interferog
   
   - ***[Gaussian Filter]*** This image is the Gaussian filter map applied to generate the phase map using the selected frequency (Fig. 2.B).
 
-|<img src = '/Images/Figure3.PNG' width="40%">|
+|<img src = '/Images/Figure2.PNG' width="40%">|
 |:--:| 
 | *Fig. 2. Example of: (a) 2D frequency domain obtained by the interferogram Fourier Transform with the selected frequency to be filtered; (b) Gaussian filter to be applied on the selected frequency.* |
 
@@ -108,7 +108,7 @@ For the next three steps, users have the option of viewing the 2D maps or 1D cur
 
 
 
-|<img src = '/Images/Figure4.jpg'>|
+|<img src = '/Images/Figure3.jpg'>|
 |:--:| 
 | *Fig. 3. Example of: (a) 2D accumulated phase-shift map and (b) 2D standard deviation map; (c) 1D accumulated phase curves and (d) standard deviation of one curve. All phase values are given in* $rad$.|   
     
@@ -116,13 +116,13 @@ For the next three steps, users have the option of viewing the 2D maps or 1D cur
 
 
 
-|<img src='/Images/Figure5.PNG'>|
+|<img src='/Images/Figure4.PNG'>|
 |:--:| 
 |*Fig. 4. Example of: (a) 2D radial phase-shift map and (b) 2D standard deviation map; (c) and (d) accuracy between 1D radial phase-shift and normalized phase-shift curves. All radial phase values are given in* $rad / \mu m$.|  
     
   - ***[Density Profile]*** Electron density distribution ($N_e$) of LIP in $cm^{−3}$ built from the radial phase-shift ($\Delta\phi_r$) and ***[Laser Wavelength]*** ($\lambda$).
     
-|<img src='/Images/Figure6.PNG'>|
+|<img src='/Images/Figure5.PNG'>|
 |:--:| 
 |*Fig. 5. Example of: (a) 2D plasma density map and (b) 2D standard deviation map; (c) 1D plasma density curves and (d) standard deviation of one density curve. All density values are given in* $cm^{-3}$.|
 
@@ -132,14 +132,14 @@ For the next three steps, users have the option of viewing the 2D maps or 1D cur
 - ***[Save Data]*** This button allows the user to save the 2D array that generated the visualized plot as a *.dat* or *.txt* file.
 - ***[Colormap dist.]*** With this list box the user can choose between three colormaps distributions: linear (*Fig 7.a*), quadratic (*Fig 7.a*), or cubic(*Fig 7.c*).
 
-|<img src = '/Images/Figure7.PNG' width="100%">|
+|<img src = '/Images/Figure6.PNG' width="100%">|
 |:--:| 
 |*Fig. 7. Examples with the colormaps distributions: (a) Linear distribution, (b) Quadratic distribution, (c) Cubic Distribution.* |
 
 ## How it works
 A detailed description of the algorithm will be presented in a future article. However, the summarized data processing by the software algorithm is described by the flowchart shown in *Fig. 8*:
 
-|<img src = '/Images/Figure8.PNG'>|
+|<img src = '/Images/Figure7.PNG'>|
 |:--:| 
 | *Fig. 8. Scheme of the algorithm data processing.* |
 
