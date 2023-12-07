@@ -1,4 +1,4 @@
-# <h1 align = "center">Interferometry Analysis - LIP (version 1.0)</h1>
+# <h1 align = "center">Interferometry Analysis - LIP (version 3.6)</h1>
 <p align="justify">
   Interferometric techniques are important tools for analysis and diagnosis in astronomy, spectroscopy, metrology, plasma physics, particle physics, and other areas, frequently applied to quantify changes in the refractive index of a material or a medium. For example, knowing the density distribution of a gas target is crucial to understand laser plasmas interactions and processes. This software was developed in Python to recover the accumulated optical phase-shift across a plasma induced by focusing laser radiation, as well as estimate the plasma density distribution.
 </p>
@@ -35,12 +35,12 @@ The *Interferometry Analysis - LIP* software was developed in Python 3.11. The u
 
 Users also can create a single .exe file using the [pyinstaller](https://pyinstaller.org/en/stable/) package trought the follow terminal command:
 
-<code>   pyinstaller --onefile -w IntAnalysis_LIP_v1.0.py                </code>
+<code>   pyinstaller --onefile -w IntAnalysis_LIP_v3.6.py                </code>
 
 Users who do not use Python IDEs can utilize the software through the executable file available for download [here](https://drive.google.com/file/d/1KXjkSNreBf5OsbCz0-O0pDPYxaD-Rx6_/view?usp=sharing)
 
 ## How to use it
-The “Interferometry Analysis – LIP” has a graphical user interface (GUI) to facilitate its use, and this section provide a simple review of the software functions and how to employ them.
+The “Interferometry Analysis – LIP” has a graphical user interface (GUI) to facilitate its use, and this section provides a simple review of the software functions and how to employ them.
 
 ### Main Screen
 
@@ -190,7 +190,7 @@ You can find the DOI for the latest version at [Zenodo].
 - [5] S. Shiraishi, C. Benedetti, A. J. Gonsalves, K. Nakamura, B. H. Shaw, T. Sokollik, J. van Tilborg, C. G. R. Geddes, C. B. Schroeder, C. Toth, E. Esarey, and W. P. Leemans, “Laser red shifting based characterization of wakefield excitation in a laser-plasma accelerator,” Phys. Plasmas 20, 063103 (2013).DOI 10.1063/1.4810802.
 - [6] A. J. Goers, G. A. Hine, L. Feder, B. Miao, F. Salehi, J. K. Wahlstrand, and H. M. Milchberg, “Multi-MeV electron acceleration by Subterawatt laser pulses,” Phys. Rev. Lett. 115, 194802 (2015).DOI 10.1103/PhysRevLett.115.194802.
 - [7] F. Brandi and L. A. Gizzi, “Optical diagnostics for density measurement in high-quality laser-plasma electron accelerators,” High Power Laser Sci. Eng. 7, e26 (2019).DOI 10.1017/hpl.2019.11.
-- [8] A. K. Arunachalam, “Investigation of laser-plasma interactions at near-critical densities,” Dissertation (University of Jena, 2017)..
+- [8] A. K. Arunachalam, “Investigation of laser-plasma interactions at near-critical densities,” Dissertation (University of Jena, 2017).
 - [9] Harris, C.R., Millman, K.J., van der Walt, S.J. et al. Array programming with NumPy. Nature 585, 357–362 (2020). DOI: 10.1038/s41586-020-2649-2.
 - [10] Pauli Virtanen, et. al. (2020) SciPy 1.0: Fundamental Algorithms for Scientific Computing in Python. Nature Methods, 17(3), 261-272. DOI: 10.1038/s41592-019-0686-2.
 - [11] Gibson, Stephen; Hickstein, Daniel D.; Yurchak, Roman; Ryazanov, Mikhail; Das, Dhrubajyoti; Shih, Gilbert.(2022) PyAbel, PyAbel: v0.9.0, Zenodo, DOI: 10.5281/zenodo.7438595.
