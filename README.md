@@ -40,9 +40,10 @@ Users also can create a single .exe file using the [pyinstaller](https://pyinsta
 Users who do not use Python IDEs can utilize the software through the executable file available for download [here](https://drive.google.com/file/d/1KXjkSNreBf5OsbCz0-O0pDPYxaD-Rx6_/view?usp=sharing)
 
 ## How to use it
-The “Interferometry Analysis – LIP” has a graphical user interface (GUI) to facilitate its use, and this section provide a simple review of the software functions and how to employ them.
+The *Interferometry Analysis – LIP* has a graphical user interface (GUI) to facilitate its use, and this section provide a simple review of the software functions and how to employ them.
 
 ### Main Screen
+The Software Main Screen (*Fig. 1*) can be divided into 3 main parts: Interferograms, Options, and LIP Profile. Each of these parts will be detailed below.
 
 |<img src = '/Images/Figure2.PNG'> |
 |:--:| 
