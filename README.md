@@ -137,6 +137,9 @@ For the next three steps, users have the option of viewing the 2D maps or 1D cur
 |:--:| 
 |*Fig. 7. Examples with the colormaps distributions: (a) Linear distribution, (b) Quadratic distribution, (c) Cubic Distribution.* |
 
+- ***15. [1D Profile]*** This Frame allows the visualization of 1D profiles (accumulated phase, radial phase and density) for different positions over the Axisymmetry.
+
+  
 ## How it works
 A detailed description of the algorithm will be presented in a future article. However, the summarized data processing by the software algorithm is described by the flowchart shown in *Fig. 8*:
 
