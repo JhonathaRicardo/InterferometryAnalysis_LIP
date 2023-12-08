@@ -64,19 +64,19 @@ The Software Main Screen (*Fig. 1*) can be divided into 3 main parts: Interferog
 - ***2. [Interferogram (Ref.)]*** Scaled reference interferogram.
 
   - ***[Open File]*** Open an undisturbed interferogram file. Image file extensions should preferably be .png or .snp. However, all image extensions (*.gif*, *.jpg*, *.bmp*, etc) can be used. The path to open the file is shown in the textbox above. Unlike interferogram gas jet files, the algorithm allows the insertion of only one reference file.
-  > **Warning**   
-  >  Interferometry Analysis - LIP software only works with grayscale image files. 
+    > **Warning**   
+    >  Interferometry Analysis - LIP software only works with grayscale image files. 
 
 - ***3. [Analyse Data]*** From this command button, the software will apply data processing to generate the accumulated phase-shift map, the radial phase-shift map, and the map of the electron density distribution of the plasma.
 
 - ***4. [Clear]*** Button to clear input and output data.
-> **Note:** The algorithm sets the frequency that generates a negative phase map. Because the refractive index of the plasma is less than 1. This is an intrinsic characteristic of plasmas, and it is considered in the calculations of the algorithm.
+  > **Note:** The algorithm sets the frequency that generates a negative phase map. Because the refractive index of the plasma is less than 1. This is an intrinsic characteristic of plasmas, and it is considered in the calculations of the algorithm.
 
 ### Options
 - ***5. [Select Area]*** Parameters frame for users select the interferogram area to apply the algorithm. The selected area is defined by a rectangle with edges defined by X and Y coordinates. The user can select an area using the mouse click over the image or the combo box ***[Y Coord]*** and ***[X Coord]***.
   > **Note:** The first click of the mouse defines de first value of the X and Y triangle coordinates, and the second click defines the end coordinates of the triangle. Case, the initial X (or Y) is bigger than the final X (or Y), these values will be exchanged. 
   - ***[Phase BG]*** This parameter defines the border size border used to construct the background of the accumulated phase $\Delta\phi$. The borders are defined based on a percentage of the selected area, and the background is obtained using a 4th-order 2D polynomial fitting from the selected border as shown in *Fig. 3.a*. The *Fig. 3.b* shows the accumulated phase-shift without the fitted background.
-  - 
+
 |<img src = '/Images/Figure2.png'>|
 |:--:| 
 | *Fig. 2. (a) Accumulated phase map of LIP in 3D with a non-linear background and the selected border (in gray) used to construct the isolated background map; (b) Accumulated phase map of LIP in 3D after removing the background.* |
@@ -96,9 +96,9 @@ The Software Main Screen (*Fig. 1*) can be divided into 3 main parts: Interferog
   - ***[Axisymmetric Position]*** Axisymmetric position on the accumulated phase map to apply the Abel inversion.
 
 ### LIP Profile
-- ***[Stages]:*** Stages frame allows the visualization of each result of the algorithm.
+- ***8. [Stages]:*** Stages frame allows the visualization of each result of the algorithm.
   - ***[Fourier Transform]*** This image is built from the Fourier Transform of the plasma interferogram. From this frequency map (Fig. 2.A), the software selects automatically the frequency that generates a negative phase-shift map. The selected frequency is marked with a red line over a pixel line (or column) identifying the ***[Filter Frequency]*** ($\nu_0$). If the ***[Filter Frequency]***  is equal to zero, the software will set the new valor value automatically.   
-  > **Note:** The user can change this ***[Filter Frequency]*** manually.
+    > **Note:** The user can change this ***[Filter Frequency]*** manually.
   
   - ***[Gaussian Filter]*** This image is the Gaussian filter map applied to generate the phase map using the selected frequency (Fig. 2.B).
 
@@ -126,11 +126,12 @@ For the next three steps, users have the option of viewing the 2D maps or 1D cur
 |:--:| 
 |*Fig. 5. (a) 2D plasma density map and (b) 2D standard deviation map; (c) 1D plasma density curves and (d) standard deviation of one density curve. All density values are given in cm&oline;³ .*|
 
-- ***[1D Profile]*** This button enables 1D frame (*Fig. 6*) with options for the user to visualize the curves of each select stage for different positions on the chosen symmetry axis.
-- ***[2D Profile]*** This button enables the visualization of each ***[Stage]*** in 2D images.
-- ***[Save Plot]*** This button allows the user to save the visualized plot as an image file (*.png*, *.jpg*, *.bmp*, etc).
-- ***[Save Data]*** This button allows the user to save the 2D array that generated the visualized plot as a *.dat* or *.txt* file.
-- ***[Colormap dist.]*** With this list box the user can choose between three colormaps distributions: linear (*Fig 7.a*), quadratic (*Fig 7.a*), or cubic(*Fig 7.c*).
+- ***9. [1D Profile]*** This button enables a 1D frame (*Fig. 6*) with options for the user to visualize the curves of each selected stage for different positions on the chosen symmetry axis.
+- ***10. [2D Profile]*** This button enables the visualization of each ***[Stage]*** in 2D images.
+- ***11. [Uncertainty of Measurement]*** This checkbox enables the visualization of the uncertainty of the accumulated phase, radial phase and density for 1D and 2D profiles.
+- ***12. [Result Frame]*** In this frame user can verify the results of each stage of the data processing. The results can be seen in 1D or 2D. Results in 2D has options for ***[Colormap distribution]*** With this list box the user can choose between three colormaps distributions: linear (*Fig 7.a*), quadratic (*Fig 7.a*), or cubic(*Fig 7.c*).
+- ***13. [Save Plot]*** This button allows the user to save the visualized plot as an image file (*.png*, *.jpg*, *.bmp*, etc).
+- ***14. [Save Data]*** This button allows the user to save the 2D array that generated the visualized plot as a *.dat* or *.txt* file.
 
 |<img src = '/Images/Figure7.PNG' width="80%">|
 |:--:| 
