@@ -112,19 +112,19 @@ For the next three steps, users have the option of viewing the 2D maps or 1D cur
 
 |<img src = '/Images/Figure4.PNG' width="80%">|
 |:--:| 
-|*Fig. 4. Example of: (a) 2D accumulated phase-shift map and (b) 2D standard deviation map; (c) 1D accumulated phase curves and (d) standard     deviation of one curve. All phase values are given in rad.*|   
+|*Fig. 4. (a) 2D accumulated phase-shift map and (b) 2D standard deviation map; (c) 1D accumulated phase curves and (d) standard     deviation of one curve. All phase values are given in rad.*|   
     
   - ***[Radial Phase-shift]*** Radial phase-shift ($\Delta\phi_r$) map in $rad/\mu m$ obtained after applying an Inverse Abel Transform from Accumulated Phase-shift map ($\Delta\phi$).
 
 |<img src='/Images/Figure5.PNG' width="80%">|
 |:--:| 
-|*Fig. 5. Example of: (a) 2D radial phase-shift map and (b) 2D standard deviation map; (c) and (d) accuracy between 1D radial phase-shift and normalized phase-shift curves. All radial phase values are given in rad/&mu;m.*|  
+|*Fig. 5. (a) 2D radial phase-shift map and (b) 2D standard deviation map; (c) and (d) accuracy between 1D radial phase-shift and normalized phase-shift curves. All radial phase values are given in rad/&mu;m.*|  
 
   - ***[Density Profile]*** Electron density distribution ($N_e$) of LIP in $cm^{−3}$ built from the radial phase-shift ($\Delta\phi_r$) and ***[Laser Wavelength]*** ($\lambda$).
     
 |<img src='/Images/Figure6.PNG' width="80%">|
 |:--:| 
-|*Fig. 5. Example of: (a) 2D plasma density map and (b) 2D standard deviation map; (c) 1D plasma density curves and (d) standard deviation of one density curve. All density values are given in cm&oline;³ .*|
+|*Fig. 5. (a) 2D plasma density map and (b) 2D standard deviation map; (c) 1D plasma density curves and (d) standard deviation of one density curve. All density values are given in cm&oline;³ .*|
 
 - ***[1D Profile]*** This button enables 1D frame (*Fig. 6*) with options for the user to visualize the curves of each select stage for different positions on the chosen symmetry axis.
 - ***[2D Profile]*** This button enables the visualization of each ***[Stage]*** in 2D images.
@@ -143,7 +143,7 @@ A detailed description of the algorithm will be presented in a future article. H
 |:--:| 
 | *Fig. 8. Scheme of the algorithm data processing.* |
 
-In the scheme of the data processing algorithm (Fig. 8): $I$ and $I_0$ are the bi-dimensional fringes intensity distributions obtained from the gas and reference interferograms, respectively; the hats denotes the intensity Fourier transform, and $I_C^*$ is the complex conjugate of intensity with frequencies belong to $-v_0$; and, $N_e$ is the plasma electron density determined from the refractive index $n$ and laser wavelength $λ$ defined by user. The equation to calculate $N_e$, (described in detail in [[15]](#reference)) also depends on physical constants defined within the algorithm.
+In the scheme of the data processing algorithm (Fig. 8): $I_T$ and $I_R$ are the bi-dimensional fringes intensity distributions obtained from the gas and reference interferograms, respectively; the hats denotes the intensity Fourier transform, and $I_S^*$ is the complex conjugate of intensity with frequencies belong to $-v_0$; and, $N_e$ is the plasma electron density determined from the refractive index $n$ and laser wavelength $λ$ defined by user. The equation to calculate $N_e$, (described in detail in [[15]](#reference)) also depends on physical constants defined within the algorithm.
   
 ## Example
 In the Example folder of this repository, the user will find two interferogram images shown in Fig. 9. These images were obtained using a Mach-Zehnder-like interferometer, as discussed in [16].
@@ -167,6 +167,7 @@ Applications (CLA) from the Instituto de Pesquisas Energéticas e Nucleares ([IP
 * Armando Valter Felicio Zuffi [![logo_ORCID](/Images/logo_ORCID.png)](https://orcid.org/0000-0001-5705-1499)
 * Nilson Dias Vieira Junior [![logo_ORCID](/Images/logo_ORCID.png)](https://orcid.org/0000-0003-0092-9357)
 * Edison Puig Maldonado [![logo_ORCID](/Images/logo_ORCID.png)](https://orcid.org/0000-0002-9462-8151)
+* Giovanni Souza [![logo_ORCID](/Images/logo_ORCID.png)](https://orcid.org/0000-0003-3426-5528)
 * Ricardo Elgul Samad [![logo_ORCID](/Images/logo_ORCID.png)](https://orcid.org/0000-0001-7762-8961)
 
 ## Acknowledgment
