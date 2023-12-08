@@ -116,15 +116,15 @@ For the next three steps, users have the option of viewing the 2D maps or 1D cur
     
   - ***[Radial Phase-shift]*** Radial phase-shift ($\Delta\phi_r$) map in $rad/\mu m$ obtained after applying an Inverse Abel Transform from Accumulated Phase-shift map ($\Delta\phi$).
 
-|<img src='/Images/Figure5.PNG'>|
+|<img src='/Images/Figure5.PNG' width="80%">|
 |:--:| 
-|*Fig. 5. Example of: (a) 2D radial phase-shift map and (b) 2D standard deviation map; (c) and (d) accuracy between 1D radial phase-shift and normalized phase-shift curves. All radial phase values are given in rad*|  
+|*Fig. 5. Example of: (a) 2D radial phase-shift map and (b) 2D standard deviation map; (c) and (d) accuracy between 1D radial phase-shift and normalized phase-shift curves. All radial phase values are given in rad/um*|  
 
   - ***[Density Profile]*** Electron density distribution ($N_e$) of LIP in $cm^{−3}$ built from the radial phase-shift ($\Delta\phi_r$) and ***[Laser Wavelength]*** ($\lambda$).
     
 |<img src='/Images/Figure6.PNG'>|
 |:--:| 
-|*Fig. 5. Example of: (a) 2D plasma density map and (b) 2D standard deviation map; (c) 1D plasma density curves and (d) standard deviation of one density curve. All density values are given in* $cm^{-3}$.|
+|*Fig. 5. Example of: (a) 2D plasma density map and (b) 2D standard deviation map; (c) 1D plasma density curves and (d) standard deviation of one density curve. All density values are given in* $cm^{-3}$ *.*|
 
 - ***[1D Profile]*** This button enables 1D frame (*Fig. 6*) with options for the user to visualize the curves of each select stage for different positions on the chosen symmetry axis.
 - ***[2D Profile]*** This button enables the visualization of each ***[Stage]*** in 2D images.
