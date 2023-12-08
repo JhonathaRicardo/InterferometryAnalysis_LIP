@@ -118,7 +118,7 @@ For the next three steps, users have the option of viewing the 2D maps or 1D cur
 
 |<img src='/Images/Figure5.PNG' width="80%">|
 |:--:| 
-|*Fig. 5. Example of: (a) 2D radial phase-shift map and (b) 2D standard deviation map; (c) and (d) accuracy between 1D radial phase-shift and normalized phase-shift curves. All radial phase values are given in rad/um*|  
+|*Fig. 5. Example of: (a) 2D radial phase-shift map and (b) 2D standard deviation map; (c) and (d) accuracy between 1D radial phase-shift and normalized phase-shift curves. All radial phase values are given in &phi &mu rad/um*|  
 
   - ***[Density Profile]*** Electron density distribution ($N_e$) of LIP in $cm^{−3}$ built from the radial phase-shift ($\Delta\phi_r$) and ***[Laser Wavelength]*** ($\lambda$).
     
