@@ -8,7 +8,7 @@
 </p>
 
 ![license](https://img.shields.io/badge/license-MIT-green)
-![version](https://img.shields.io/badge/version-v.1.2-green)
+![version](https://img.shields.io/badge/version-v.4.0-green)
 ![status](https://img.shields.io/badge/status-under%20development-green)
 
 ## Summary
