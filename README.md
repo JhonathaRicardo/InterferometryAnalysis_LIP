@@ -35,7 +35,7 @@ The *Interferometry Analysis - LIP* software was developed in Python 3.11. The u
 
 Users also can create a single .exe file using the [pyinstaller](https://pyinstaller.org/en/stable/) package through the following terminal command:
 
-<code>   pyinstaller --onefile -w IntAnalysis_LIP_v1.0.py                </code>
+<code>   pyinstaller --onefile -w IntAnalysis_LIP_v4.0.py                </code>
 
 Users who do not use Python IDEs can utilize the software through the executable file available for download [here](https://drive.google.com/file/d/1KXjkSNreBf5OsbCz0-O0pDPYxaD-Rx6_/view?usp=sharing)
 
@@ -75,7 +75,7 @@ The Software Main Screen (*Fig. 1*) can be divided into 3 main parts: Interferog
 ### Options
 - ***5. [Select Area]*** Parameters frame for users select the interferogram area to apply the algorithm. The selected area is defined by a rectangle with edges defined by X and Y coordinates. The user can select an area using the mouse click over the image or the combo box ***[Y Coord]*** and ***[X Coord]***.
   > **Note:** The first click of the mouse defines de first value of the X and Y triangle coordinates, and the second click defines the end coordinates of the triangle. Case, the initial X (or Y) is bigger than the final X (or Y), these values will be exchanged. 
-  - ***[Phase BG]*** This parameter defines the border size border used to construct the background of the accumulated phase $\Delta\phi$. The borders are defined based on a percentage of the selected area, and the background is obtained using a 4th-order 2D polynomial fitting from the selected border as shown in *Fig. 3.a*. The *Fig. 3.b* shows the accumulated phase-shift without the fitted background.
+  - ***[Phase BG]*** This parameter defines the border size border used to construct the background of the accumulated phase $\Delta\phi$. The borders are defined based on a percentage of the selected area, and the background is obtained using a 4th-order 2D polynomial fitting from the selected border as shown in *Fig. 2.a*. The *Fig. 2.b* shows the accumulated phase-shift without the fitted background.
 
 |<img src = '/Images/Figure2.png'>|
 |:--:| 
@@ -97,10 +97,10 @@ The Software Main Screen (*Fig. 1*) can be divided into 3 main parts: Interferog
 
 ### LIP Profile
 - ***8. [Stages]:*** Stages frame allows the visualization of each result of the algorithm.
-  - ***[Fourier Transform]*** This image is built from the Fourier Transform of the plasma interferogram. From this frequency map (Fig. 2.A), the software selects automatically the frequency that generates a negative phase-shift map. The selected frequency is marked with a red line over a pixel line (or column) identifying the ***[Filter Frequency]*** ($\nu_0$). If the ***[Filter Frequency]***  is equal to zero, the software will set the new valor value automatically.   
+  - ***[Fourier Transform]*** This image is built from the Fourier Transform of the plasma interferogram. From this frequency map (Fig. 3.a), the software selects automatically the frequency that generates a negative phase-shift map. The selected frequency is marked with a red line over a pixel line (or column) identifying the ***[Filter Frequency]*** ($\nu_0$). If the ***[Filter Frequency]***  is equal to zero, the software will set the new valor value automatically.   
     > **Note:** The user can change this ***[Filter Frequency]*** manually.
   
-  - ***[Gaussian Filter]*** This image is the Gaussian filter map applied to generate the phase map using the selected frequency (Fig. 2.B).
+  - ***[Gaussian Filter]*** This image is the Gaussian filter map applied to generate the phase map using the selected frequency (Fig. 3.b).
 
 |<img src = '/Images/Figure3.PNG' width="40%">|
 |:--:| 
@@ -108,11 +108,11 @@ The Software Main Screen (*Fig. 1*) can be divided into 3 main parts: Interferog
 
 For the next three steps, users have the option of viewing the 2D maps or 1D curves with standard deviation using the ***[Standard Deviation]*** checkbox.
  
-  - ***[Acc. Phase-shift]*** Accumulated phase-shift ($\Delta\phi$) of the plasma (in rad) recovered from the interferograms.
+  - ***[Acc. Phase-shift]*** Accumulated phase-shift ($\Delta\phi$) of the plasma (in rad) retrieved from the interferograms.
 
 |<img src = '/Images/Figure4.PNG' width="80%">|
 |:--:| 
-|*Fig. 4. (a) 2D accumulated phase-shift map and (b) 2D standard deviation map; (c) 1D accumulated phase curves and (d) standard     deviation of one curve. All phase values are given in rad.*|   
+|*Fig. 4. (a) 2D accumulated phase-shift map and (b) 2D standard deviation map; (c) 1D accumulated phase curves and (d) standard deviation of one curve. All phase values are given in rad.*|   
     
   - ***[Radial Phase-shift]*** Radial phase-shift ($\Delta\phi_r$) map in $rad/\mu m$ obtained after applying an Inverse Abel Transform from Accumulated Phase-shift map ($\Delta\phi$).
 
@@ -126,7 +126,7 @@ For the next three steps, users have the option of viewing the 2D maps or 1D cur
 |:--:| 
 |*Fig. 5. (a) 2D plasma density map and (b) 2D standard deviation map; (c) 1D plasma density curves and (d) standard deviation of one density curve. All density values are given in cm&oline;³ .*|
 
-- ***9. [1D Profile]*** This button enables a 1D frame (*Fig. 6*) with options for the user to visualize the curves of each selected stage for different positions on the chosen symmetry axis.
+- ***9. [1D Profile]*** This button enables a 1D frame (*Item 15 in Fig. 1*) with options for the user to visualize the curves of each selected stage for different positions on the chosen symmetry axis.
 - ***10. [2D Profile]*** This button enables the visualization of each ***[Stage]*** in 2D images.
 - ***11. [Uncertainty of Measurement]*** This checkbox enables the visualization of the uncertainty of the accumulated phase, radial phase and density for 1D and 2D profiles.
 - ***12. [Result Frame]*** In this frame user can verify the results of each stage of the data processing. The results can be seen in 1D or 2D. Results in 2D has options for ***[Colormap distribution]*** With this list box the user can choose between three colormaps distributions: linear (*Fig 7.a*), quadratic (*Fig 7.a*), or cubic(*Fig 7.c*).
