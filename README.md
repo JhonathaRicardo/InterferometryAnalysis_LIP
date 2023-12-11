@@ -53,13 +53,13 @@ The Software Main Screen (*Fig. 1*) can be divided into 3 main parts: Interferog
 - ***1. [Interferogram (LIP)]*** interferogram frame.
 
   - ***[Open File(s)]*** Open interferogram(s) file(s) with the presence of a laser-induced plasma. Image file extensions should preferably be *.png* or *.snp.* (Newport proprietary format) for Newport CCD. However, all image extensions (*.gif*, *.jpg*, *.bmp*, etc) can be used. The path to the opened file is shown in the text box immediately above. If more than one file has been opened, each one is analyzed individually, and the average of all results is presented to the user.
-  > **Warning**   
-  >  Interferometry Analysis - LIP software only works with grayscale image files. 
+    > **Warning**   
+    >  Interferometry Analysis - LIP software only works with grayscale image files. 
   
   - ***[Rotate]*** The image rotation in degrees. Positive degrees promote counterclockwise rotation.  
 
   - ***[Original Size]*** Original dimensions of the image file (width, height). 
-  > **Note** The interferogram shown is scaled to screen size (428,342) for users' viewing only. However, all processes to determine the plasma density profile are done with the original dimensions of the image file.
+    > **Note** The interferogram shown is scaled to screen size (428,342) for users' viewing only. However, all processes to determine the plasma density profile are done with the original dimensions of the image file.
 
 - ***2. [Interferogram (Ref.)]*** Scaled reference interferogram.
 
