@@ -9,7 +9,9 @@
 
 ![license](https://img.shields.io/badge/license-MIT-green)
 ![version](https://img.shields.io/badge/version-v.4.0-green)
-![status](https://img.shields.io/badge/status-under%20development-green)
+![status](https://img.shields.io/badge/status-under%20development-yellow)
+[![DOI](https://zenodo.org/badge/610237615.svg)](https://zenodo.org/doi/10.5281/zenodo.7864172).
+
 
 ## Summary
 * [Introduction](#introduction)
