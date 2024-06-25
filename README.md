@@ -8,7 +8,7 @@
 </p>
 
 ![license](https://img.shields.io/badge/license-MIT-green)
-![version](https://img.shields.io/badge/version-v.4.0-green)
+![version](https://img.shields.io/badge/version-v.2.0-green)
 ![status](https://img.shields.io/badge/status-under%20development-yellow)
 [![DOI](https://zenodo.org/badge/610237615.svg)](https://zenodo.org/doi/10.5281/zenodo.7864172).
 
@@ -37,7 +37,7 @@ The *Interferometry Analysis - LIP* software was developed in Python 3.11. The u
 
 Users also can create a single .exe file using the [pyinstaller](https://pyinstaller.org/en/stable/) package through the following terminal command:
 
-<code>   pyinstaller --onefile -w IntAnalysis_LIP_v4.0.py                </code>
+<code>   pyinstaller --onefile -w IntAnalysis_LIP_v2.0.py                </code>
 
 Users who do not use Python IDEs can utilize the software through the executable file available for download [here](https://drive.google.com/file/d/1KXjkSNreBf5OsbCz0-O0pDPYxaD-Rx6_/view?usp=sharing)
 
